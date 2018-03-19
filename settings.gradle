@@ -1,0 +1,3 @@
+rootProject.name = 'guoi-cloud-apis'
+include 'org8n-grpc-java'
+

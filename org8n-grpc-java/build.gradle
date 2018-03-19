@@ -1,0 +1,79 @@
+group 'com.github.conanchen.guoi-cloud-apis'
+version '0.1.0-SNAPSHOT'
+
+apply plugin: 'com.google.protobuf'
+apply plugin: 'java'
+apply plugin: 'idea'
+
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+dependencies {
+    compile "io.grpc:grpc-core:$GRPC_VERSION"
+    compile "io.grpc:grpc-protobuf:$GRPC_VERSION"
+    compile "io.grpc:grpc-stub:$GRPC_VERSION"
+    compile "com.google.protobuf:protobuf-java:$PROTOBUF_JAVA_VERSION"
+    testCompile "junit:junit:4.12"
+    testCompile "io.grpc:grpc-testing:$GRPC_VERSION"
+}
+
+//编译JAVA文件时采用UTF-8
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+protobuf {
+    // Configure the protoc executable
+    protoc {
+        artifact = "com.google.protobuf:protoc:$PROTOC_VERSION"
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:$GRPC_VERSION"
+
+            generateProtoTasks {
+                all()*.plugins {
+                    grpc {
+                        // To generate deprecated interfaces and static bindService method,
+                        // turn the enable_deprecated option to true below:
+                        option 'enable_deprecated=false'
+                    }
+                }
+            }
+        }
+        java {
+
+        }
+    }
+
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {
+            }
+        }
+    }
+}
+
+clean {
+    delete protobuf.generatedFilesBaseDir
+}
+
+jar{
+    exclude (
+            "/**/google/**",
+            "**/*.proto"
+    )
+}
+
+idea {
+    module {
+        sourceDirs += file("${protobuf.generatedFilesBaseDir}/main/java")
+        sourceDirs += file("${protobuf.generatedFilesBaseDir}/main/grpc")
+        // If you have additional sourceSets and/or codegen plugins, add all of them
+    }
+}
+
+project.logger.lifecycle("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+project.logger.lifecycle("~~~~~~~~~~~~~~~~GRPC-JAVA BUILD DONE!~~~~~~~~~~~~~~~~~");
+project.logger.lifecycle("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
