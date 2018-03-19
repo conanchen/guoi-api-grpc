@@ -9,8 +9,9 @@ option java_outer_classname = "Org8nServiceProto";
 import "google/protobuf/any.proto";
 import "google/protobuf/field_mask.proto";
 import "google/protobuf/empty.proto";
+import "google/rpc/status.proto";
 
-service Org8nService {
+service Org8nApi {
     // Returns a list of all shelves in the bookstore.
     rpc ListShelves (google.protobuf.Empty) returns (ListShelvesResponse) {
         //        option (google.api.http) = {
@@ -108,6 +109,9 @@ service Org8nService {
     }
 }
 
+//    To retrieve the next page of results, client shall pass the value of response's
+//    next_page_token in the subsequent List method call (in the request message's page_token field):
+//    https://cloud.google.com/apis/design/design_patterns
 message ListBooksRequest {
     // The parent resource name, for example, "shelves/shelf1".
     string parent = 1;
@@ -160,6 +164,10 @@ message Author {
 
 // Response to ListShelves call.
 message ListShelvesResponse {
+    // *Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that
+    // specifies the error for the operation.
+    google.rpc.Status error = 999;
+
     // Shelves in the bookstore.
     repeated Shelf shelves = 1;
 }
