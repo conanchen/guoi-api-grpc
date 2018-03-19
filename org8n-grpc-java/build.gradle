@@ -1,9 +1,8 @@
-group 'com.github.conanchen.guoi-cloud-apis'
-version '0.1.0-SNAPSHOT'
-
-apply plugin: 'com.google.protobuf'
-apply plugin: 'java'
-apply plugin: 'idea'
+plugins {
+    id 'com.google.protobuf'
+    id 'java'
+    id 'idea'
+}
 
 
 sourceCompatibility = JavaVersion.VERSION_1_8
