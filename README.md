@@ -22,13 +22,13 @@ dependencies {
 ```
 		
 ### For Java Application(Client or Server)
-[guoi-cloud-apis/master-SNAPSHOT](https://jitpack.io/com/github/conanchen/guoi-cloud-apis/master-SNAPSHOT/build.log)
+[guoi-micro-apis/master-SNAPSHOT](https://jitpack.io/com/github/conanchen/guoi-micro-apis/master-SNAPSHOT/build.log)
 ```angular2html
-Found artifact: com.github.conanchen.guoi-cloud-apis:org8n-grpc-java:0.1.0-SNAPSHOT
+Found artifact: com.github.conanchen.guoi-micro-apis:org8n-grpc-java:0.1.0-SNAPSHOT
 ```
 ```gradle
 dependencies {
-    compile 'com.github.conanchen.guoi-cloud-apis:org8n-grpc-java:master-SNAPSHOT'
+    compile 'com.github.conanchen.guoi-micro-apis:org8n-grpc-java:master-SNAPSHOT'
 }
 ```
 	

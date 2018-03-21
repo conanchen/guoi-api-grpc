@@ -29,7 +29,7 @@ scmVersion {
 
 allprojects {
     project.version = scmVersion.version
-    group 'com.github.conanchen.guoi-cloud-apis'
+    group 'com.github.conanchen.guoi-micro-apis'
 
 
     repositories {
@@ -63,5 +63,5 @@ subprojects {
 }
 
 project.logger.lifecycle("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-project.logger.lifecycle("~~~~~~~~~~~~~~~~~GUOI ROOT BUILD DONE!~~~~~~~~~~~~~~~~~~");
+project.logger.lifecycle("~~~~~~~~~~~~~~~~~GUOI ROOT BUILD !~~~~~~~~~~~~~~~~~~");
 project.logger.lifecycle("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
