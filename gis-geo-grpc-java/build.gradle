@@ -73,3 +73,4 @@ idea {
     }
 }
 
+project.logger.lifecycle("~~~~~~~~~~~~~~~~~GIS-GEO-GRPC-JAVA ROOT BUILD !~~~~~~~~~~~~~~~~~~");

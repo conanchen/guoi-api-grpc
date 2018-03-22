@@ -72,3 +72,5 @@ idea {
         // If you have additional sourceSets and/or codegen plugins, add all of them
     }
 }
+
+project.logger.lifecycle("~~~~~~~~~~~~~~~~~AUTHCOW-GRPC-JAVA ROOT BUILD !~~~~~~~~~~~~~~~~~~");

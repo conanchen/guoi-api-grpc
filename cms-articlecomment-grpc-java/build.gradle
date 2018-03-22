@@ -73,3 +73,4 @@ idea {
     }
 }
 
+project.logger.lifecycle("~~~~~~~~~~~~~~~~~CMS-ARTICLECOMMENT-GRPC-JAVA ROOT BUILD !~~~~~~~~~~~~~~~~~~");

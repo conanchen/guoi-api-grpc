@@ -1,0 +1,48 @@
+syntax = "proto3";
+package guoi.cloud.org8n;
+
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.org8n";
+option java_outer_classname = "TopcenterApiProto";
+
+import "google/protobuf/any.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/empty.proto";
+import "google/rpc/status.proto";
+
+//  https://cloud.google.com/apis/design/design_patterns#Singleton%20Resources
+//  The standard Create and Delete methods must be omitted for singleton resources;
+//  the singleton is implicitly created or deleted when its parent is created or deleted
+//  (and implicitly exists if it has no parent).
+//  The resource must be accessed using the standard Get and Update methods.
+service TopcenterApi {
+    rpc GetTopcenter (GetTopcenterRequest) returns (Topcenter) {
+        //  option (google.api.http) = {
+        //    get: "/v1/{name=users/*/topcenter}"
+        //  };
+    }
+
+    rpc UpdateTopcenter (UpdateTopcenterRequest) returns (Topcenter) {
+        //  option (google.api.http) = {
+        //    patch: "/v1/{topcenter.name=users/*/topcenter}"
+        //    body: "topcenter"
+        //  };
+    }
+}
+
+
+message Topcenter {
+    string name = 1;
+    // Topcenter fields 请补上.
+}
+
+message GetTopcenterRequest {
+    string name = 1;
+}
+
+message UpdateTopcenterRequest {
+    Topcenter topcenter = 1;
+    // Field mask to support partial updates.
+    google.protobuf.FieldMask update_mask = 2;
+}

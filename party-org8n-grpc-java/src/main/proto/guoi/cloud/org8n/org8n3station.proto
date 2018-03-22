@@ -1,0 +1,108 @@
+syntax = "proto3";
+package guoi.cloud.org8n;
+
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.org8n";
+option java_outer_classname = "StationApiProto";
+
+import "google/protobuf/any.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/empty.proto";
+import "google/rpc/status.proto";
+
+service StationApi {
+    // Returns a list of all stations in the org8n.
+    rpc ListStations (google.protobuf.Empty) returns (ListStationsResponse) {
+        //    option (google.api.http) = {
+        //      get: "/v1/{parent=opcenters/*}/stations"
+        //    };
+    }
+    // Creates a new station in the bookstore.
+    rpc CreateStation (CreateStationRequest) returns (Station) {
+        //    option (google.api.http) = {
+        //      post: "/v1/{parent=opcenters/*}/stations"
+        //      body: "station"
+        //    };
+    }
+
+    // Deletes a station, including all books that are stored on the station.
+    rpc DeleteStation (DeleteStationRequest) returns (google.protobuf.Empty) {
+        //  // Delete maps to HTTP DELETE. Resource name maps to the URL path.
+        //  // There is no request body.
+        //  option (google.api.http) = {
+        //    // Note the URL template variable capturing the multi-segment name of the
+        //    // station resource to be deleted, such as "opcenter/*/stations/station001"
+        //    delete: "/v1/{name=opcenters/*/stations/*}"
+        //  };
+    }
+
+    // Returns a specific bookstore station.
+    rpc GetStation (GetStationRequest) returns (Station) {
+        //    option (google.api.http) = {
+        //      get: "/v1/{name=opcenters/*/stations/*}"
+        //    };
+    }
+
+    // Updates a station.
+    rpc UpdateStation (UpdateStationRequest) returns (Station) {
+        //        // Update maps to HTTP PATCH. Resource name is mapped to a URL path.
+        //        // Resource is contained in the HTTP request body.
+        //  option (google.api.http) = {
+        //    // Note the URL template variable which captures the resource name of the
+        //    // station to update.
+        //    patch: "/v1/{station.name=opcenters/*/stations/*}"
+        //    body: "station"
+        //  };
+    }
+
+}
+
+
+// A station resource.
+message Station {
+    // A unique station id.
+    int64 id = 1;
+    // A theme of the station (fiction, poetry, etc).
+    string theme = 2;
+}
+
+// Response to ListStations call.
+message ListStationsResponse {
+    // *Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that
+    // specifies the error for the operation.
+    google.rpc.Status error = 999;
+
+    // Stations in the bookstore.
+    repeated Station stations = 1;
+}
+
+// Request message for CreateStation method.
+message CreateStationRequest {
+    // The station resource to create.
+    Station station = 1;
+}
+
+// Request message for GetStation method.
+message GetStationRequest {
+    // The ID of the station resource to retrieve.
+    int64 station = 1;
+}
+
+// Request message for DeleteStation method.
+message DeleteStationRequest {
+    // The ID of the station to delete.
+    int64 station = 1;
+}
+
+
+
+message UpdateStationRequest {
+    // The station resource which replaces the resource on the server.
+    Station station = 1;
+
+    // The update mask applies to the resource. For the `FieldMask` definition,
+    // see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+    google.protobuf.FieldMask update_mask = 2;
+}
+
