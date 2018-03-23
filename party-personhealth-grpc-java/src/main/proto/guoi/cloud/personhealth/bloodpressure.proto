@@ -1,0 +1,90 @@
+syntax = "proto3";
+package guoi.cloud.personhealth;
+
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.personhealth";
+option java_outer_classname = "BloodpressureApiProto";
+
+import "google/protobuf/any.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+import "google/rpc/status.proto";
+
+service BloodpressureApi {
+    // Returns a list of all bloodpressures in the bloodpressure.
+    rpc ListBloodpressures (google.protobuf.Empty) returns (ListBloodpressuresResponse) {
+        //    option (google.api.http) = {
+        //      get: "/v1/{parent=persons/*}/bloodpressures"
+        //    };
+    }
+    // Creates a new bloodpressure in the bookstore.
+    rpc CreateBloodpressure (CreateBloodpressureRequest) returns (Bloodpressure) {
+        //    option (google.api.http) = {
+        //      post: "/v1/{parent=persons/*}/bloodpressures"
+        //      body: "bloodpressure"
+        //    };
+    }
+
+    // Deletes a bloodpressure, including all books that are stored on the bloodpressure.
+    rpc DeleteBloodpressure (DeleteBloodpressureRequest) returns (google.protobuf.Empty) {
+        //  // Delete maps to HTTP DELETE. Resource name maps to the URL path.
+        //  // There is no request body.
+        //  option (google.api.http) = {
+        //    // Note the URL template variable capturing the multi-segment name of the
+        //    // bloodpressure resource to be deleted, such as "person/*/bloodpressures/bloodpressure001"
+        //    delete: "/v1/{name=persons/*/bloodpressures/*}"
+        //  };
+    }
+
+    // Returns a specific bookstore bloodpressure.
+    rpc GetBloodpressure (GetBloodpressureRequest) returns (Bloodpressure) {
+        //    option (google.api.http) = {
+        //      get: "/v1/{name=persons/*/bloodpressures/*}"
+        //    };
+    }
+}
+
+// A bloodpressure resource.
+message Bloodpressure {
+    // A unique bloodpressure id.
+    int64 id = 1;
+    // value of the bloodpressure
+    float systolic = 2; //(收缩压)
+    float diastolic = 3; //(舒张压)
+
+    string guoiDeviceId=4; //检测终端编号
+
+    string personUuid = 5; //个人唯一ID
+
+    google.protobuf.Timestamp create_time = 9;
+}
+
+// Response to ListBloodpressures call.
+message ListBloodpressuresResponse {
+    // *Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that
+    // specifies the error for the operation.
+    google.rpc.Status error = 999;
+
+    // Bloodpressures in the bookstore.
+    repeated Bloodpressure bloodpressures = 1;
+}
+
+// Request message for CreateBloodpressure method.
+message CreateBloodpressureRequest {
+    // The bloodpressure resource to create.
+    Bloodpressure bloodpressure = 1;
+}
+
+// Request message for GetBloodpressure method.
+message GetBloodpressureRequest {
+    // The ID of the bloodpressure resource to retrieve.
+    int64 bloodpressure = 1;
+}
+
+// Request message for DeleteBloodpressure method.
+message DeleteBloodpressureRequest {
+    // The ID of the bloodpressure to delete.
+    int64 bloodpressure = 1;
+}
