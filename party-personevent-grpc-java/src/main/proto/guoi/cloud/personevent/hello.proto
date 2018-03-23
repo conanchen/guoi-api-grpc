@@ -1,9 +1,9 @@
 syntax = "proto3";
-package guoi.cloud.org8n;
+package guoi.cloud.personevent;
 
 
 option java_multiple_files = true;
-option java_package = "com.github.conanchen.guoi.cloud.org8n";
+option java_package = "com.github.conanchen.guoi.cloud.personevent";
 option java_outer_classname = "HelloApiProto";
 
 import "guoi/common.proto";
