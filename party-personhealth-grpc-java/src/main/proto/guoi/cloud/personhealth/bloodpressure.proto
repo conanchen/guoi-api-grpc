@@ -50,16 +50,18 @@ service BloodpressureApi {
 message Bloodpressure {
     // Resource name of the bloodpressure. It must have the format of "persons/*/bloodpressures/*".
     // For example: "persons/personid1/bloodpressures/pressureid2".
+    // The name is ignored when creating a bloodpressure.
     string name = 1;
 
     // value of the bloodpressure
     float systolic = 2; //(收缩压)
     float diastolic = 3; //(舒张压)
 
-    google.protobuf.Timestamp create_time = 9;
+    google.protobuf.Timestamp create_time = 9; //The creation timestamp of an entity.
 
-    // resource name reference to device
-    string name_device=4; //检测终端资源名称
+    // resource references
+    // device resource
+    string name_device = 100; //检测终端资源名称
 
 }
 
@@ -75,8 +77,12 @@ message ListBloodpressuresResponse {
 
 // Request message for CreateBloodpressure method.
 message CreateBloodpressureRequest {
+    // Resource name of the parent resource where to create the event.
+    // For example: "persons/personid1".
+    string parent = 1;
+
     // The bloodpressure resource to create.
-    Bloodpressure bloodpressure = 1;
+    Bloodpressure bloodpressure = 2;
 }
 
 // Request message for GetBloodpressure method.

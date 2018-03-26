@@ -50,16 +50,18 @@ service BloodoxygenApi {
 message Bloodoxygen {
     // Resource name of the bloodoxygen. It must have the format of "persons/*/bloodoxygens/*".
     // For example: "persons/personid1/bloodoxygens/oxygenid2".
+    // The name is ignored when creating a bloodoxygen.
     string name = 1;
 
 
     // value of the bloodoxygen
     float spo2 = 2; //(血氧饱和度)
 
-    google.protobuf.Timestamp create_time = 9;
+    google.protobuf.Timestamp create_time = 9; //The creation timestamp of an entity.
 
-    // resource name reference to device
-    string name_device=4; //检测终端资源名称
+    // resource references
+    // device resource
+    string name_device = 100; //检测终端资源名称
 
 }
 
@@ -75,8 +77,12 @@ message ListBloodoxygensResponse {
 
 // Request message for CreateBloodoxygen method.
 message CreateBloodoxygenRequest {
+    // Resource name of the parent resource where to create the event.
+    // For example: "persons/personid1".
+    string parent = 1;
+
     // The bloodoxygen resource to create.
-    Bloodoxygen bloodoxygen = 1;
+    Bloodoxygen bloodoxygen = 2;
 }
 
 // Request message for GetBloodoxygen method.

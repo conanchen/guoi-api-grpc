@@ -46,20 +46,21 @@ service BloodsugarApi {
     }
 }
 
-
 // A bloodsugar resource.
 message Bloodsugar {
     // Resource name of the bloodsugar. It must have the format of "persons/*/bloodsugars/*".
     // For example: "persons/personid1/bloodsugars/sugarid2".
+    // The name is ignored when creating a bloodsugar.
     string name = 1;
 
     // value of the bloodsugar
-    float sugarlevel = 2;  //血糖值
+    float sugarlevel = 2; //血糖值
 
-    google.protobuf.Timestamp create_time = 9;
+    google.protobuf.Timestamp create_time = 9; //The creation timestamp of an entity.
 
-    // resource name reference to device
-    string name_device=4; //检测终端资源名称
+    // resource references
+    // device resource
+    string name_device = 100; //检测终端资源名称
 
 }
 
@@ -75,8 +76,12 @@ message ListBloodsugarsResponse {
 
 // Request message for CreateBloodsugar method.
 message CreateBloodsugarRequest {
+    // Resource name of the parent resource where to create the event.
+    // For example: "persons/personid1".
+    string parent = 1;
+
     // The bloodsugar resource to create.
-    Bloodsugar bloodsugar = 1;
+    Bloodsugar bloodsugar = 2;
 }
 
 // Request message for GetBloodsugar method.
