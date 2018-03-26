@@ -38,7 +38,7 @@ service BloodoxygenApi {
         //  };
     }
 
-    // Returns a specific bookstore bloodoxygen.
+    // Returns a specific person bloodoxygen.
     rpc GetBloodoxygen (GetBloodoxygenRequest) returns (Bloodoxygen) {
         //    option (google.api.http) = {
         //      get: "/v1/{name=persons/*/bloodoxygens/*}"
@@ -48,17 +48,19 @@ service BloodoxygenApi {
 
 // A bloodoxygen resource.
 message Bloodoxygen {
-    // A unique bloodoxygen id.
-    int64 id = 1;
+    // Resource name of the bloodoxygen. It must have the format of "persons/*/bloodoxygens/*".
+    // For example: "persons/personid1/bloodoxygens/oxygenid2".
+    string name = 1;
+
 
     // value of the bloodoxygen
     float spo2 = 2; //(血氧饱和度)
 
-    string guoiDeviceId=4; //检测终端编号
-
-    string personUuid = 5; //个人唯一ID
-
     google.protobuf.Timestamp create_time = 9;
+
+    // resource name reference to device
+    string name_device=4; //检测终端资源名称
+
 }
 
 // Response to ListBloodoxygens call.
@@ -67,7 +69,7 @@ message ListBloodoxygensResponse {
     // specifies the error for the operation.
     google.rpc.Status error = 999;
 
-    // Bloodoxygens in the bookstore.
+    // Bloodoxygens in the person.
     repeated Bloodoxygen bloodoxygens = 1;
 }
 
@@ -79,12 +81,12 @@ message CreateBloodoxygenRequest {
 
 // Request message for GetBloodoxygen method.
 message GetBloodoxygenRequest {
-    // The ID of the bloodoxygen resource to retrieve.
-    int64 bloodoxygen = 1;
+    // Resource name of a bloodoxygen. For example: "persons/personid1/bloodoxygens/oxygenid2".
+    string name = 1;
 }
 
 // Request message for DeleteBloodoxygen method.
 message DeleteBloodoxygenRequest {
-    // The ID of the bloodoxygen to delete.
-    int64 bloodoxygen = 1;
+    // Resource name of a oxygen. For example: "persons/personid1/bloodoxygens/oxygenid2".
+    string name = 1;
 }

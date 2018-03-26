@@ -53,8 +53,9 @@ service PersoneventApi {
 
 // A event resource.
 message Personevent {
-    // A unique event id.
-    int64 id = 1;
+    // Resource name of the personevent. It must have the format of "persons/*/events/*".
+    // For example: "persons/personid1/events/eventid2".
+    string name = 1;
 
     string stationUuid = 2; //驿站唯一
     string personUuid = 5; //个人唯一ID
@@ -82,12 +83,12 @@ message CreatePersoneventRequest {
 
 // Request message for GetPersonevent method.
 message GetPersoneventRequest {
-    // The ID of the event resource to retrieve.
-    int64 event = 1;
+    // Resource name of a personevent. For example: "persons/personid1/events/eventid2".
+    string name = 1;
 }
 
 // Request message for DeletePersonevent method.
 message DeletePersoneventRequest {
-    // The ID of the event to delete.
-    int64 event = 1;
+    // Resource name of a personevent. For example: "persons/personid1/events/eventid2".
+    string name = 1;
 }
