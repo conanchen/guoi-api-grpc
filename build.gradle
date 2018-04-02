@@ -29,9 +29,11 @@ scmVersion {
 
 
 allprojects {
+    project.version = scmVersion.version
+    group 'com.github.conanchen.guoi-micro-apis'
+
     apply plugin: 'java'
-    group = '${group}'
-    version = '${version}'
+
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 
