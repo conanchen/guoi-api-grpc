@@ -8,9 +8,7 @@ option java_outer_classname = "Org8nApiProto";
 
 import "guoi/cloud/common/common.proto";
 
-// The greeter service definition.
 service Org8nApi {
-    // Sends a greeting
     rpc GetOrg8n (GetOrg8nRequest) returns (Org8n) {
 
     }
@@ -26,7 +24,25 @@ service Org8nApi {
     rpc ListOrg8n(ListOrg8nRequest) returns (ListOrg8nReply){
 
     }
+
+    rpc GetEmployee(GetEmployeeRequest) returns (Employee){
+
+    }
+    rpc UpdateEmployee(UpdateEmployeeRequest) returns (Employee){
+
+    }
+    rpc DeleteEmployee(DeleteEmployeeRequest) returns (Employee){
+
+    }
+    rpc ListEmployee(ListEmployeeRequest) returns (ListEmployeeReply){
+
+    }
 }
+
+message Employee{
+    string name = 1;
+}
+
 message Org8n{
     string name = 1;
     enum Org8nType{
@@ -66,6 +82,23 @@ message ListOrg8nRequest{
     Org8n org8n = 1;
 }
 message ListOrg8nReply{
-    Status status = 999;
+    guoi.cloud.common.Status status = 999;
     repeated Org8n org8n = 1;
+}
+
+message GetEmployeeRequest{
+    string name = 1;
+}
+message UpdateEmployeeRequest{
+    Employee employee = 1;
+}
+message DeleteEmployeeRequest{
+    string name = 1;
+}
+message ListEmployeeRequest{
+    Employee employee = 1;
+}
+message ListEmployeeReply{
+    guoi.cloud.common.Status status = 999;
+    repeated Employee employee = 1;
 }
