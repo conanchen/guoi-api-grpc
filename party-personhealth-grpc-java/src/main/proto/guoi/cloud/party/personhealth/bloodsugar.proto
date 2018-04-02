@@ -1,0 +1,101 @@
+syntax = "proto3";
+package guoi.cloud.party.personhealth;
+
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.personhealth";
+option java_outer_classname = "BloodsugarApiProto";
+
+import "google/protobuf/any.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+import "google/rpc/status.proto";
+
+service BloodsugarApi {
+    // Returns a list of all bloodsugars in the bloodsugar.
+    rpc ListBloodsugars (google.protobuf.Empty) returns (ListBloodsugarsResponse) {
+        //    option (google.api.http) = {
+        //      get: "/v1/{parent=persons/*}/bloodsugars"
+        //    };
+    }
+    // Creates a new bloodsugar in the bookstore.
+    rpc CreateBloodsugar (CreateBloodsugarRequest) returns (Bloodsugar) {
+        //    option (google.api.http) = {
+        //      post: "/v1/{parent=persons/*}/bloodsugars"
+        //      body: "bloodsugar"
+        //    };
+    }
+
+    // Deletes a bloodsugar, including all books that are stored on the bloodsugar.
+    rpc DeleteBloodsugar (DeleteBloodsugarRequest) returns (google.protobuf.Empty) {
+        //  // Delete maps to HTTP DELETE. Resource name maps to the URL path.
+        //  // There is no request body.
+        //  option (google.api.http) = {
+        //    // Note the URL template variable capturing the multi-segment name of the
+        //    // bloodsugar resource to be deleted, such as "person/*/bloodsugars/bloodsugar001"
+        //    delete: "/v1/{name=persons/*/bloodsugars/*}"
+        //  };
+    }
+
+    // Returns a specific bookstore bloodsugar.
+    rpc GetBloodsugar (GetBloodsugarRequest) returns (Bloodsugar) {
+        //    option (google.api.http) = {
+        //      get: "/v1/{name=persons/*/bloodsugars/*}"
+        //    };
+    }
+}
+
+// A bloodsugar resource.
+message Bloodsugar {
+    // Resource name of the bloodsugar. It must have the format of "persons/*/bloodsugars/*".
+    // For example: "persons/personid1/bloodsugars/sugarid2".
+    // The name is ignored when creating a bloodsugar.
+    string name = 1;
+
+    // value of the bloodsugar
+    float sugarlevel = 2; //血糖值
+
+    google.protobuf.Timestamp create_time = 9; //The creation timestamp of an entity.
+
+    // resource references
+    // device resource
+    string name_device = 100; //检测终端资源名称
+
+}
+
+// Response to ListBloodsugars call.
+message ListBloodsugarsResponse {
+    // *Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that
+    // specifies the error for the operation.
+    google.rpc.Status error = 999;
+
+    // Bloodsugars in the bookstore.
+    repeated Bloodsugar bloodsugars = 1;
+}
+
+// Request message for CreateBloodsugar method.
+message CreateBloodsugarRequest {
+    // Resource name of the parent resource where to create the event.
+    // For example: "persons/personid1".
+    string parent = 1;
+
+    // The bloodsugar resource to create.
+    Bloodsugar bloodsugar = 2;
+}
+
+// Request message for GetBloodsugar method.
+message GetBloodsugarRequest {
+    // Resource name of the bloodsugar. It must have the format of "persons/*/bloodsugars/*".
+    // For example: "persons/personid1/bloodsugars/sugarid2".
+    string name = 1;
+
+}
+
+// Request message for DeleteBloodsugar method.
+message DeleteBloodsugarRequest {
+    // Resource name of the bloodsugar. It must have the format of "persons/*/bloodsugars/*".
+    // For example: "persons/personid1/bloodsugars/sugarid2".
+    string name = 1;
+
+}

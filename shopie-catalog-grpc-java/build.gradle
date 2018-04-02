@@ -73,4 +73,4 @@ idea {
     }
 }
 
-project.logger.lifecycle("~~~~~~~~~~~~~~~~~SHOPIE-PRODUCTCATALOG-GRPC-JAVA ROOT BUILD !~~~~~~~~~~~~~~~~~~");
+project.logger.lifecycle("~~~~~~~~~~~~~~~~~SHOPIE-CATALOG-GRPC-JAVA ROOT BUILD !~~~~~~~~~~~~~~~~~~");
