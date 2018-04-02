@@ -1,0 +1,71 @@
+syntax = "proto3";
+package guoi.cloud.party.org8n;
+
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.org8n";
+option java_outer_classname = "Org8nApiProto";
+
+import "guoi/cloud/common/common.proto";
+
+// The greeter service definition.
+service Org8nApi {
+    // Sends a greeting
+    rpc GetOrg8n (GetOrg8nRequest) returns (Org8n) {
+
+    }
+
+    rpc UpdateOrg8n(UpdateOrg8nRequest) returns (Org8n){
+
+    }
+
+    rpc DeleteOrg8n(DeleteOrg8nRequest) returns (Org8n){
+
+    }
+
+    rpc ListOrg8n(ListOrg8nRequest) returns (ListOrg8nReply){
+
+    }
+}
+message Org8n{
+    string name = 1;
+    enum Org8nType{
+        TOP = 0;
+        AREA = 1;
+        OP = 2;
+        STATION = 3;
+        PROVIDER = 4;
+    }
+    Org8n parent = 2;
+    Org8nType type = 3;
+    string org8nName = 4;
+    string theme = 5;
+    string tel = 6;
+    string linkMan = 7;
+    string phone = 8;
+    int32 status= 9;
+    repeated string address = 10;
+    enum OpType{
+        SELF = 0;
+    }
+    OpType opType = 11;
+    string hotPhone = 12;
+}
+message GetOrg8nRequest{
+    string name = 1;
+}
+
+message UpdateOrg8nRequest{
+    Org8n org8n = 1;
+}
+
+message DeleteOrg8nRequest{
+    string name = 1;
+}
+message ListOrg8nRequest{
+    Org8n org8n = 1;
+}
+message ListOrg8nReply{
+    Status status = 999;
+    repeated Org8n org8n = 1;
+}
