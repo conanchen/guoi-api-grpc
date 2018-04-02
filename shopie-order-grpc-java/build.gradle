@@ -5,21 +5,8 @@ plugins {
 }
 
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
-
 dependencies {
-    compile "io.grpc:grpc-core:$GRPC_VERSION"
-    compile "io.grpc:grpc-protobuf:$GRPC_VERSION"
-    compile "io.grpc:grpc-stub:$GRPC_VERSION"
-    compile "com.google.protobuf:protobuf-java:$PROTOBUF_JAVA_VERSION"
-    testCompile "junit:junit:4.12"
-    testCompile "io.grpc:grpc-testing:$GRPC_VERSION"
-}
-
-//编译JAVA文件时采用UTF-8
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
+    compile project(":zcommon-grpc-java")
 }
 
 protobuf {
@@ -72,5 +59,6 @@ idea {
         // If you have additional sourceSets and/or codegen plugins, add all of them
     }
 }
+
 
 project.logger.lifecycle("~~~~~~~~~~~~~~~~~SHOPIE-ORDER-GRPC-JAVA ROOT BUILD !~~~~~~~~~~~~~~~~~~");

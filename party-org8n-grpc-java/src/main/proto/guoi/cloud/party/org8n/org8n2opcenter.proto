@@ -1,0 +1,108 @@
+syntax = "proto3";
+package guoi.cloud.party.org8n;
+
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.org8n";
+option java_outer_classname = "OpcenterApiProto";
+
+import "google/protobuf/any.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/empty.proto";
+import "google/rpc/status.proto";
+
+service OpcenterApi {
+    // Returns a list of all opcenters in the org8n.
+    rpc ListOpcenters (google.protobuf.Empty) returns (ListOpcentersResponse) {
+        //    option (google.api.http) = {
+        //      get: "/v1/{parent=areacenters/*}/opcenters"
+        //    };
+    }
+    // Creates a new opcenter in the bookstore.
+    rpc CreateOpcenter (CreateOpcenterRequest) returns (Opcenter) {
+        //    option (google.api.http) = {
+        //      post: "/v1/{parent=areacenters/*}/opcenters"
+        //      body: "opcenter"
+        //    };
+    }
+
+    // Deletes a opcenter, including all books that are stored on the opcenter.
+    rpc DeleteOpcenter (DeleteOpcenterRequest) returns (google.protobuf.Empty) {
+        //  // Delete maps to HTTP DELETE. Resource name maps to the URL path.
+        //  // There is no request body.
+        //  option (google.api.http) = {
+        //    // Note the URL template variable capturing the multi-segment name of the
+        //    // opcenter resource to be deleted, such as "areacenter/*/opcenters/opcenter001"
+        //    delete: "/v1/{name=areacenters/*/opcenters/*}"
+        //  };
+    }
+
+    // Returns a specific bookstore opcenter.
+    rpc GetOpcenter (GetOpcenterRequest) returns (Opcenter) {
+        //    option (google.api.http) = {
+        //      get: "/v1/{name=areacenters/*/opcenters/*}"
+        //    };
+    }
+
+    // Updates a opcenter.
+    rpc UpdateOpcenter (UpdateOpcenterRequest) returns (Opcenter) {
+        //        // Update maps to HTTP PATCH. Resource name is mapped to a URL path.
+        //        // Resource is contained in the HTTP request body.
+        //  option (google.api.http) = {
+        //    // Note the URL template variable which captures the resource name of the
+        //    // opcenter to update.
+        //    patch: "/v1/{opcenter.name=areacenters/*/opcenters/*}"
+        //    body: "opcenter"
+        //  };
+    }
+
+}
+
+
+// A opcenter resource.
+message Opcenter {
+    // A unique opcenter id.
+    int64 id = 1;
+    // A theme of the opcenter (fiction, poetry, etc).
+    string theme = 2;
+}
+
+// Response to ListOpcenters call.
+message ListOpcentersResponse {
+    // *Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that
+    // specifies the error for the operation.
+    google.rpc.Status error = 999;
+
+    // Opcenters in the bookstore.
+    repeated Opcenter opcenters = 1;
+}
+
+// Request message for CreateOpcenter method.
+message CreateOpcenterRequest {
+    // The opcenter resource to create.
+    Opcenter opcenter = 1;
+}
+
+// Request message for GetOpcenter method.
+message GetOpcenterRequest {
+    // The ID of the opcenter resource to retrieve.
+    int64 opcenter = 1;
+}
+
+// Request message for DeleteOpcenter method.
+message DeleteOpcenterRequest {
+    // The ID of the opcenter to delete.
+    int64 opcenter = 1;
+}
+
+
+
+message UpdateOpcenterRequest {
+    // The opcenter resource which replaces the resource on the server.
+    Opcenter opcenter = 1;
+
+    // The update mask applies to the resource. For the `FieldMask` definition,
+    // see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+    google.protobuf.FieldMask update_mask = 2;
+}
+
