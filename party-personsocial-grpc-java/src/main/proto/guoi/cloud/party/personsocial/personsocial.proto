@@ -1,0 +1,285 @@
+syntax = "proto3";
+package guoi.cloud.party.personsocial;
+
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.party.personsocial";
+option java_outer_classname = "PersonApiProto";
+
+import "google/protobuf/timestamp.proto";
+import "google/rpc/status.proto";
+
+// The person service definition.
+service PersonApi {
+    // 增加被关爱人
+    rpc CreatePerson (CreatePersonRequest) returns (Person) {
+    }
+    //查询被关爱人
+    rpc ListPerson(ListPersonRequest) returns (ListPersonReply){
+    }
+    //查询被关爱人社会关系或者家庭成员
+    rpc ListPersonSocial(ListPersonSocialRequest) returns(ListPersonSocialReply){
+    }
+}
+message Person {
+    string name = 1;
+    google.protobuf.Timestamp create_time = 9; //The creation timestamp of an entity.
+}
+message PersonProfile{
+   //身份证编号
+   string idno = 1;
+   //头像
+   string avatar = 2;
+   //姓名
+   string personname = 3;
+   //ai认证
+   bool  aiAuthed = 4;
+   //性别
+   Gender gender = 5;
+
+   string mobile = 6;
+   //民族
+   string nation = 7;
+   //政治面貌
+   Politic politic = 8;
+   //爱好
+   string hobby = 9;
+   //老人类型
+   OldType oldType = 10;
+   //婚姻状况
+   MaritalStatus maritalStatus = 11;
+   //医疗方式
+   TreatmentMethod treatmentMethod = 12;
+   //居住状态
+   LivingStatus livingStatus = 13;
+   //经济来源
+   EcnomicSource  ecnomicSource = 14;
+}
+message ListPersonReply{
+    google.rpc.Status error = 999;
+    //基本信息
+    PersonProfile profile = 1;
+    //现居地址
+    Address homeAddress = 2;
+    //户籍地址
+    Address residenceAddress = 3;
+    //用户来源
+    string source = 4;
+    //注册驿站
+    string name_registerStation = 5;
+    //归属驿站,去过的驿站
+    repeated string name_stations = 6;
+    //关联设备
+    repeated Device devices = 7;
+}
+message ListPersonSocialReply{
+    google.rpc.Status error = 999;
+    Relation relation = 1;
+    string name_person = 2;
+}
+enum Gender{
+    MAN = 0;
+    WOMEN = 1;
+}
+enum OldType{
+    //普通
+    NORMAL = 0;
+    //三无
+    SANWU = 2;
+    //失能
+    DISABILITY = 3;
+    //五保户
+    FIVE_GUARANTEES = 4;
+    //空巢
+    EMPTY_NESTER = 5;
+    //独居
+    LIVE_ALONE = 6;
+    //失智
+    DEMENTIA = 7;
+    //优抚老人
+    SPECIAL_CARE = 8;
+}
+
+enum Politic{
+    // Communist Party of China member(CPC),中国共产党党员
+    CPCER = 0;
+    // Communist probationary member,中共预备党员
+    PRE_CPCER = 1;
+    // Communist Youth League members 共青团员
+    CYLER = 2;
+    // Revolutionary Committee of the Chinese Kuomintang,民革党员
+    RCCKER = 3;
+    // China Democratic League 民盟
+    MINMENGER = 4;
+    //China Democratic National Construction Association,民建会
+    CDNCAER = 5;
+    //China Association for Promoting Democracy,民进会
+    CAPDER = 6;
+    //Chinese Peasants' and Workers' Democratic Party 农工党
+    CPWDPER = 7;
+    //China Party for Public Interest 致公党
+    CPPIER = 8;
+    //Jiusan Society 九三学社
+    JIUSANER = 9;
+    //Taiwan Democratic Self-Government League 台盟
+    TDSGL = 10;
+    //无党派人士
+    NONE = 11;
+    //普通居民
+    NORMAL_PERSON = 12;
+}
+enum VipType{
+    //不设期限
+    LONG = 0;
+    // 有时间期限
+    PERIOD = 1;
+}
+enum PersonSortKey{
+    ALL =  0;
+    VIP = 1;
+    NOT_VIP = 2;
+    // 注册时间
+    REGISTER_DATE = 3;
+    //活跃度
+    ACTIVITY = 4;
+}
+//婚姻状况
+enum MaritalStatus{
+    //已婚
+    MARRIED = 0;
+    //未婚
+    UNMARRIED = 1;
+    //丧偶
+    WIDOWED = 2;
+    //离婚
+    DIVORCE = 3;
+}
+//医疗方式
+enum TreatmentMethod{
+    //城镇
+    TOWN = 0;
+    //农村
+    COUNTRYSIDE = 2;
+    //自费
+    OWN = 3;
+}
+//居住状态
+enum LivingStatus{
+    //独居
+    ALONE = 0;
+    //与配偶
+    WITH_SPOUSE = 1;
+    //与子女
+    WITH_CHILDREN = 2;
+    //与父母
+    WITH_PARENT = 3;
+    //与兄弟姐妹
+    WITH_BRO_OR_SISTER = 4;
+    //与亲戚
+    WITH_RELATIVES = 5;
+    //与非亲戚
+    WITH_NOT_RELATIVES = 6;
+    //养老机构
+    PENSION_AGENCY = 7;
+}
+//经济来源
+enum EcnomicSource{
+    //退休金/养老金
+    FROM_PENSION = 0;
+    //子女补贴
+    FROM_CHILDREN = 1;
+    //亲友资助
+    FROM_RELATIVES = 2;
+    //其他
+    OTHER = 3;
+}
+//关系
+enum Relation{
+    WIFE = 0;
+}
+message Address{
+    //address1和address2用来做字长度拆分的
+    string address1 = 1;
+    string address2 = 2;
+    //城市
+    string city = 3;
+    //公司
+    string company = 4;
+    //国家
+    string country = 5;
+    string province = 6;
+    string firstName = 7;
+    string lastName = 8;
+    string phone = 9;
+    //邮编
+    string zip = 10;
+}
+message PersonSocial{
+    Relation relation = 1;
+    string name_person = 2;
+}
+message Device{
+    string IMEI = 1;
+    string deviceNo = 2;
+    string contact = 3;
+    string remark = 4;
+}
+message CreatePersonRequest{
+    //station id
+    string name_station = 99;
+    //身份证号
+    string idno = 1;
+    //头像
+    string avatar = 2;
+    //姓名
+    string personname = 3;
+    //性别
+    Gender gender = 4;
+    //电话
+    string mobile = 5;
+    //现居住址
+    Address homeAddress = 6;
+    //户籍地址
+    Address residenceAddress = 7;
+    //老人分类，三无...
+    OldType oldType = 8;
+    //民族
+    string nation = 9;
+    //政治面貌
+    Politic politic = 10;
+    //婚姻状况
+    MaritalStatus maritalStatus = 11;
+    //医疗方式
+    TreatmentMethod treatmentMethod = 12;
+    //居住状态
+    LivingStatus livingStatus = 13;
+    //经济来源
+    EcnomicSource ecnomicSource = 14;
+    //备注
+    string remark = 15;
+
+    repeated PersonSocial personSocials = 16;
+
+    repeated Device devices = 17;
+}
+message ListPersonRequest{
+    string name_station = 99;
+    string after = 1;
+    string before = 2;
+    int32 first = 3;
+    int32 last = 4;
+    bool reverse = 5;
+    //查询条件支持，编号,姓名,身份证号
+    string query = 6;
+}
+
+message ListPersonSocialRequest{
+    string name_person = 99;
+    string after = 1;
+    string before = 2;
+    int32 first = 3;
+    int32 last = 4;
+    bool reverse = 5;
+    //查询条件支持，手机号,姓名
+    string query = 6;
+}
