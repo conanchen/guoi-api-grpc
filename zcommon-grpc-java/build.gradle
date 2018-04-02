@@ -4,9 +4,13 @@ plugins {
     id 'idea'
 }
 
-
 dependencies {
-    compile project(":zcommon-grpc-java")
+    compile "io.grpc:grpc-core:$GRPC_VERSION"
+    compile "io.grpc:grpc-protobuf:$GRPC_VERSION"
+    compile "io.grpc:grpc-stub:$GRPC_VERSION"
+    compile "com.google.protobuf:protobuf-java:$PROTOBUF_JAVA_VERSION"
+    testCompile "junit:junit:4.12"
+    testCompile "io.grpc:grpc-testing:$GRPC_VERSION"
 }
 
 protobuf {
@@ -45,19 +49,19 @@ clean {
     delete protobuf.generatedFilesBaseDir
 }
 
-jar{
-    exclude (
-            "/**/google/**",
-            "**/*.proto"
-    )
-}
+//jar{
+//    exclude (
+//            "/**/google/**"
+//    )
+//}
 
 idea {
     module {
         sourceDirs += file("${protobuf.generatedFilesBaseDir}/main/java")
         sourceDirs += file("${protobuf.generatedFilesBaseDir}/main/grpc")
+        sourceDirs += file("build/resources/main")
         // If you have additional sourceSets and/or codegen plugins, add all of them
     }
 }
 
-project.logger.lifecycle("~~~~~~~~~~~~~~~~~PARTY-PERSONHEALTH-GRPC-JAVA ROOT BUILD !~~~~~~~~~~~~~~~~~~");
+project.logger.lifecycle("~~~~~~~~~~~~~~~~~AUTHCOW-GRPC-JAVA ROOT BUILD !~~~~~~~~~~~~~~~~~~");

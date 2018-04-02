@@ -6,7 +6,7 @@ option java_multiple_files = true;
 option java_package = "com.github.conanchen.guoi.cloud.personevent";
 option java_outer_classname = "PersoneventApiProto";
 
-import "guoi/common.proto";
+import "guoi/cloud/common/common.proto";
 
 import "google/protobuf/any.proto";
 import "google/protobuf/field_mask.proto";
