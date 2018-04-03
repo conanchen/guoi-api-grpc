@@ -4,78 +4,82 @@ package guoi.cloud.party.personsocial;
 
 option java_multiple_files = true;
 option java_package = "com.github.conanchen.guoi.cloud.party.personsocial";
-option java_outer_classname = "PersonApiProto";
+option java_outer_classname = "PersonsocialApiProto";
 
+import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "google/rpc/status.proto";
 
 // The person service definition.
-service PersonApi {
+service PersonsocialApi {
     // 增加被关爱人
     rpc CreatePerson (CreatePersonRequest) returns (Person) {
     }
     //查询被关爱人
     rpc ListPerson(ListPersonRequest) returns (ListPersonResponse){
     }
-    //查询被关爱人社会关系或者家庭成员
-    rpc ListPersonSocial(ListPersonSocialRequest) returns(ListPersonSocialResponse){
+    //查询被关爱人家庭成员
+    rpc ListFamilyMember(ListFamilyMemberRequest) returns(ListFamilyMemberResponse){
+    }
+    //创建关联关系
+    rpc CreateRelation(CreateRelationRequest) returns(CreateRelationResponse){
     }
 }
 message Person {
+    //id
     string name = 1;
-    google.protobuf.Timestamp create_time = 9; //The creation timestamp of an entity.
-}
-message PersonProfile{
-   //身份证编号
-   string idno = 1;
-   //头像
-   string avatar = 2;
-   //姓名
-   string personname = 3;
-   //ai认证
-   bool  aiAuthed = 4;
-   //性别
-   Gender gender = 5;
-
-   string mobile = 6;
-   //民族
-   string nation = 7;
-   //政治面貌
-   Politic politic = 8;
-   //爱好
-   string hobby = 9;
-   //老人类型
-   OldType oldType = 10;
-   //婚姻状况
-   MaritalStatus maritalStatus = 11;
-   //医疗方式
-   TreatmentMethod treatmentMethod = 12;
-   //居住状态
-   LivingStatus livingStatus = 13;
-   //经济来源
-   EcnomicSource  ecnomicSource = 14;
+    //身份证号
+    string idno = 2;
+    //头像
+    string avatar = 3;
+    //person name
+    string personName = 4;
+    //ai认证
+    bool aiAuthed = 5;
+    //性别
+    Gender gender = 6;
+    //电话
+    string mobile = 7;
+    //民族
+    string nation = 8;
+    //政治面貌
+    Politic politic = 9;
+    //爱好
+    string hobby = 10;
+    //老人类型
+    OldType oldType = 11;
+    //婚姻状况
+    MaritalStatus maritalStatus = 12;
+    //医疗方式
+    TreatmentMethod treatmentMethod = 13;
+    //居住状态
+    LivingStatus livingStatus= 14;
+    //经济来源
+    EcnomicSource ecnomicSource= 15;
+    //用户来源
+    string source= 16;
+    //注册驿站id
+    string name_registerStation = 17;
+    //关联设备
+    repeated Device devices= 18;
+    //现居地址
+    Address homeAddress= 19;
+    //户籍地址
+    Address residenceAddress= 20;
+    //The creation timestamp of an entity.
+    google.protobuf.Timestamp create_time = 21;
 }
 message ListPersonResponse{
     google.rpc.Status error = 999;
-    //基本信息
-    PersonProfile profile = 1;
-    //现居地址
-    Address homeAddress = 2;
-    //户籍地址
-    Address residenceAddress = 3;
-    //用户来源
-    string source = 4;
-    //注册驿站
-    string name_registerStation = 5;
-    //归属驿站,去过的驿站
-    repeated string name_stations = 6;
-    //关联设备
-    repeated Device devices = 7;
+    Person person = 1;
 }
-message ListPersonSocialResponse{
+message ListFamilyMemberResponse{
     google.rpc.Status error = 999;
-    Relation relation = 1;
-    string name_person = 2;
+    repeated FamilyMember personSocial = 2;
+}
+message CreateRelationResponse{
+    google.rpc.Status error = 999;
+    FamilyMember personSocial = 1;
 }
 enum Gender{
     MAN = 0;
@@ -214,9 +218,23 @@ message Address{
     //邮编
     string zip = 10;
 }
-message PersonSocial{
+message FamilyMember{
+    //关系
     Relation relation = 1;
-    string name_person = 2;
+    //姓名
+    string personName = 2;
+    //性别
+    Gender gender = 3;
+    //联系电话
+    string mobile = 4;
+    //联系地址
+    Address contactAddress = 5;
+    //是否同住
+    bool isLivingWith = 6;
+    //紧急联系人
+    bool isEmergenceContact = 7;
+    //备注
+    string remark = 8;
 }
 message Device{
     string IMEI = 1;
@@ -258,7 +276,7 @@ message CreatePersonRequest{
     //备注
     string remark = 15;
 
-    repeated PersonSocial personSocials = 16;
+    repeated FamilyMember familyMembers = 16;
 
     repeated Device devices = 17;
 }
@@ -273,7 +291,7 @@ message ListPersonRequest{
     string query = 6;
 }
 
-message ListPersonSocialRequest{
+message ListFamilyMemberRequest{
     string name_person = 99;
     string after = 1;
     string before = 2;
@@ -282,4 +300,8 @@ message ListPersonSocialRequest{
     bool reverse = 5;
     //查询条件支持，手机号,姓名
     string query = 6;
+}
+message CreateRelationRequest{
+    string name_person = 1;
+    string name_personsocial = 2;
 }
