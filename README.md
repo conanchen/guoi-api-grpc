@@ -1,5 +1,11 @@
 # Introduction
-Define guoi cloud microservice grpc api 
+Define guoi cloud microservice grpc api : 
+- authcow
+- cms
+- gis
+- party
+- shoppie
+- common : is a share library for all above api projects
 
 ## API Design Guide
 - Refer to [Google API Design Guide](https://cloud.google.com/apis/design/) 
