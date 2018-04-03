@@ -36,6 +36,7 @@ service Org8nApi {
     rpc DeleteEmployee(DeleteEmployeeRequest) returns (google.protobuf.Empty){
 
     }
+
     rpc ListEmployee(ListEmployeeRequest) returns (ListEmployeeResponse){
 
     }
@@ -83,6 +84,7 @@ message DeleteOrg8nRequest{
 message ListOrg8nRequest{
     Org8n org8n = 1;
 }
+
 message ListOrg8nResponse{
     google.rpc.Status status = 999;
     repeated Org8n org8n = 1;
@@ -100,6 +102,7 @@ message DeleteEmployeeRequest{
 message ListEmployeeRequest{
     Employee employee = 1;
 }
+
 message ListEmployeeResponse{
     google.rpc.Status status = 999;
     repeated Employee employee = 1;
