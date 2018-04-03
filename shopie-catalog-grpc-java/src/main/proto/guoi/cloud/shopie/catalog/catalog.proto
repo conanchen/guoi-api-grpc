@@ -1,0 +1,131 @@
+syntax = "proto3";
+package guoi.cloud.shopie.catalog;
+
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.shopie.catalog.grpc";
+option java_outer_classname = "CatalogApiProto";
+
+import "guoi/cloud/common/common.proto";
+import "google/rpc/status.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+// The catalog service definition.
+service CatalogApi {
+    // 全网只存在唯一一个全局的顶级Catalog，设计模式见：[Singleton%20Resources](https://cloud.google.com/apis/design/design_patterns#Singleton%20Resources)
+    rpc GetToplevelCatalog(GetToplevelCatalogRequest) returns (Catalog) {
+        //    option (google.api.http) = {
+        //        get: "/v1/{name=catalogs/*}"
+        //    };
+    }
+
+    // 全网只存在唯一一个全局的顶级Catalog，设计模式见：[Singleton%20Resources](https://cloud.google.com/apis/design/design_patterns#Singleton%20Resources)
+    rpc UpdateToplevelCatalog(UpdateToplevelCatalogRequest) returns (Catalog) {
+        //  option (google.api.http) = {
+        //    patch: "/v1/{catalog.name=catalogs/*}"
+        //    body: "catalog"
+        //  };
+    }
+
+    // Create Catalog
+    rpc CreateCatalog (CreateCatalogRequest) returns (Catalog) {
+        //    option (google.api.http) = {
+        //        post: "/v1/catalogs"
+        //        body: "catalog"
+        //    };
+    }
+
+    // Deletes a catalog.
+    rpc DeleteCatalog(DeleteCatalogRequest) returns (google.protobuf.Empty) {
+        // Delete maps to HTTP DELETE. Resource name maps to the URL path.
+        // There is no request body.
+        //  option (google.api.http) = {
+        //    // Note the URL template variable capturing the multi-segment name of the
+        //    // catalog resource to be deleted, such as "catalogs/catalog1"
+        //    delete: "/v1/{name=catalogs/*}"
+        //  };
+    }
+
+
+    // Gets a catalog.
+    rpc GetCatalog(GetCatalogRequest) returns (Catalog) { 
+        //    // Get maps to HTTP GET. Resource name is mapped to the URL. No body.
+        //    option (google.api.http) = {
+        //      // Note the URL template variable which captures the multi-segment resource
+        //      // name of the requested catalog 
+        //      get: "/v1/{name=catalogs/*}"
+        //    };
+    }
+
+    rpc ListCatalogs (ListCatalogsRequest) returns (stream CatalogsResponse) {
+        //    // List method maps to HTTP GET.
+        //    option (google.api.http) = {
+        //      get: "/v1/catalogs"
+        //    };
+    }
+}
+
+message GetToplevelCatalogRequest{
+
+}
+
+message UpdateToplevelCatalogRequest{
+    string title = 2;
+}
+
+message CreateCatalogRequest {
+    // The parent catalog resource name where the catalog to be created.
+    string name_parent = 1;
+
+    // The catalog resource to create. the catalog.name will be ignored.
+    // The field name should match the Noun in the method name.
+    Catalog catalog = 2;
+}
+
+
+message DeleteCatalogRequest {
+    // The resource name of the catalog to be deleted, for example:
+    // "catalogs/catalog1/catalogs/catalog2"
+    string name = 1;
+}
+
+message GetCatalogRequest {
+    // The field will contain name of the resource requested, for example:
+    // "catalogs/catalog1"
+    string name = 1;
+}
+
+message Catalog {
+    string name = 1;
+
+    string title = 2;
+
+    google.protobuf.Timestamp create_time = 13;
+    google.protobuf.Timestamp update_time = 14;
+}
+
+message ListCatalogsRequest {
+    // The parent catalog resource name, for example, "catalogs/catalog1".
+    string name_parent = 1;
+
+    // The maximum number of items to return.
+    int32 page_size = 2;
+
+    // The next_page_token value returned from a previous List request, if any.
+    string page_token = 3;
+}
+
+// The response message containing the catalogs
+message CatalogsResponse {
+    google.rpc.Status status = 999;
+
+    // The field name should match the noun "catalogs" in the method name.  There
+    // will be a maximum number of items returned based on the page_size field
+    // in the request.
+    repeated Catalog catalogs = 1;
+
+    // Token to retrieve the next page of results, or empty if there are no
+    // more results in the list.
+    string next_page_token = 2;
+}
