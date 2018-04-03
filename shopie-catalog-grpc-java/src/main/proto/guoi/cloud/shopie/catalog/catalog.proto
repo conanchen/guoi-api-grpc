@@ -20,14 +20,6 @@ service CatalogApi {
         //    };
     }
 
-    // 全网只存在唯一一个全局的顶级Catalog，设计模式见：[Singleton%20Resources](https://cloud.google.com/apis/design/design_patterns#Singleton%20Resources)
-    rpc UpdateToplevelCatalog(UpdateToplevelCatalogRequest) returns (Catalog) {
-        //  option (google.api.http) = {
-        //    patch: "/v1/{catalog.name=catalogs/*}"
-        //    body: "catalog"
-        //  };
-    }
-
     // Create Catalog
     rpc CreateCatalog (CreateCatalogRequest) returns (Catalog) {
         //    option (google.api.http) = {
@@ -58,6 +50,14 @@ service CatalogApi {
         //    };
     }
 
+    // Update Catalog
+    rpc UpdateCatalog(UpdateCatalogRequest) returns (Catalog) {
+        //  option (google.api.http) = {
+        //    patch: "/v1/{catalog.name=catalogs/*}"
+        //    body: "catalog"
+        //  };
+    }
+
     rpc ListCatalogs (ListCatalogsRequest) returns (CatalogsResponse) {
         //    // List method maps to HTTP GET.
         //    option (google.api.http) = {
@@ -70,8 +70,8 @@ message GetToplevelCatalogRequest{
 
 }
 
-message UpdateToplevelCatalogRequest{
-    string title = 2;
+message UpdateCatalogRequest{
+    Catalog catalog = 2;
 }
 
 message CreateCatalogRequest {
