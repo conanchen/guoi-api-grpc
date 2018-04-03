@@ -58,7 +58,7 @@ service CatalogApi {
         //    };
     }
 
-    rpc ListCatalogs (ListCatalogsRequest) returns (stream CatalogsResponse) {
+    rpc ListCatalogs (ListCatalogsRequest) returns (CatalogsResponse) {
         //    // List method maps to HTTP GET.
         //    option (google.api.http) = {
         //      get: "/v1/catalogs"
