@@ -8,6 +8,7 @@ option java_outer_classname = "Org8nApiProto";
 
 import "guoi/cloud/common/common.proto";
 import "google/protobuf/empty.proto";
+import "google/rpc/status.proto";
 
 service Org8nApi {
     rpc GetOrg8n (GetOrg8nRequest) returns (Org8n) {
@@ -22,7 +23,7 @@ service Org8nApi {
 
     }
 
-    rpc ListOrg8n(ListOrg8nRequest) returns (ListOrg8nReply){
+    rpc ListOrg8n(ListOrg8nRequest) returns (ListOrg8nResponse){
 
     }
 
@@ -35,7 +36,7 @@ service Org8nApi {
     rpc DeleteEmployee(DeleteEmployeeRequest) returns (google.protobuf.Empty){
 
     }
-    rpc ListEmployee(ListEmployeeRequest) returns (ListEmployeeReply){
+    rpc ListEmployee(ListEmployeeRequest) returns (ListEmployeeResponse){
 
     }
 }
@@ -82,8 +83,8 @@ message DeleteOrg8nRequest{
 message ListOrg8nRequest{
     Org8n org8n = 1;
 }
-message ListOrg8nReply{
-    guoi.cloud.common.Status status = 999;
+message ListOrg8nResponse{
+    google.rpc.Status status = 999;
     repeated Org8n org8n = 1;
 }
 
@@ -99,7 +100,7 @@ message DeleteEmployeeRequest{
 message ListEmployeeRequest{
     Employee employee = 1;
 }
-message ListEmployeeReply{
-    guoi.cloud.common.Status status = 999;
+message ListEmployeeResponse{
+    google.rpc.Status status = 999;
     repeated Employee employee = 1;
 }

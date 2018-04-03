@@ -12,10 +12,10 @@ import "google/rpc/status.proto";
 // The greeter service definition.
 service HelloApi {
     // Sends a greeting
-    rpc SayHello (HelloRequest) returns (HelloReply) {
+    rpc SayHello (HelloRequest) returns (HelloResponse) {
     }
 
-    rpc ListHello (ListHelloRequest) returns (stream HelloReply) {
+    rpc ListHello (ListHelloRequest) returns (stream HelloResponse) {
     }
 }
 
@@ -30,7 +30,7 @@ message ListHelloRequest {
 }
 
 // The response message containing the greetings
-message HelloReply {
+message HelloResponse {
     google.rpc.Status status = 999;
     string uuid = 1;
     string message = 2;

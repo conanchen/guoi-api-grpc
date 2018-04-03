@@ -15,10 +15,10 @@ service PersonApi {
     rpc CreatePerson (CreatePersonRequest) returns (Person) {
     }
     //查询被关爱人
-    rpc ListPerson(ListPersonRequest) returns (ListPersonReply){
+    rpc ListPerson(ListPersonRequest) returns (ListPersonResponse){
     }
     //查询被关爱人社会关系或者家庭成员
-    rpc ListPersonSocial(ListPersonSocialRequest) returns(ListPersonSocialReply){
+    rpc ListPersonSocial(ListPersonSocialRequest) returns(ListPersonSocialResponse){
     }
 }
 message Person {
@@ -55,7 +55,7 @@ message PersonProfile{
    //经济来源
    EcnomicSource  ecnomicSource = 14;
 }
-message ListPersonReply{
+message ListPersonResponse{
     google.rpc.Status error = 999;
     //基本信息
     PersonProfile profile = 1;
@@ -72,7 +72,7 @@ message ListPersonReply{
     //关联设备
     repeated Device devices = 7;
 }
-message ListPersonSocialReply{
+message ListPersonSocialResponse{
     google.rpc.Status error = 999;
     Relation relation = 1;
     string name_person = 2;
