@@ -3,7 +3,7 @@ package guoi.cloud.party.personhealth;
 
 
 option java_multiple_files = true;
-option java_package = "com.github.conanchen.guoi.cloud.personhealth";
+option java_package = "com.github.conanchen.guoi.cloud.personhealth.grpc";
 option java_outer_classname = "BloodpressureApiProto";
 
 import "google/protobuf/any.proto";
@@ -56,6 +56,8 @@ message Bloodpressure {
     // value of the bloodpressure
     float systolic = 2; //(收缩压)
     float diastolic = 3; //(舒张压)
+    //检测时间
+    google.protobuf.Timestamp check_time = 8;
 
     google.protobuf.Timestamp create_time = 9; //The creation timestamp of an entity.
 

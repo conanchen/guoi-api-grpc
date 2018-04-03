@@ -3,18 +3,19 @@ package guoi.cloud.shopie.shop;
 
 
 option java_multiple_files = true;
-option java_package = "com.github.conanchen.guoi.cloud.org8n";
+option java_package = "com.github.conanchen.guoi.cloud.shopie.shop.grpc";
 option java_outer_classname = "HelloApiProto";
 
 import "guoi/cloud/common/common.proto";
+import "google/rpc/status.proto";
 
 // The greeter service definition.
 service HelloApi {
     // Sends a greeting
-    rpc SayHello (HelloRequest) returns (HelloReply) {
+    rpc SayHello (HelloRequest) returns (HelloResponse) {
     }
 
-    rpc ListHello (ListHelloRequest) returns (stream HelloReply) {
+    rpc ListHello (ListHelloRequest) returns (stream HelloResponse) {
     }
 }
 
@@ -29,8 +30,8 @@ message ListHelloRequest {
 }
 
 // The response message containing the greetings
-message HelloReply {
-    guoi.cloud.common.Status status = 999;
+message HelloResponse {
+    google.rpc.Status status = 999;
     string uuid = 1;
     string message = 2;
     int64 created =3 ;
