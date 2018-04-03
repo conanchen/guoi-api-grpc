@@ -37,5 +37,3 @@ message HelloReply {
     int64 created =3 ;
     int64 lastUpdated = 4;
 }
-
-
