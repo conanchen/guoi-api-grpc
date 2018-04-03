@@ -6,8 +6,6 @@ option java_multiple_files = true;
 option java_package = "com.github.conanchen.guoi.cloud.personevent.grpc";
 option java_outer_classname = "PersoneventApiProto";
 
-import "guoi/cloud/common/common.proto";
-
 import "google/protobuf/any.proto";
 import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
@@ -17,7 +15,7 @@ import "google/rpc/status.proto";
 // The greeter service definition.
 service PersoneventApi {
     //查询person日程信息
-    rpc ListPersonevents (ListEventRequest) returns (ListPersoneventsResponse) {
+    rpc ListPersonevents (ListPersoneventRequest) returns (ListPersoneventsResponse) {
         //    option (google.api.http) = {
         //      get: "/v1/{parent=persons/*}/events"
         //    };
@@ -48,7 +46,7 @@ service PersoneventApi {
         //    };
     }
 }
-message ListEventRequest{
+message ListPersoneventRequest{
     string name_person = 99;
     string after = 1;
     string before = 2;
@@ -72,8 +70,8 @@ message Personevent {
 
     google.protobuf.Timestamp happen_time = 9; //事件时间 The creation timestamp of an entity.
 
-    //价格
-    float price = 5;
+    //订单id
+    string orderId = 10;
 
     string name_guoistation = 100; //国爱驿站资源名称
 }
@@ -85,7 +83,7 @@ message ListPersoneventsResponse {
     google.rpc.Status error = 999;
 
     // Personevents in the bookstore.
-    repeated Personevent events = 1;
+    repeated Personevent personevents = 1;
 }
 
 // Request message for CreatePersonevent method.
@@ -95,7 +93,7 @@ message CreatePersoneventRequest {
     string parent = 1;
 
     // The event resource to create.
-    Personevent event = 2;
+    Personevent personevent = 2;
 }
 
 // Request message for GetPersonevent method.
