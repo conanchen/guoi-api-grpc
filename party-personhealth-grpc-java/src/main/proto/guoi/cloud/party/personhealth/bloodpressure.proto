@@ -3,7 +3,7 @@ package guoi.cloud.party.personhealth;
 
 
 option java_multiple_files = true;
-option java_package = "com.github.conanchen.guoi.cloud.personhealth";
+option java_package = "com.github.conanchen.guoi.cloud.personhealth.grpc";
 option java_outer_classname = "BloodpressureApiProto";
 
 import "google/protobuf/any.proto";

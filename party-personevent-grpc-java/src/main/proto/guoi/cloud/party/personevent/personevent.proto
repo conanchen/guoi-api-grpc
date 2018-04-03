@@ -3,7 +3,7 @@ package guoi.cloud.party.personevent;
 
 
 option java_multiple_files = true;
-option java_package = "com.github.conanchen.guoi.cloud.personevent";
+option java_package = "com.github.conanchen.guoi.cloud.personevent.grpc";
 option java_outer_classname = "PersoneventApiProto";
 
 import "guoi/cloud/common/common.proto";
@@ -56,9 +56,9 @@ message ListEventRequest{
     int32 last = 4;
     bool reverse = 5;
     //查询时间段的开始时间
-    google.protobuf.Timestamp start = 6;
+    google.protobuf.Timestamp start_time = 6;
     //截至时间
-    google.protobuf.Timestamp end = 7;
+    google.protobuf.Timestamp end_time = 7;
 }
 // A event resource.
 message Personevent {
@@ -70,7 +70,7 @@ message Personevent {
     string title = 6; //事件标题
     string content = 7 ; //事件内容
 
-    google.protobuf.Timestamp happenAt = 9; //事件时间 The creation timestamp of an entity.
+    google.protobuf.Timestamp happen_time = 9; //事件时间 The creation timestamp of an entity.
 
     //价格
     float price = 5;

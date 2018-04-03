@@ -3,7 +3,7 @@ package guoi.cloud.party.serviceevent;
 
 
 option java_multiple_files = true;
-option java_package = "com.github.conanchen.guoi.cloud.serviceevent";
+option java_package = "com.github.conanchen.guoi.cloud.serviceevent.grpc";
 option java_outer_classname = "ServiceeventApiProto";
 
 import "guoi/cloud/common/common.proto";
@@ -49,6 +49,7 @@ service ServiceeventApi {
     }
 }
 message ListEventRequest{
+    //
     string name_person = 99;
     string after = 1;
     string before = 2;
@@ -56,9 +57,9 @@ message ListEventRequest{
     int32 last = 4;
     bool reverse = 5;
     //查询时间段的开始时间
-    google.protobuf.Timestamp start = 6;
+    google.protobuf.Timestamp start_time = 6;
     //截至时间
-    google.protobuf.Timestamp end = 7;
+    google.protobuf.Timestamp end_time = 7;
 }
 // A event resource.
 message Serviceevent {
@@ -70,7 +71,7 @@ message Serviceevent {
     string title = 6; //事件标题
     string content = 7 ; //事件内容
 
-    google.protobuf.Timestamp happenAt = 9; //事件时间 The creation timestamp of an entity.
+    google.protobuf.Timestamp happen_time = 9; //事件时间
 
     string name_guoistation = 100; //国爱驿站资源名称
 }
