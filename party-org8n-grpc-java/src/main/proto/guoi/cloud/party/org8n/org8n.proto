@@ -11,6 +11,19 @@ import "google/protobuf/empty.proto";
 import "google/rpc/status.proto";
 
 service Org8nApi {
+
+    // 全网只存在唯一一个全局的顶级Org8n，设计模式见：[Singleton%20Resources](https://cloud.google.com/apis/design/design_patterns#Singleton%20Resources)
+    rpc GetToplevelOrg8n(GetToplevelOrg8nRequest) returns (Org8n) {
+        //    option (google.api.http) = {
+        //        get: "/v1/{name=catalogs/*}"
+        //    };
+    }
+
+    rpc CreateOrg8n(CreateOrg8nRequest) returns (Org8n){
+
+    }
+
+
     rpc GetOrg8n (GetOrg8nRequest) returns (Org8n) {
 
     }
@@ -23,7 +36,11 @@ service Org8nApi {
 
     }
 
-    rpc ListOrg8n(ListOrg8nRequest) returns (ListOrg8nResponse){
+    rpc ListOrg8ns(ListOrg8nsRequest) returns (ListOrg8nsResponse){
+
+    }
+
+    rpc CreateEmployee(CreateEmployeeRequest) returns (Employee){
 
     }
 
@@ -36,10 +53,13 @@ service Org8nApi {
     rpc DeleteEmployee(DeleteEmployeeRequest) returns (google.protobuf.Empty){
 
     }
-
-    rpc ListEmployee(ListEmployeeRequest) returns (ListEmployeeResponse){
+    rpc ListEmployees(ListEmployeesRequest) returns (ListEmployeesResponse){
 
     }
+}
+
+message GetToplevelOrg8nRequest{
+
 }
 
 message Employee{
@@ -70,6 +90,17 @@ message Org8n{
     OpType opType = 11;
     string hotPhone = 12;
 }
+
+message CreateOrg8nRequest{
+
+    // The org8n will be created under the parent org8n identified by name_parent
+    string name_parent = 1;
+
+    // The catalog resource to create. the org8n.name will be ignored.
+    // The field name should match the Noun in the method name.
+    Org8n org8n = 2;
+}
+
 message GetOrg8nRequest{
     string name = 1;
 }
@@ -81,29 +112,75 @@ message UpdateOrg8nRequest{
 message DeleteOrg8nRequest{
     string name = 1;
 }
-message ListOrg8nRequest{
-    Org8n org8n = 1;
+
+message ListOrg8nsRequest{
+    // list sub-org8ns belong to the org8n identified by field "name_parent" resource name
+    string name_parent = 1;
+
+    // The maximum number of items to return.
+    int32 page_size = 2;
+
+    // The next_page_token value returned from a previous List request, if any.
+    string page_token = 3;
 }
 
-message ListOrg8nResponse{
+message ListOrg8nsResponse{
     google.rpc.Status status = 999;
-    repeated Org8n org8n = 1;
+
+    // The field name should match the noun "org8ns" in the method name.  There
+    // will be a maximum number of items returned based on the page_size field
+    // in the request.
+    repeated Org8n org8ns = 1;
+
+    // Token to retrieve the next page of results, or empty if there are no
+    // more results in the list.
+    string next_page_token = 2;
+
+}
+
+message CreateEmployeeRequest{
+
+    // The employee will be created for the org8n identified by name_org8n
+    string name_org8n = 1;
+
+    // The catalog resource to create. the employee.name will be ignored.
+    // The field name should match the Noun in the method name.
+    Employee employee = 2;
 }
 
 message GetEmployeeRequest{
     string name = 1;
 }
+
 message UpdateEmployeeRequest{
     Employee employee = 1;
 }
+
 message DeleteEmployeeRequest{
     string name = 1;
 }
-message ListEmployeeRequest{
-    Employee employee = 1;
+
+message ListEmployeesRequest{
+    // list employees belong to the org8n identified by field "name_org8n" resource name
+    string name_org8n = 1;
+
+    // The maximum number of items to return.
+    int32 page_size = 2;
+
+    // The next_page_token value returned from a previous List request, if any.
+    string page_token = 3;
 }
 
-message ListEmployeeResponse{
+message ListEmployeesResponse{
     google.rpc.Status status = 999;
-    repeated Employee employee = 1;
+
+    // The field name should match the noun "employees" in the method name.  There
+    // will be a maximum number of items returned based on the page_size field
+    // in the request.
+    repeated Employee employees = 1;
+
+    // Token to retrieve the next page of results, or empty if there are no
+    // more results in the list.
+    string next_page_token = 2;
+
 }
