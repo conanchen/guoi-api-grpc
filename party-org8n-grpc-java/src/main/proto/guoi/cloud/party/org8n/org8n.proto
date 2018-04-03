@@ -7,6 +7,7 @@ option java_package = "com.github.conanchen.guoi.cloud.org8n";
 option java_outer_classname = "Org8nApiProto";
 
 import "guoi/cloud/common/common.proto";
+import "google/protobuf/empty.proto";
 
 service Org8nApi {
     rpc GetOrg8n (GetOrg8nRequest) returns (Org8n) {
@@ -17,7 +18,7 @@ service Org8nApi {
 
     }
 
-    rpc DeleteOrg8n(DeleteOrg8nRequest) returns (Org8n){
+    rpc DeleteOrg8n(DeleteOrg8nRequest) returns (google.protobuf.Empty){
 
     }
 
@@ -31,7 +32,7 @@ service Org8nApi {
     rpc UpdateEmployee(UpdateEmployeeRequest) returns (Employee){
 
     }
-    rpc DeleteEmployee(DeleteEmployeeRequest) returns (Employee){
+    rpc DeleteEmployee(DeleteEmployeeRequest) returns (google.protobuf.Empty){
 
     }
     rpc ListEmployee(ListEmployeeRequest) returns (ListEmployeeReply){
@@ -46,11 +47,11 @@ message Employee{
 message Org8n{
     string name = 1;
     enum Org8nType{
-        TOP = 0;
-        AREA = 1;
-        OP = 2;
+        TOPCENTER = 0;
+        AREACENTER = 1;
+        OPCENTER = 2;
         STATION = 3;
-        PROVIDER = 4;
+        SHOP = 4;
     }
     Org8n parent = 2;
     Org8nType type = 3;
