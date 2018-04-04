@@ -8,6 +8,7 @@ option java_outer_classname = "HelloApiProto";
 
 import "guoi/cloud/common/common.proto";
 import "google/rpc/status.proto";
+import "google/protobuf/timestamp.proto";
 
 // The greeter service definition.
 service HelloApi {
@@ -29,12 +30,14 @@ message ListHellosRequest {
     int32 size = 2;
 }
 
-// The hello message
+// The hello resource message
 message Hello {
-    string uuid = 1;
+    string name = 1;
+
     string message = 2;
-    int64 created = 3;
-    int64 lastUpdated = 4;
+
+    google.protobuf.Timestamp create_time = 13;
+    google.protobuf.Timestamp update_time = 14;
 }
 
 // The response message containing the greetings
@@ -43,5 +46,6 @@ message HellosResponse {
 
     repeated Hello hello = 1;
 }
+
 
 
