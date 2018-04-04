@@ -36,3 +36,36 @@ message ListString {
     //可以用来保存多个图片url、多个电话号码等
     repeated string strs = 11;
 }
+
+message Address {
+    // resource id
+    string name = 1;
+    // address line 1
+    string address1 = 2;
+    // address line2
+    string address2 = 3;
+    //city
+    string city = 4;
+    string company =5;
+    string country =6;
+
+    string countryCode = 7;
+    string firstName = 8;
+    // 根据省市区格式化地址
+    string formattedArea = 9;
+    //
+    string lastName = 10;
+    //维度
+    float latitude = 11;
+    //经度
+    float longitude = 12;
+    //姓名
+    string personName = 13;
+    //电话
+    string phone = 14;
+    //省
+    string province = 15;
+    string provinceCode = 16;
+    //邮编
+    string zip = 17;
+}
