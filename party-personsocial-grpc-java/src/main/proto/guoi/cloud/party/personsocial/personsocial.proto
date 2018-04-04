@@ -266,7 +266,7 @@ message CreatePersonRequest{
     //ai认证
     bool aiAuthed = 18;
     //hobbys
-    repeated string hobbys = 20;
+    repeated string hobbies = 20;
 }
 message ListPersonRequest{
     string name_station = 99;
