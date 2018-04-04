@@ -6,7 +6,7 @@ option java_multiple_files = true;
 option java_package = "com.github.conanchen.guoi.cloud.party.personsocial";
 option java_outer_classname = "PersonsocialApiProto";
 
-import "google/protobuf/duration.proto";
+import "guoi/cloud/common/common.proto";
 import "google/protobuf/timestamp.proto";
 import "google/rpc/status.proto";
 
@@ -45,7 +45,7 @@ message Person {
     //政治面貌
     Politic politic = 9;
     //爱好
-    string hobby = 10;
+    repeated string hobbys = 10;
     //老人类型
     OldType oldType = 11;
     //婚姻状况
@@ -63,9 +63,9 @@ message Person {
     //关联设备
     repeated Device devices= 18;
     //现居地址
-    Address homeAddress= 19;
+    guoi.cloud.common.Address homeAddress= 19;
     //户籍地址
-    Address residenceAddress= 20;
+    guoi.cloud.common.Address residenceAddress= 20;
     //The creation timestamp of an entity.
     google.protobuf.Timestamp create_time = 21;
 }
@@ -201,23 +201,6 @@ enum EcnomicSource{
 enum Relation{
     WIFE = 0;
 }
-message Address{
-    //address1和address2用来做字长度拆分的
-    string address1 = 1;
-    string address2 = 2;
-    //城市
-    string city = 3;
-    //公司
-    string company = 4;
-    //国家
-    string country = 5;
-    string province = 6;
-    string firstName = 7;
-    string lastName = 8;
-    string phone = 9;
-    //邮编
-    string zip = 10;
-}
 message FamilyMember{
     //关系
     Relation relation = 1;
@@ -228,7 +211,7 @@ message FamilyMember{
     //联系电话
     string mobile = 4;
     //联系地址
-    Address contactAddress = 5;
+    guoi.cloud.common.Address contactAddress = 5;
     //是否同住
     bool isLivingWith = 6;
     //紧急联系人
@@ -256,9 +239,9 @@ message CreatePersonRequest{
     //电话
     string mobile = 5;
     //现居住址
-    Address homeAddress = 6;
+    guoi.cloud.common.Address homeAddress = 6;
     //户籍地址
-    Address residenceAddress = 7;
+    guoi.cloud.common.Address residenceAddress = 7;
     //老人分类，三无...
     OldType oldType = 8;
     //民族
@@ -279,6 +262,11 @@ message CreatePersonRequest{
     repeated FamilyMember familyMembers = 16;
 
     repeated Device devices = 17;
+
+    //ai认证
+    bool aiAuthed = 18;
+    //hobbys
+    repeated string hobbys = 20;
 }
 message ListPersonRequest{
     string name_station = 99;
