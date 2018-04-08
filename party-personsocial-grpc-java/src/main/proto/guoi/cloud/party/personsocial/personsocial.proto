@@ -294,7 +294,7 @@ message CreateFamilyMemberRequest{
 
 message DeleteFamilyMemberRequest{
     string name_person = 1;
-    string name_famliMember = 2;
+    string name_familyMember = 2;
 }
 message BindingDeviceRequest{
     string name_person = 99;
