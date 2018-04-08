@@ -79,7 +79,10 @@ message ListFamilyMemberResponse{
 }
 message CreateRelationResponse{
     google.rpc.Status error = 999;
-    FamilyMember personSocial = 1;
+    Relation relation = 1;
+}
+enum Relation{
+    HUSBAND_AND_WIFE = 0;
 }
 enum Gender{
     MAN = 0;
@@ -197,13 +200,9 @@ enum EcnomicSource{
     //其他
     OTHER = 3;
 }
-//关系
-enum Relation{
-    WIFE = 0;
-}
 message FamilyMember{
     //关系
-    Relation relation = 1;
+    string relation = 1;
     //姓名
     string personName = 2;
     //性别
@@ -290,6 +289,9 @@ message ListFamilyMemberRequest{
     string query = 6;
 }
 message CreateRelationRequest{
+    Relation relation = 99;
+    //关联关系中的一个人id
     string name_person = 1;
-    string name_personsocial = 2;
+    //另一个人的id
+    string name_the_other = 2;
 }
