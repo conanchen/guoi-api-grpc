@@ -19,7 +19,7 @@ service PersonsocialApi {
     //获取被关爱人
     rpc GetPerson(GetPersonRequest) returns (Person) {
     }
-    //获取
+    //更新被关爱人
     rpc UpdatePerson(UpdatePersonRequest) returns (Person) {
     }
     //查询被关爱人
@@ -28,7 +28,6 @@ service PersonsocialApi {
     //查询被关爱人家庭成员
     rpc ListFamilyMember(ListFamilyMemberRequest) returns(ListFamilyMemberResponse){
     }
-
     //创建家庭成员
     rpc CreateFamilyMember(CreateFamilyMemberRequest) returns(ListFamilyMemberResponse){
     }
@@ -37,6 +36,12 @@ service PersonsocialApi {
     }
     //创建关联关系
     rpc CreateRelation(CreateRelationRequest) returns(CreateRelationResponse){
+    }
+    //关联设备
+    rpc BindingDevice(BindingDeviceRequest) returns(Device){
+    }
+    //解绑设备
+    rpc DebindingDevice(DebindingDeviceRequest) returns(google.protobuf.Empty){
     }
 }
 message Person {
@@ -237,6 +242,7 @@ message FamilyMember{
     string remark = 8;
 }
 message Device{
+    string name = 99;
     string IMEI = 1;
     string deviceNo = 2;
     string contact = 3;
@@ -287,4 +293,12 @@ message CreateFamilyMemberRequest{
 message DeleteFamilyMemberRequest{
     string name_person = 1;
     string name_famliMember = 2;
+}
+message BindingDeviceRequest{
+    string name_person = 99;
+    Device device = 1;
+}
+message DebindingDeviceRequest{
+    string name_device = 99;
+    string name_person = 1;
 }
