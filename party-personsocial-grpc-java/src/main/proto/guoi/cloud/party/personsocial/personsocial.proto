@@ -16,6 +16,12 @@ service PersonsocialApi {
     // 增加被关爱人
     rpc CreatePerson (CreatePersonRequest) returns (Person) {
     }
+    //获取被关爱人
+    rpc GetPerson(GetPersonRequest) returns (Person) {
+    }
+    //获取
+    rpc UpdatePerson(UpdatePersonRequest) returns (Person) {
+    }
     //查询被关爱人
     rpc ListPerson(ListPersonRequest) returns (ListPersonResponse){
     }
@@ -34,6 +40,8 @@ service PersonsocialApi {
     }
 }
 message Person {
+    //station id
+    string name_station = 99;
     //id
     string name = 1;
     //身份证号
@@ -235,47 +243,13 @@ message Device{
     string remark = 4;
 }
 message CreatePersonRequest{
-    //station id
-    string name_station = 99;
-    //身份证号
-    string idno = 1;
-    //头像
-    string avatar = 2;
-    //姓名
-    string personname = 3;
-    //性别
-    Gender gender = 4;
-    //电话
-    string mobile = 5;
-    //现居住址
-    guoi.cloud.common.Address homeAddress = 6;
-    //户籍地址
-    guoi.cloud.common.Address residenceAddress = 7;
-    //老人分类，三无...
-    OldType oldType = 8;
-    //民族
-    string nation = 9;
-    //政治面貌
-    Politic politic = 10;
-    //婚姻状况
-    MaritalStatus maritalStatus = 11;
-    //医疗方式
-    TreatmentMethod treatmentMethod = 12;
-    //居住状态
-    LivingStatus livingStatus = 13;
-    //经济来源
-    EcnomicSource ecnomicSource = 14;
-    //备注
-    string remark = 15;
-
-    repeated FamilyMember familyMembers = 16;
-
-    repeated Device devices = 17;
-
-    //ai认证
-    bool aiAuthed = 18;
-    //hobbies
-    repeated string hobbies = 20;
+    Person person = 99;
+}
+message GetPersonRequest{
+    string name_person = 99;
+}
+message UpdatePersonRequest{
+    Person person = 99;
 }
 message ListPersonRequest{
     string name_station = 99;
