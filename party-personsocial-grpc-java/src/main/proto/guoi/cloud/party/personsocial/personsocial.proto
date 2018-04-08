@@ -8,6 +8,7 @@ option java_outer_classname = "PersonsocialApiProto";
 
 import "guoi/cloud/common/common.proto";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
 import "google/rpc/status.proto";
 
 // The person service definition.
@@ -20,6 +21,13 @@ service PersonsocialApi {
     }
     //查询被关爱人家庭成员
     rpc ListFamilyMember(ListFamilyMemberRequest) returns(ListFamilyMemberResponse){
+    }
+
+    //创建家庭成员
+    rpc CreateFamilyMember(CreateFamilyMemberRequest) returns(ListFamilyMemberResponse){
+    }
+    //删除家庭成员
+    rpc DeleteFamilyMember(DeleteFamilyMemberRequest) returns(google.protobuf.Empty){
     }
     //创建关联关系
     rpc CreateRelation(CreateRelationRequest) returns(CreateRelationResponse){
@@ -45,7 +53,7 @@ message Person {
     //政治面貌
     Politic politic = 9;
     //爱好
-    repeated string hobbys = 10;
+    repeated string hobbies = 10;
     //老人类型
     OldType oldType = 11;
     //婚姻状况
@@ -75,7 +83,7 @@ message ListPersonResponse{
 }
 message ListFamilyMemberResponse{
     google.rpc.Status error = 999;
-    repeated FamilyMember personSocial = 2;
+    repeated FamilyMember familyMembers = 2;
 }
 message CreateRelationResponse{
     google.rpc.Status error = 999;
@@ -201,6 +209,8 @@ enum EcnomicSource{
     OTHER = 3;
 }
 message FamilyMember{
+    //resource id
+    string name = 99;
     //关系
     string relation = 1;
     //姓名
@@ -294,4 +304,13 @@ message CreateRelationRequest{
     string name_person = 1;
     //另一个人的id
     string name_the_other = 2;
+}
+message CreateFamilyMemberRequest{
+    string name_person = 1;
+    FamilyMember familyMember = 2;
+}
+
+message DeleteFamilyMemberRequest{
+    string name_person = 1;
+    string name_famliMember = 2;
 }
