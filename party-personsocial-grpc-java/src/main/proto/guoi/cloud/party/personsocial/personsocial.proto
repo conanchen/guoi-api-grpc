@@ -87,8 +87,10 @@ message Person {
     guoi.cloud.common.Address homeAddress= 19;
     //户籍地址
     guoi.cloud.common.Address residenceAddress= 20;
+    //家庭成员
+    repeated FamilyMember familyMembers = 21;
     //The creation timestamp of an entity.
-    google.protobuf.Timestamp create_time = 21;
+    google.protobuf.Timestamp create_time = 98;
 }
 message ListPersonResponse{
     google.rpc.Status error = 999;
