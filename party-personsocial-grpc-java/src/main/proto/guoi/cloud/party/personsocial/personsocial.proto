@@ -89,6 +89,13 @@ message Person {
     guoi.cloud.common.Address residenceAddress= 20;
     //家庭成员
     repeated FamilyMember familyMembers = 21;
+    //备注信息
+    string remark = 22;
+    /********vip 信息***********/
+    bool isVip = 23;
+    VipType vipType = 24;
+    google.protobuf.Timestamp vipEnd_time = 25;
+    /********vipi 信息**********/
     //The creation timestamp of an entity.
     google.protobuf.Timestamp create_time = 98;
 }
