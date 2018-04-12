@@ -3,6 +3,7 @@ Define guoi cloud microservice grpc api :
 - authcow
 - cms
 - gis
+- hello : [hello sample api](hello-grpc-java/README.md)
 - party
 - shoppie
 - common : is a share library for all above api projects
