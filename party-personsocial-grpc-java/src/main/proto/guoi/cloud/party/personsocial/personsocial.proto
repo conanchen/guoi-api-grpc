@@ -294,7 +294,7 @@ message UpdatePersonRequest{
     //性别
     Gender gender = 6;
     //电话
-    ListString mobiles = 7;
+    repeated string mobiles = 7;
     //民族
     string nation = 8;
     //政治面貌
@@ -333,9 +333,6 @@ message UpdatePersonRequest{
     google.protobuf.Timestamp vipEnd_time = 25;
     /********vipi 信息**********/
     Education education = 26;
-}
-message ListString{
-    repeated string mobiles = 1;
 }
 message ListPersonRequest{
     string name_station = 99;
