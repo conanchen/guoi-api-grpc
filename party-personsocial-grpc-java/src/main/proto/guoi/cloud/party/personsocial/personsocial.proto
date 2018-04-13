@@ -290,7 +290,7 @@ message UpdatePersonRequest{
     //person name
     string personName = 4;
     //ai认证
-    bool aiAuthed = 5;
+    Boolean aiAuthed = 5;
     //性别
     Gender gender = 6;
     //电话
@@ -326,8 +326,10 @@ message UpdatePersonRequest{
     //备注信息
     string remark = 22;
     /********vip 信息***********/
-    bool isVip = 23;
+    Boolean isVip = 23;
+
     VipType vipType = 24;
+
     google.protobuf.Timestamp vipEnd_time = 25;
     /********vipi 信息**********/
     Education education = 26;
@@ -383,4 +385,8 @@ message DebindingDeviceRequest{
 
 message PersonFilter{
     string mobile = 1;
+}
+
+message Boolean{
+    bool value = 1;
 }
