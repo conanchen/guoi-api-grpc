@@ -19,6 +19,7 @@ service PersonsocialApi {
     //获取被关爱人
     rpc GetPerson(GetPersonRequest) returns (Person) {
     }
+
     //更新被关爱人
     rpc UpdatePerson(UpdatePersonRequest) returns (Person) {
     }
@@ -60,13 +61,13 @@ message Person {
     //性别
     Gender gender = 6;
     //电话
-    string mobile = 7;
+    repeated string mobiles = 7;
     //民族
     string nation = 8;
     //政治面貌
     Politic politic = 9;
     //爱好
-    repeated string hobbies = 10;
+    string hobbies = 10;
     //老人类型
     OldType oldType = 11;
     //婚姻状况
@@ -89,12 +90,20 @@ message Person {
     guoi.cloud.common.Address residenceAddress= 20;
     //家庭成员
     repeated FamilyMember familyMembers = 21;
+    //备注信息
+    string remark = 22;
+    /********vip 信息***********/
+    bool isVip = 23;
+    VipType vipType = 24;
+    google.protobuf.Timestamp vipEnd_time = 25;
+    /********vipi 信息**********/
+    Education education = 26;
     //The creation timestamp of an entity.
     google.protobuf.Timestamp create_time = 98;
 }
 message ListPersonResponse{
     google.rpc.Status error = 999;
-    Person person = 1;
+    repeated Person person = 1;
 }
 message ListFamilyMemberResponse{
     google.rpc.Status error = 999;
@@ -103,9 +112,6 @@ message ListFamilyMemberResponse{
 message CreateRelationResponse{
     google.rpc.Status error = 999;
     Relation relation = 1;
-}
-enum Relation{
-    HUSBAND_AND_WIFE = 0;
 }
 enum Gender{
     MAN = 0;
@@ -128,6 +134,18 @@ enum OldType{
     DEMENTIA = 7;
     //优抚老人
     SPECIAL_CARE = 8;
+}
+enum Education {
+    //文盲
+    EDU_NONE = 0;
+    //小学
+    PRIMARY_SCHOOL = 2;
+    //初中
+    JUNIOR_HIGH_SCHOOL = 3;
+    //高中/技校/中专
+    SENIOR_HIGH_SCHOOL = 4;
+    //不详
+    UNKNOWN = 5;
 }
 
 enum Politic{
@@ -193,6 +211,12 @@ enum TreatmentMethod{
     //自费
     OWN = 3;
 }
+enum Relation{
+    HUBAND_WIFE = 0;
+    FATHER_SON = 1;
+    MOTHER_DAUGHTER= 2;
+    GRANDCHILDREN = 3;
+}
 //居住状态
 enum LivingStatus{
     //独居
@@ -227,7 +251,7 @@ message FamilyMember{
     //resource id
     string name = 99;
     //关系
-    string relation = 1;
+    Relation relation = 1;
     //姓名
     string personName = 2;
     //性别
@@ -257,7 +281,63 @@ message GetPersonRequest{
     string name_person = 99;
 }
 message UpdatePersonRequest{
-    Person person = 99;
+    //station id
+    string name_station = 99;
+    //id
+    string name = 1;
+    oneof property {
+        //身份证号
+        string idno = 2;
+        //头像
+        string avatar = 3;
+        //person name
+        string personName = 4;
+        //ai认证
+        bool aiAuthed = 5;
+        //性别
+        Gender gender = 6;
+        //电话
+        ListString mobiles = 7;
+        //民族
+        string nation = 8;
+        //政治面貌
+        Politic politic = 9;
+        //爱好
+        string hobbies = 10;
+        //老人类型
+        OldType oldType = 11;
+        //婚姻状况
+        MaritalStatus maritalStatus = 12;
+        //医疗方式
+        TreatmentMethod treatmentMethod = 13;
+        //居住状态
+        LivingStatus livingStatus = 14;
+        //经济来源
+        EcnomicSource ecnomicSource = 15;
+        //用户来源
+        string source = 16;
+        //注册驿站id
+        string name_registerStation = 17;
+        //关联设备
+        //repeated Device devices = 18;
+        //现居地址
+        guoi.cloud.common.Address homeAddress = 19;
+        //户籍地址
+        guoi.cloud.common.Address residenceAddress = 20;
+        //家庭成员
+       // repeated FamilyMember familyMembers = 21;
+        //备注信息
+        string remark = 22;
+        /********vip 信息***********/
+        bool isVip = 23;
+        VipType vipType = 24;
+        google.protobuf.Timestamp vipEnd_time = 25;
+        /********vipi 信息**********/
+        Education education = 26;
+    }
+}
+message ListString{
+    repeated string mobiles = 1;
 }
 message ListPersonRequest{
     string name_station = 99;
@@ -267,7 +347,7 @@ message ListPersonRequest{
     int32 last = 4;
     bool reverse = 5;
     //查询条件支持，编号,姓名,身份证号
-    string query = 6;
+    PersonFilter filter = 6;
 }
 
 message ListFamilyMemberRequest{
@@ -278,7 +358,7 @@ message ListFamilyMemberRequest{
     int32 last = 4;
     bool reverse = 5;
     //查询条件支持，手机号,姓名
-    string query = 6;
+    PersonFilter filter = 6;
 }
 message CreateRelationRequest{
     Relation relation = 99;
@@ -294,7 +374,7 @@ message CreateFamilyMemberRequest{
 
 message DeleteFamilyMemberRequest{
     string name_person = 1;
-    string name_famliMember = 2;
+    string name_familyMember = 2;
 }
 message BindingDeviceRequest{
     string name_person = 99;
@@ -303,4 +383,8 @@ message BindingDeviceRequest{
 message DebindingDeviceRequest{
     string name_device = 99;
     string name_person = 1;
+}
+
+message PersonFilter{
+    string mobile = 1;
 }
