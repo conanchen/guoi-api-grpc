@@ -44,8 +44,6 @@ service PersonsocialApi {
     //解绑设备
     rpc DebindingDevice(DebindingDeviceRequest) returns(google.protobuf.Empty){
     }
-    //使用querydsl获取person
-    rpc queryPerson(QueryPersonRequest) returns (QueryPersonReponse){}
 }
 message Person {
     //station id
@@ -277,7 +275,7 @@ message ListPersonRequest{
     int32 last = 4;
     bool reverse = 5;
     //查询条件支持，编号,姓名,身份证号
-    string query = 6;
+    PersonFilter filter = 6;
 }
 
 message ListFamilyMemberRequest{
@@ -313,13 +311,6 @@ message BindingDeviceRequest{
 message DebindingDeviceRequest{
     string name_device = 99;
     string name_person = 1;
-}
-
-message QueryPersonRequest{
-    PersonFilter personFilter = 1;
-}
-message QueryPersonReponse{
-    repeated Person persons = 1;
 }
 
 message PersonFilter{
