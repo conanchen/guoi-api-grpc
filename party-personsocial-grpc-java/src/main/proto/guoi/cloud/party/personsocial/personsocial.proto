@@ -286,7 +286,7 @@ message ListFamilyMemberRequest{
     int32 last = 4;
     bool reverse = 5;
     //查询条件支持，手机号,姓名
-    string query = 6;
+    PersonFilter filter = 6;
 }
 message CreateRelationRequest{
     Relation relation = 99;
