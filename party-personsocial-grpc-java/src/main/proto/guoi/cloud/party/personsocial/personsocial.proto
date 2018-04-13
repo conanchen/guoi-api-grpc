@@ -61,7 +61,7 @@ message Person {
     //性别
     Gender gender = 6;
     //电话
-    string mobile = 7;
+    repeated string mobiles = 7;
     //民族
     string nation = 8;
     //政治面貌
