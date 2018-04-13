@@ -297,7 +297,7 @@ message UpdatePersonRequest{
         //性别
         Gender gender = 6;
         //电话
-        ListMobile mobiles = 7;
+        ListString mobiles = 7;
         //民族
         string nation = 8;
         //政治面貌
@@ -336,7 +336,7 @@ message UpdatePersonRequest{
         Education education = 26;
     }
 }
-message ListMobile{
+message ListString{
     repeated string mobiles = 1;
 }
 message ListPersonRequest{
