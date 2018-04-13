@@ -266,6 +266,8 @@ message FamilyMember{
     bool isEmergenceContact = 7;
     //备注
     string remark = 8;
+    //头像
+    string avatar = 9;
 }
 message Device{
     string name = 99;
