@@ -97,6 +97,7 @@ message Person {
     VipType vipType = 24;
     google.protobuf.Timestamp vipEnd_time = 25;
     /********vipi 信息**********/
+    Education education = 26;
     //The creation timestamp of an entity.
     google.protobuf.Timestamp create_time = 98;
 }
@@ -136,6 +137,18 @@ enum OldType{
     DEMENTIA = 7;
     //优抚老人
     SPECIAL_CARE = 8;
+}
+enum Education {
+    //文盲
+    NONE = 0;
+    //小学
+    PRIMARY_SCHOOL = 2;
+    //初中
+    JUNIOR_HIGH_SCHOOL = 3;
+    //高中/技校/中专
+    SENIOR_HIGH_SCHOOL = 4;
+    //不详
+    UNKNOWN = 5;
 }
 
 enum Politic{
