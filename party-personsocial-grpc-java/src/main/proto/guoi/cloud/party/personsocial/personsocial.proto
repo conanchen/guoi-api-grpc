@@ -19,6 +19,7 @@ service PersonsocialApi {
     //获取被关爱人
     rpc GetPerson(GetPersonRequest) returns (Person) {
     }
+
     //更新被关爱人
     rpc UpdatePerson(UpdatePersonRequest) returns (Person) {
     }
@@ -43,6 +44,8 @@ service PersonsocialApi {
     //解绑设备
     rpc DebindingDevice(DebindingDeviceRequest) returns(google.protobuf.Empty){
     }
+
+    rpc queryPerson(QueryPersonRequest) returns ()
 }
 message Person {
     //station id
@@ -310,4 +313,15 @@ message BindingDeviceRequest{
 message DebindingDeviceRequest{
     string name_device = 99;
     string name_person = 1;
+}
+
+message QueryPersonRequest{
+    PersonFilter personFilter = 1;
+}
+message QueryPersonReponse{
+    repeated Person persons = 1;
+}
+
+message PersonFilter{
+    string mobile = 1;
 }
