@@ -44,8 +44,8 @@ service PersonsocialApi {
     //解绑设备
     rpc DebindingDevice(DebindingDeviceRequest) returns(google.protobuf.Empty){
     }
-
-    rpc queryPerson(QueryPersonRequest) returns ()
+    //使用querydsl获取person
+    rpc queryPerson(QueryPersonRequest) returns (QueryPersonReponse){}
 }
 message Person {
     //station id
