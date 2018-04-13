@@ -102,7 +102,7 @@ message Person {
 }
 message ListPersonResponse{
     google.rpc.Status error = 999;
-    Person person = 1;
+    repeated Person person = 1;
 }
 message ListFamilyMemberResponse{
     google.rpc.Status error = 999;
