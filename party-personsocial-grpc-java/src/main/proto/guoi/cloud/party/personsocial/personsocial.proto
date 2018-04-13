@@ -140,7 +140,7 @@ enum OldType{
 }
 enum Education {
     //文盲
-    NONE = 0;
+    EDU_NONE = 0;
     //小学
     PRIMARY_SCHOOL = 2;
     //初中
