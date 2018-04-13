@@ -281,11 +281,11 @@ message GetPersonRequest{
     string name_person = 99;
 }
 message UpdatePersonRequest{
+    //station id
+    string name_station = 99;
     //id
     string name = 1;
     oneof property {
-        //station id
-        string name_station = 99;
         //身份证号
         string idno = 2;
         //头像
