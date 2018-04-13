@@ -269,7 +269,7 @@ message FamilyMember{
 }
 message Device{
     string name = 99;
-    string IMEI = 1;
+    string imei = 1;
     string deviceNo = 2;
     string contact = 3;
     string remark = 4;
