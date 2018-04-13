@@ -47,6 +47,11 @@ service Org8nApi {
     rpc GetEmployee(GetEmployeeRequest) returns (Employee){
 
     }
+
+    rpc GetUser(GetUserRequest) returns (User){
+
+    }
+
     rpc UpdateEmployee(UpdateEmployeeRequest) returns (Employee){
 
     }
@@ -62,12 +67,38 @@ message GetToplevelOrg8nRequest{
 
 }
 
+enum UserType{
+    ADMIN=0;
+    USER=1;
+}
+
 message Employee{
-    string name = 1;
+    string id = 1;
+    string name = 2;
+    string idNo = 3;
+    string phone = 4;
+    guoi.cloud.common.Address address = 5;
+    string role = 6;
+    repeated string right = 7;
+    string memo = 8;
+    string picpath = 9;
+    string group = 10;
+    Org8n org8N = 11;
+    UserType usertype = 12;
+    string serialno = 13;
+    int32 status = 14;
+}
+
+message User{
+    string id = 1;
+    string login = 2;
+    string pwd = 3;
+    UserType type = 4;
+    Employee employee = 5;
 }
 
 message Org8n{
-    string name = 1;
+    string id = 1;
     enum Org8nType{
         TOPCENTER = 0;
         AREACENTER = 1;
@@ -77,24 +108,28 @@ message Org8n{
     }
     Org8n parent = 2;
     Org8nType type = 3;
-    string org8nName = 4;
+    string name = 4;
     string theme = 5;
     string tel = 6;
     string linkMan = 7;
     string phone = 8;
     int32 status= 9;
-    repeated string address = 10;
+    repeated guoi.cloud.common.Address serviceRange = 10;
+    guoi.cloud.common.Address address = 11;
     enum OpType{
         SELF = 0;
+        THIRD = 1;
     }
-    OpType opType = 11;
-    string hotPhone = 12;
+    OpType opType = 12;
+    string hotPhone = 13;
+    string logo = 14;
+    string serialno = 15;
 }
 
 message CreateOrg8nRequest{
 
     // The org8n will be created under the parent org8n identified by name_parent
-    string name_parent = 1;
+    string id_parent = 1;
 
     // The catalog resource to create. the org8n.name will be ignored.
     // The field name should match the Noun in the method name.
@@ -102,20 +137,21 @@ message CreateOrg8nRequest{
 }
 
 message GetOrg8nRequest{
-    string name = 1;
+    string id = 1;
 }
 
 message UpdateOrg8nRequest{
-    Org8n org8n = 1;
+    string id_parent = 1;
+    Org8n org8n = 2;
 }
 
 message DeleteOrg8nRequest{
-    string name = 1;
+    string id = 1;
 }
 
 message ListOrg8nsRequest{
     // list sub-org8ns belong to the org8n identified by field "name_parent" resource name
-    string name_parent = 1;
+    string id_parent = 1;
 
     // The maximum number of items to return.
     int32 page_size = 2;
@@ -141,15 +177,20 @@ message ListOrg8nsResponse{
 message CreateEmployeeRequest{
 
     // The employee will be created for the org8n identified by name_org8n
-    string name_org8n = 1;
+    string id_org8n = 1;
 
     // The catalog resource to create. the employee.name will be ignored.
     // The field name should match the Noun in the method name.
     Employee employee = 2;
+    User user = 3;
 }
 
 message GetEmployeeRequest{
-    string name = 1;
+    string id = 1;
+}
+
+message GetUserRequest{
+    string id = 1;
 }
 
 message UpdateEmployeeRequest{
@@ -157,12 +198,12 @@ message UpdateEmployeeRequest{
 }
 
 message DeleteEmployeeRequest{
-    string name = 1;
+    string id = 1;
 }
 
 message ListEmployeesRequest{
     // list employees belong to the org8n identified by field "name_org8n" resource name
-    string name_org8n = 1;
+    string id_org8n = 1;
 
     // The maximum number of items to return.
     int32 page_size = 2;
