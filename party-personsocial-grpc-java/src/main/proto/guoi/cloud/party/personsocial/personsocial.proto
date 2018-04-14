@@ -266,10 +266,12 @@ message FamilyMember{
     bool isEmergenceContact = 7;
     //备注
     string remark = 8;
+    //头像
+    string avatar = 9;
 }
 message Device{
     string name = 99;
-    string IMEI = 1;
+    string imei = 1;
     string deviceNo = 2;
     string contact = 3;
     string remark = 4;
@@ -285,59 +287,54 @@ message UpdatePersonRequest{
     string name_station = 99;
     //id
     string name = 1;
-    oneof property {
-        //身份证号
-        string idno = 2;
-        //头像
-        string avatar = 3;
-        //person name
-        string personName = 4;
-        //ai认证
-        bool aiAuthed = 5;
-        //性别
-        Gender gender = 6;
-        //电话
-        ListString mobiles = 7;
-        //民族
-        string nation = 8;
-        //政治面貌
-        Politic politic = 9;
-        //爱好
-        string hobbies = 10;
-        //老人类型
-        OldType oldType = 11;
-        //婚姻状况
-        MaritalStatus maritalStatus = 12;
-        //医疗方式
-        TreatmentMethod treatmentMethod = 13;
-        //居住状态
-        LivingStatus livingStatus = 14;
-        //经济来源
-        EcnomicSource ecnomicSource = 15;
-        //用户来源
-        string source = 16;
-        //注册驿站id
-        string name_registerStation = 17;
-        //关联设备
-        //repeated Device devices = 18;
-        //现居地址
-        guoi.cloud.common.Address homeAddress = 19;
-        //户籍地址
-        guoi.cloud.common.Address residenceAddress = 20;
-        //家庭成员
-       // repeated FamilyMember familyMembers = 21;
-        //备注信息
-        string remark = 22;
-        /********vip 信息***********/
-        bool isVip = 23;
-        VipType vipType = 24;
-        google.protobuf.Timestamp vipEnd_time = 25;
-        /********vipi 信息**********/
-        Education education = 26;
-    }
-}
-message ListString{
-    repeated string mobiles = 1;
+    //头像
+    string avatar = 3;
+    //person name
+    string personName = 4;
+    //ai认证
+    Boolean aiAuthed = 5;
+    //性别
+    Gender gender = 6;
+    //电话
+    repeated string mobiles = 7;
+    //民族
+    string nation = 8;
+    //政治面貌
+    Politic politic = 9;
+    //爱好
+    string hobbies = 10;
+    //老人类型
+    OldType oldType = 11;
+    //婚姻状况
+    MaritalStatus maritalStatus = 12;
+    //医疗方式
+    TreatmentMethod treatmentMethod = 13;
+    //居住状态
+    LivingStatus livingStatus = 14;
+    //经济来源
+    EcnomicSource ecnomicSource = 15;
+    //用户来源
+    string source = 16;
+    //注册驿站id
+    string name_registerStation = 17;
+    //关联设备
+    repeated Device devices = 18;
+    //现居地址
+    guoi.cloud.common.Address homeAddress = 19;
+    //户籍地址
+    guoi.cloud.common.Address residenceAddress = 20;
+    //家庭成员
+    repeated FamilyMember familyMembers = 21;
+    //备注信息
+    string remark = 22;
+    /********vip 信息***********/
+    Boolean isVip = 23;
+
+    VipType vipType = 24;
+
+    google.protobuf.Timestamp vipEnd_time = 25;
+    /********vipi 信息**********/
+    Education education = 26;
 }
 message ListPersonRequest{
     string name_station = 99;
@@ -387,4 +384,8 @@ message DebindingDeviceRequest{
 
 message PersonFilter{
     string mobile = 1;
+}
+
+message Boolean{
+    bool value = 1;
 }
