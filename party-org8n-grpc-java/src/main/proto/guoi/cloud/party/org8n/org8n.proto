@@ -87,6 +87,7 @@ message Employee{
     UserType usertype = 12;
     string serialno = 13;
     int32 status = 14;
+    User user = 15;
 }
 
 message User{
