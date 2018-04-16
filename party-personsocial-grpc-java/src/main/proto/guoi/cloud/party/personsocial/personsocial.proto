@@ -98,6 +98,7 @@ message Person {
     google.protobuf.Timestamp vipEnd_time = 25;
     /********vipi 信息**********/
     Education education = 26;
+    string refPersonId = 27;
     //The creation timestamp of an entity.
     google.protobuf.Timestamp create_time = 98;
 }
@@ -335,6 +336,8 @@ message UpdatePersonRequest{
     google.protobuf.Timestamp vipEnd_time = 25;
     /********vipi 信息**********/
     Education education = 26;
+
+    string refPersonId = 27;
 }
 message ListPersonRequest{
     string name_station = 99;
