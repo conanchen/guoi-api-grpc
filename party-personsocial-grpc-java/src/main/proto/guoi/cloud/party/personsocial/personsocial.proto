@@ -383,7 +383,10 @@ message DebindingDeviceRequest{
 }
 
 message PersonFilter{
+    repeated PersonFilter and = 100;
+    repeated PersonFilter or = 99;
     string mobile = 1;
+    string personName = 2;
 }
 
 message Boolean{
