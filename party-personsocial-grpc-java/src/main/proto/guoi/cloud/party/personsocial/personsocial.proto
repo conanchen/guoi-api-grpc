@@ -277,6 +277,7 @@ message Device{
     string deviceNo = 2;
     string contact = 3;
     string remark = 4;
+    bool active = 5;
 }
 message CreatePersonRequest{
     Person person = 99;
