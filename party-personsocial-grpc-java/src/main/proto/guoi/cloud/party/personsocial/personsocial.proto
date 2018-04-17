@@ -339,7 +339,7 @@ message UpdatePersonRequest{
     /********vipi 信息**********/
     Education education = 26;
 
-    Person refPerson = 27;
+    string name_refPerson = 27;
 }
 message ListPersonRequest{
     string name_station = 99;
