@@ -99,7 +99,7 @@ message Person {
     /********vipi 信息**********/
     Education education = 26;
 
-    Person refPerson = 27;
+    string name_refPerson = 27;
     //The creation timestamp of an entity.
     google.protobuf.Timestamp create_time = 98;
 }
