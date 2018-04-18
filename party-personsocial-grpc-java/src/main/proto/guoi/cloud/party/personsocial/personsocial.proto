@@ -113,7 +113,7 @@ message ListFamilyMemberResponse{
 }
 message CreateRelationResponse{
     google.rpc.Status error = 999;
-    Relation relation = 1;
+    string relation = 1;
 }
 enum Gender{
     MAN = 0;
@@ -213,12 +213,7 @@ enum TreatmentMethod{
     //自费
     OWN = 3;
 }
-enum Relation{
-    HUBAND_WIFE = 0;
-    FATHER_SON = 1;
-    MOTHER_DAUGHTER= 2;
-    GRANDCHILDREN = 3;
-}
+
 //居住状态
 enum LivingStatus{
     //独居
@@ -253,7 +248,7 @@ message FamilyMember{
     //resource id
     string name = 99;
     //关系
-    Relation relation = 1;
+    string relation = 1;
     //姓名
     string personName = 2;
     //性别
@@ -363,7 +358,7 @@ message ListFamilyMemberRequest{
     PersonFilter filter = 6;
 }
 message CreateRelationRequest{
-    Relation relation = 99;
+    string relation = 99;
     //关联关系中的一个人id
     string name_person = 1;
     //另一个人的id
