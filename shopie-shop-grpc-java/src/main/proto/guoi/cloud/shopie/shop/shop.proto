@@ -104,6 +104,8 @@ message Shop {
     string description = 6;
     //商铺性质
     ShopType shopType = 7;
+    // 服务商电话
+    string phone = 8;
 }
 
 message ListShopsRequest {
