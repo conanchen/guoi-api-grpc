@@ -63,7 +63,7 @@ enum ShopType {
 
 message CreateShopRequest {
     // 店铺名称
-    string shopName = 1;
+    string title = 1;
     //分类
     Catalog catalog = 2;
     // 负责人
@@ -91,7 +91,7 @@ message Shop {
     // id
     string name = 999;
     // 店铺名称
-    string shopName = 1;
+    string title = 1;
     //分类
     Catalog catalog = 2;
     // 负责人
