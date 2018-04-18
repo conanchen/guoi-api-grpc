@@ -45,9 +45,8 @@ message UpdateShopRequest {
 }
 
 message Catalog {
-    string name_parent = 1;
     string name = 2;
-    string catalogName = 3;
+    string title = 3;
 }
 message Person {
     string idno = 1;
@@ -63,7 +62,7 @@ enum ShopType {
 
 message CreateShopRequest {
     // 店铺名称
-    string title = 1;
+    string shopName = 1;
     //分类
     Catalog catalog = 2;
     // 负责人
@@ -91,7 +90,7 @@ message Shop {
     // id
     string name = 999;
     // 店铺名称
-    string title = 1;
+    string shopName = 1;
     //分类
     Catalog catalog = 2;
     // 负责人
