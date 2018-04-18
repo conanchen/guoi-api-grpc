@@ -1,0 +1,127 @@
+syntax = "proto3";
+package guoi.cloud.shopie.catalog;
+
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.shopie.catalog.grpc";
+option java_outer_classname = "CatalogApiProto";
+
+import "guoi/cloud/common/common.proto";
+import "google/rpc/status.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+// The catalog service definition.
+service ShopApi {
+
+    // Create shop
+    rpc CreateShop (CreateShopRequest) returns (Shop) {
+
+    }
+
+    // Deletes a shop.
+    rpc DeleteShop (DeleteShopRequest) returns (google.protobuf.Empty) {
+
+    }
+
+
+    // Gets a shop.
+    rpc GetShop (GetShopRequest) returns (Shop) {
+
+    }
+
+    // Update shop
+    rpc UpdateShop (UpdateShopRequest) returns (Shop) {
+
+    }
+
+    rpc ListShops (ListShopsRequest) returns (ShopsResponse) {
+
+    }
+}
+
+message UpdateShopRequest {
+    Shop shop = 2;
+}
+
+message Catalog {
+    string name_parent = 1;
+    string name = 2;
+    string catalogName = 3;
+}
+message Person {
+    string idno = 1;
+    string personName = 2;
+    string mobile = 3;
+}
+enum ShopType {
+    //自营
+    OWN = 0;
+    //第三方
+    THIRD_PARTY = 1;
+}
+
+message CreateShopRequest {
+    // 店铺名称
+    string shopName = 1;
+    //分类
+    Catalog catalog = 2;
+    // 负责人
+    Person person = 3;
+    //地址
+    guoi.cloud.common.Address defaultAddress = 4;
+    //备注
+    string remark = 5;
+    //店铺描述
+    string description = 6;
+    //商铺性质
+    ShopType shopType = 7;
+}
+
+
+message DeleteShopRequest {
+    string name = 1;
+}
+
+message GetShopRequest {
+    string name = 1;
+}
+
+message Shop {
+    // id
+    string name = 999;
+    // 店铺名称
+    string shopName = 1;
+    //分类
+    Catalog catalog = 2;
+    // 负责人
+    Person person = 3;
+    //地址
+    guoi.cloud.common.Address defaultAddress = 4;
+    //备注
+    string remark = 5;
+    //店铺描述
+    string description = 6;
+    //商铺性质
+    ShopType shopType = 7;
+}
+
+message ListShopsRequest {
+    // The parent catalog resource name, for example, "catalogs/catalog1".
+    string name_parent = 1;
+
+    // The maximum number of items to return.
+    int32 page_size = 2;
+
+    // The next_page_token value returned from a previous List request, if any.
+    string page_token = 3;
+}
+
+// The response message containing the catalogs
+message ShopsResponse {
+    google.rpc.Status status = 999;
+
+    repeated Shop shops = 1;
+
+    string next_page_token = 2;
+}
