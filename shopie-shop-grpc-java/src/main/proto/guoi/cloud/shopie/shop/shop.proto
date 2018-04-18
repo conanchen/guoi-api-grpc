@@ -1,17 +1,17 @@
 syntax = "proto3";
-package guoi.cloud.shopie.catalog;
+package guoi.cloud.shopie.shop;
 
 
 option java_multiple_files = true;
-option java_package = "com.github.conanchen.guoi.cloud.shopie.catalog.grpc";
-option java_outer_classname = "CatalogApiProto";
+option java_package = "com.github.conanchen.guoi.cloud.shopie.shop.grpc";
+option java_outer_classname = "ShopApiProto";
 
 import "guoi/cloud/common/common.proto";
 import "google/rpc/status.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 
-// The catalog service definition.
+// The shop service definition.
 service ShopApi {
 
     // Create shop
