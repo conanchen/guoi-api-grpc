@@ -72,8 +72,8 @@ message CreateShopRequest {
     guoi.cloud.common.Address defaultAddress = 4;
     //备注
     string remark = 5;
-    //店铺描述
-    string description = 6;
+    // 服务商电话
+    string phone = 6;
     //商铺性质
     ShopType shopType = 7;
 }
