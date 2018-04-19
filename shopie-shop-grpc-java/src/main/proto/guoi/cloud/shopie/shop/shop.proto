@@ -105,6 +105,12 @@ message Shop {
     ShopType shopType = 7;
     // 服务商电话
     string phone = 8;
+    //营业执照
+    string businessLicense = 9;
+    //餐饮许可证
+    string foodLicense = 10;
+    //餐饮服务安全级别
+    string securityLevel = 11;
 }
 
 message ListShopsRequest {
