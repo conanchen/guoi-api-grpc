@@ -14,7 +14,7 @@ import "google/rpc/status.proto";
 
 service BloodoxygenApi {
     // Returns a list of all bloodoxygens in the bloodoxygen.
-    rpc ListBloodoxygens (google.protobuf.Empty) returns (ListBloodoxygensResponse) {
+    rpc ListBloodoxygens (ListBloodoxygensRequest) returns (ListBloodoxygensResponse) {
         //    option (google.api.http) = {
         //      get: "/v1/{parent=persons/*}/bloodoxygens"
         //    };
@@ -98,4 +98,10 @@ message GetBloodoxygenRequest {
 message DeleteBloodoxygenRequest {
     // Resource name of a oxygen. For example: "persons/personid1/bloodoxygens/oxygenid2".
     string name = 1;
+}
+
+message ListBloodoxygensRequest{
+    string personid = 1;
+    google.protobuf.Timestamp startTime = 2;
+    google.protobuf.Timestamp endTime = 3;
 }
