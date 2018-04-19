@@ -16,34 +16,21 @@ import "google/rpc/status.proto";
 service PersoneventApi {
     //查询person日程信息
     rpc ListPersonevents (ListPersoneventRequest) returns (ListPersoneventsResponse) {
-        //    option (google.api.http) = {
-        //      get: "/v1/{parent=persons/*}/events"
-        //    };
+
     }
     // Creates a new event in the bookstore.
     rpc CreatePersonevent (CreatePersoneventRequest) returns (Personevent) {
-        //    option (google.api.http) = {
-        //      post: "/v1/{parent=persons/*}/events"
-        //      body: "event"
-        //    };
+
     }
 
     // Deletes a event, including all books that are stored on the event.
     rpc DeletePersonevent (DeletePersoneventRequest) returns (google.protobuf.Empty) {
-        //  // Delete maps to HTTP DELETE. Resource name maps to the URL path.
-        //  // There is no request body.
-        //  option (google.api.http) = {
-        //    // Note the URL template variable capturing the multi-segment name of the
-        //    // event resource to be deleted, such as "person/*/events/event001"
-        //    delete: "/v1/{name=persons/*/events/*}"
-        //  };
+
     }
 
     // Returns a specific bookstore event.
     rpc GetPersonevent (GetPersoneventRequest) returns (Personevent) {
-        //    option (google.api.http) = {
-        //      get: "/v1/{name=persons/*/events/*}"
-        //    };
+
     }
 }
 message ListPersoneventRequest{
@@ -58,13 +45,16 @@ message ListPersoneventRequest{
     //截至时间
     google.protobuf.Timestamp end_time = 7;
 }
+
 // A event resource.
 message Personevent {
-    // Resource name of the personevent. It must have the format of "persons/*/events/*".
-    // For example: "persons/personid1/events/eventid2".
-    // The name is ignored when creating an event.
+    string personid = 2;
     string name = 1;
-
+    enum EventType{
+        EVENT = 0;
+        ORDER = 1;
+    }
+    EventType type = 3;
     string title = 6; //事件标题
     string content = 7 ; //事件内容
 
@@ -78,21 +68,15 @@ message Personevent {
 
 // Response to ListPersonevents call.
 message ListPersoneventsResponse {
-    // *Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that
-    // specifies the error for the operation.
+
     google.rpc.Status error = 999;
 
     // Personevents in the bookstore.
-    repeated Personevent personevents = 1;
+    repeated Personevent personevent = 1;
 }
 
 // Request message for CreatePersonevent method.
 message CreatePersoneventRequest {
-    // Resource name of the parent resource where to create the event.
-    // For example: "persons/personid1".
-    string parent = 1;
-
-    // The event resource to create.
     Personevent personevent = 2;
 }
 
