@@ -44,25 +44,7 @@ service PersonsocialApi {
     //解绑设备
     rpc DebindingDevice(DebindingDeviceRequest) returns(google.protobuf.Empty){
     }
-
-    rpc AddToPersonEvents(AddToPersonEventsRequest) returns(AddToPersonEventsResponse){
-
-    }
 }
-
-enum EventType{
-    EVENT = 0;
-    ORDER = 1;
-}
-
-message PersonEvent{
-    string name = 1;
-    string eventname = 2;
-    string content = 3;
-    google.protobuf.Timestamp happenAt = 4;
-    EventType type = 5;
-}
-
 
 
 message Person {
@@ -365,16 +347,6 @@ message ListPersonRequest{
     bool reverse = 5;
     //查询条件支持，编号,姓名,身份证号
     PersonFilter filter = 6;
-}
-
-message AddToPersonEventsRequest{
-    string personid = 1;
-    PersonEvent event = 2;
-}
-
-message AddToPersonEventsResponse{
-    google.rpc.Status status = 999;
-    PersonEvent event = 1;
 }
 
 message ListFamilyMemberRequest{
