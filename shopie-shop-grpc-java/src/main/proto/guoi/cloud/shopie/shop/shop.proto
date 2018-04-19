@@ -111,8 +111,22 @@ message Shop {
     string foodLicense = 10;
     //餐饮服务安全级别
     string securityLevel = 11;
-}
+    //编码
+    string shopCode = 12;
+    //星级
+    int32 signLevel = 13;
 
+    //状态
+    ShopStatus status = 14;
+}
+enum ShopStatus{
+    //正在营业
+    ON = 0;
+    //暂停营业
+    PAUSE = 1;
+    // 停业
+    OFF = 2;
+}
 message ListShopsRequest {
     // The parent catalog resource name, for example, "catalogs/catalog1".
     string name_parent = 1;
