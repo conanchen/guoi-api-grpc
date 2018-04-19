@@ -52,9 +52,16 @@ message Person {
     string idno = 1;
     string personName = 2;
     string mobile = 3;
+}
+
+message Employee {
+    string idno = 1;
+    string personName = 2;
+    string mobile = 3;
     string healthLicense = 4;
     bool isBoss = 5;
 }
+
 enum ShopType {
     //自营
     OWN = 0;
@@ -120,7 +127,7 @@ message Shop {
     //状态
     ShopStatus status = 14;
     //员工
-    repeated Person employees = 15;
+    repeated Employee employees = 15;
 }
 enum ShopStatus{
     //正在营业
