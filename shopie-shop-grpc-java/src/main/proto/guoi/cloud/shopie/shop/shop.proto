@@ -67,7 +67,7 @@ message CreateShopRequest {
     // 店铺名称
     string shopName = 1;
     //分类
-    repeated Catalog catalog = 2;
+    repeated Catalog catalogs = 2;
 
     //地址
     guoi.cloud.common.Address defaultAddress = 4;
@@ -99,7 +99,7 @@ message Shop {
     // 店铺名称
     string shopName = 1;
     //分类
-    repeated Catalog catalog = 2;
+    repeated Catalog catalogs = 2;
     //地址
     guoi.cloud.common.Address defaultAddress = 4;
     //备注
