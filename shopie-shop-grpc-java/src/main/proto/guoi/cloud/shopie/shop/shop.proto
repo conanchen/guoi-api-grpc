@@ -48,12 +48,6 @@ message Catalog {
     string name = 2;
     string title = 3;
 }
-message Person {
-    string idno = 1;
-    string personName = 2;
-    string mobile = 3;
-}
-
 message Employee {
     string idno = 1;
     string personName = 2;
@@ -73,9 +67,8 @@ message CreateShopRequest {
     // 店铺名称
     string shopName = 1;
     //分类
-    Catalog catalog = 2;
-    // 负责人
-    Person person = 3;
+    repeated Catalog catalogs = 2;
+
     //地址
     guoi.cloud.common.Address defaultAddress = 4;
     //备注
@@ -84,6 +77,11 @@ message CreateShopRequest {
     string phone = 6;
     //商铺性质
     ShopType shopType = 7;
+
+    // 负责人
+    string idno = 8;
+    string personName = 9;
+    string mobile = 10;
 }
 
 
@@ -101,9 +99,7 @@ message Shop {
     // 店铺名称
     string shopName = 1;
     //分类
-    Catalog catalog = 2;
-    // 负责人
-    Person person = 3;
+    repeated Catalog catalogs = 2;
     //地址
     guoi.cloud.common.Address defaultAddress = 4;
     //备注
@@ -128,6 +124,11 @@ message Shop {
     ShopStatus status = 14;
     //员工
     repeated Employee employees = 15;
+
+    // 负责人
+    string idno = 16;
+    string personName = 17;
+    string mobile = 18;
 }
 enum ShopStatus{
     //正在营业
