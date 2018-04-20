@@ -13,16 +13,17 @@ import "google/protobuf/timestamp.proto";
 // The greeter service definition.
 service HelloApi {
     // Create a greeting
-    rpc CreateHello (HelloRequest) returns (Hello) {
+    rpc CreateHello (CreateHelloRequest) returns (Hello) {
     }
 
-    rpc ListHellos (ListHellosRequest) returns (HellosResponse) {
+    rpc ListHellos (ListHellosRequest) returns (ListHellosResponse) {
     }
 }
 
 // The request message containing the user's name.
-message HelloRequest {
-    string name = 1;
+message CreateHelloRequest {
+    string firstName = 1;
+    string lastName = 2;
 }
 
 message ListHellosRequest {
@@ -32,16 +33,17 @@ message ListHellosRequest {
 
 // The hello resource message
 message Hello {
-    string name = 1;
+    string firstName = 1;
+    string lastName = 2;
 
-    string message = 2;
+    string message = 3;
 
     google.protobuf.Timestamp create_time = 13;
     google.protobuf.Timestamp update_time = 14;
 }
 
 // The response message containing the greetings
-message HellosResponse {
+message ListHellosResponse {
     google.rpc.Status status = 999;
 
     repeated Hello hello = 1;
