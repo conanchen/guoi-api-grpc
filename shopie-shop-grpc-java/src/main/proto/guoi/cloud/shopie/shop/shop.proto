@@ -35,6 +35,14 @@ service ShopApi {
 
     }
 
+    rpc activateShop (ActivateRequest) returns (Shop) {
+
+    }
+
+    rpc deactiveShop (DeactivateRequest) returns (Shop) {
+
+    }
+
     rpc ListShops (ListShopsRequest) returns (ShopsResponse) {
 
     }
@@ -55,7 +63,15 @@ message Employee {
     string healthLicense = 4;
     bool isBoss = 5;
 }
+message ActivateRequest {
+    string name = 1;
+    string node = 2;
+}
 
+message DeactivateRequest {
+    string name = 1;
+    string node = 2;
+}
 enum ShopType {
     //自营
     OWN = 0;
