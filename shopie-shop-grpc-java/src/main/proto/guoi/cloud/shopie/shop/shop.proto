@@ -145,6 +145,8 @@ message Shop {
     string idno = 16;
     string personName = 17;
     string mobile = 18;
+    //logo
+    string logo = 19;
 }
 enum ShopStatus{
     //正在营业
