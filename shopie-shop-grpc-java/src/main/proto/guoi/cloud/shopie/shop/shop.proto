@@ -35,23 +35,23 @@ service ShopApi {
 
     }
 
-    rpc activateShop (ActivateShopRequest) returns (Shop) {
+    rpc ActivateShop (ActivateShopRequest) returns (ActivateShopResponse) {
 
     }
 
-    rpc deactiveShop (DeactivateShopRequest) returns (Shop) {
+    rpc DeactiveShop (DeactivateShopRequest) returns (DeactivateShopResponse) {
 
     }
 
-    rpc enableShop (EnableShopRequest) returns (Shop) {
+    rpc EnableShop (EnableShopRequest) returns (EnableShopResponse) {
 
     }
 
-    rpc disableShop (DisableShopRequest) returns (Shop) {
+    rpc DisableShop (DisableShopRequest) returns (DisableShopResponse) {
 
     }
 
-    rpc ListShops (ListShopsRequest) returns (ShopsResponse) {
+    rpc ListShops (ListShopsRequest) returns (ListShopsResponse) {
 
     }
 }
@@ -76,9 +76,23 @@ message ActivateShopRequest {
     string note = 2;
 }
 
+message ActivateShopResponse {
+    Shop shop = 2;
+}
+
 message DeactivateShopRequest {
     string name = 1;
     string note = 2;
+}
+message DeactivateShopResponse {
+    Shop shop = 2;
+}
+message EnableShopResponse {
+    Shop shop = 2;
+}
+
+message DisableShopResponse {
+    Shop shop = 2;
 }
 
 message EnableShopRequest{
@@ -166,7 +180,7 @@ message Shop {
 
     bool enable = 20;
 }
-enum ShopStatus{
+enum ShopStatus {
     //正在营业
     ON = 0;
     //暂停营业
@@ -186,7 +200,7 @@ message ListShopsRequest {
 }
 
 // The response message containing the catalogs
-message ShopsResponse {
+message ListShopsResponse {
     google.rpc.Status status = 999;
 
     repeated Shop shops = 1;
