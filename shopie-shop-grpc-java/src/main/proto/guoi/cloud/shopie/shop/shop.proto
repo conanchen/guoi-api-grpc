@@ -65,12 +65,12 @@ message Employee {
 }
 message ActivateRequest {
     string name = 1;
-    string node = 2;
+    string note = 2;
 }
 
 message DeactivateRequest {
     string name = 1;
-    string node = 2;
+    string note = 2;
 }
 enum ShopType {
     //自营
