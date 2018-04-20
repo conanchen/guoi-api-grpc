@@ -71,21 +71,21 @@ message Employee {
     string healthLicense = 4;
     bool isBoss = 5;
 }
-message ActivateRequest {
+message ActivateShopRequest {
     string name = 1;
     string note = 2;
 }
 
-message DeactivateRequest {
+message DeactivateShopRequest {
     string name = 1;
     string note = 2;
 }
 
-message EnableRequest{
+message EnableShopRequest{
     string name = 1;
 }
 
-message DisableRequest{
+message DisableShopRequest{
     string name = 1;
 }
 enum ShopType {
