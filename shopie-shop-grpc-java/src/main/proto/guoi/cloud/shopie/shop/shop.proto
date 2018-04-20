@@ -35,19 +35,19 @@ service ShopApi {
 
     }
 
-    rpc activateShop (ActivateRequest) returns (Shop) {
+    rpc activateShop (ActivateShopRequest) returns (Shop) {
 
     }
 
-    rpc deactiveShop (DeactivateRequest) returns (Shop) {
+    rpc deactiveShop (DeactivateShopRequest) returns (Shop) {
 
     }
 
-    rpc enableShop (EnableRequest) returns (Shop) {
+    rpc enableShop (EnableShopRequest) returns (Shop) {
 
     }
 
-    rpc disableShop (DisableRequest) returns (Shop) {
+    rpc disableShop (DisableShopRequest) returns (Shop) {
 
     }
 
