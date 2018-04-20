@@ -49,6 +49,7 @@ message ListPersoneventRequest{
 // A event resource.
 message Personevent {
     string personid = 2;
+    string id = 4;
     string name = 1;
     enum EventType{
         EVENT = 0;
