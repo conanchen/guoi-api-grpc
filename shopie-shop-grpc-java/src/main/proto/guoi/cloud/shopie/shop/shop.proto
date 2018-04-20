@@ -163,6 +163,8 @@ message Shop {
     string mobile = 18;
     //logo
     string logo = 19;
+
+    bool enable = 20;
 }
 enum ShopStatus{
     //正在营业
@@ -170,7 +172,7 @@ enum ShopStatus{
     //暂停营业
     PAUSE = 1;
     // 停业
-    OFF = 2;
+    //OFF = 2;
 }
 message ListShopsRequest {
     // The parent catalog resource name, for example, "catalogs/catalog1".
