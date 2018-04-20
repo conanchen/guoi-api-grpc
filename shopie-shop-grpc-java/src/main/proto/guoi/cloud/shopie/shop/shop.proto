@@ -43,6 +43,14 @@ service ShopApi {
 
     }
 
+    rpc enableShop (EnableRequest) returns (Shop) {
+
+    }
+
+    rpc disableShop (DisableRequest) returns (Shop) {
+
+    }
+
     rpc ListShops (ListShopsRequest) returns (ShopsResponse) {
 
     }
@@ -71,6 +79,14 @@ message ActivateRequest {
 message DeactivateRequest {
     string name = 1;
     string note = 2;
+}
+
+message EnableRequest{
+    string name = 1;
+}
+
+message DisableRequest{
+    string name = 1;
 }
 enum ShopType {
     //自营
