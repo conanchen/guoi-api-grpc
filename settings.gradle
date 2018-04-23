@@ -11,6 +11,6 @@ include 'party-personhealth-grpc-java'
 include 'party-personsocial-grpc-java'
 include 'shopie-order-grpc-java'
 include 'shopie-catalog-grpc-java'
+include 'shopie-product-grpc-java'
 include 'shopie-shop-grpc-java'
 include 'zcommon-grpc-java'
-
