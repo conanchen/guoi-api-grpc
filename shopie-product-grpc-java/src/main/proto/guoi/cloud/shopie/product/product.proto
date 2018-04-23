@@ -98,7 +98,7 @@ message CreateProductRequest {
     string productName = 1;
 
     //分类
-    Catalog catalogs = 2;
+    Catalog catalog = 2;
 
     //备注
     string remark = 5;
