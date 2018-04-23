@@ -131,7 +131,7 @@ message CreateProductRequest {
     string desciption = 13;
 
     // 状态 上/下架
-    bool isOnshelf = 14;
+    bool isActivated = 14;
 
     // 要么是产品规格要么是服务规格
     oneof Spec{
@@ -157,9 +157,6 @@ message ServiceSpec{
 
     // 描述
     string desciption = 13;
-
-    // 状态 上/下架 default true
-    bool isActivated = 14;
 }
 
 message ProductSpec{
@@ -180,9 +177,6 @@ message ProductSpec{
 
     // 描述
     string desciption = 13;
-
-    // 状态 上/下架
-    bool isOnshelf = 14;
 }
 
 
