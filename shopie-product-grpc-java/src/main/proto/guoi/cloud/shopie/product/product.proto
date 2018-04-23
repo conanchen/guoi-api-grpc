@@ -231,12 +231,6 @@ message Product {
     }
 
 }
-enum ProductType {
-    //正在营业
-    SERVICE = 0;
-    //暂停营业
-    PRODUCT = 1;
-}
 message ListProductsRequest {
     // The parent catalog resource name, for example, "catalogs/catalog1".
     string name_parent = 1;
