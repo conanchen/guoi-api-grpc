@@ -98,7 +98,7 @@ message CreateProductRequest {
     string productName = 1;
 
     //分类
-    repeated Catalog catalogs = 2;
+    Catalog catalogs = 2;
 
     //备注
     string remark = 5;
@@ -192,7 +192,7 @@ message Product {
     string productName = 1;
 
     //分类
-    repeated Catalog catalogs = 2;
+    Catalog catalogs = 2;
 
     //备注
     string remark = 5;
