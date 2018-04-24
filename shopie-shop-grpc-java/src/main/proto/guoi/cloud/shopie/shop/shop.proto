@@ -50,72 +50,7 @@ service ShopApi {
     rpc DisableShop (DisableShopRequest) returns (DisableShopResponse) {
 
     }
-
-    rpc ListShops (ListShopsRequest) returns (ListShopsResponse) {
-
-    }
-
-    // Gets a shop.
-    rpc CreateEmployee (CreateEmployeeRequest) returns (Shop) {
-
-    }
-
-    rpc UpdateEmployee (UpdateEmployeeRequest) returns (Shop) {
-
-    }
-
-    rpc ActivateEmployee (ActivateEmployeeRequest) returns (ActivateEmployeeResponse) {
-
-    }
-
-    rpc DeactiveEmployee (DeactivateEmployeeRequest) returns (DeactivateEmployeeResponse) {
-
-    }
 }
-
-message Employee {
-    string name = 999;
-
-    string idno = 1;
-    string personName = 2;
-    string mobile = 3;
-    string healthLicense = 4;
-    bool isBoss = 5;
-
-    string avatar = 6;
-    // 位置信息
-    guoi.cloud.common.Address latestAddress = 7;
-    // 是否启用
-    bool isActivated = 8;
-    // 资质认证
-    bool isCertified = 9;
-}
-
-message CreateEmployeeRequest {
-    string idno = 1;
-    string personName = 2;
-    string mobile = 3;
-}
-
-message UpdateEmployeeRequest {
-    Employee employee = 1;
-}
-
-message ActivateEmployeeRequest {
-    string name = 1;
-}
-message DeactivateEmployeeRequest {
-    string name = 1;
-}
-message ActivateEmployeeResponse {
-    Employee employee = 2;
-}
-
-message DeactivateEmployeeResponse {
-    Employee employee = 2;
-}
-
-
 message UpdateShopRequest {
     Shop shop = 2;
 }
