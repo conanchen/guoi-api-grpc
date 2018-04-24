@@ -102,6 +102,10 @@ message Person {
     Education education = 26;
 
     string name_refPerson = 27;
+
+    float high = 28;
+    float weight = 29;
+
     //The creation timestamp of an entity.
     google.protobuf.Timestamp create_time = 98;
 }
