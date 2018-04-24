@@ -125,6 +125,7 @@ message Org8n{
     string hotPhone = 13;
     string logo = 14;
     string serialno = 15;
+    string memo = 16;
 }
 
 message CreateOrg8nRequest{
