@@ -56,13 +56,7 @@ message Catalog {
     string name = 2;
     string title = 3;
 }
-message Employee {
-    string idno = 1;
-    string personName = 2;
-    string mobile = 3;
-    string healthLicense = 4;
-    bool isBoss = 5;
-}
+
 message ActivateProductRequest {
     string name = 1;
     string note = 2;
@@ -87,9 +81,9 @@ enum ProductType {
 }
 
 enum ServiceMethod {
-    //自营
+    // 站内
     OUTTER = 0;
-    //第三方
+    // 站外
     INNER = 1;
 }
 
@@ -127,7 +121,7 @@ message Variant{
     int32 period = 1;
 
     // 单位
-    string unit = 9;
+    string weightUnit = 9;
 
     // 原价
     float price = 10;
