@@ -156,8 +156,6 @@ message Shop {
     int32 signLevel = 13;
     //状态
     ShopStatus status = 14;
-    //员工
-    repeated Employee employees = 15;
 
     // 负责人
     string idno = 16;
