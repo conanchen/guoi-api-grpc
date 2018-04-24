@@ -127,6 +127,7 @@ message Org8n{
     string logo = 14;
     string serialno = 15;
     string memo = 16;
+    string email = 17;
 }
 
 message CreateOrg8nRequest{
