@@ -112,51 +112,17 @@ message CreateProductRequest {
     //服务方式 站内/外
     ServiceMethod serviceMethod = 8;
 
-    // 单位
-    string unit = 9;
-
-    // 原价
-    float price = 10;
-
-    // vip 价格
-    float vipPrice = 11;
-
-    // 重量
-    string weight = 12;
-
-    // 描述
-    string desciption = 13;
-
     // 状态 上/下架
     bool isActivated = 14;
 
-    // 要么是产品规格要么是服务规格
-    oneof Spec{
-        ServiceSpec serviceSpec = 15;
-        ProductSpec productSpec= 16;
-    }
+    // 规格
+    repeated Spec specs = 15;
 
-    //新建
+    // 新建
     google.protobuf.Timestamp create_time = 98;
 }
-message ServiceSpec{
-    // 单位
-    string unit = 9;
 
-    // 原价
-    float price = 10;
-
-    // vip 价格
-    float vipPrice = 11;
-
-    // 重量
-    string weight = 12;
-
-    // 描述
-    string description = 13;
-}
-
-message ProductSpec{
+message Spec{
     //服务时长
     int32 period = 1;
 
@@ -206,29 +172,11 @@ message Product {
     //服务方式 站内/外
     ServiceMethod serviceMethod = 8;
 
-    // 单位
-    string unit = 9;
-
-    // 原价
-    float price = 10;
-
-    // vip 价格
-    float vipPrice = 11;
-
-    // 重量
-    string weight = 12;
-
-    // 描述
-    string desciption = 13;
-
     // 状态 上/下架
     bool isActivated = 14;
 
-    // 要么是产品规格要么是服务规格
-    oneof Spec{
-        ServiceSpec serviceSpec = 15;
-        ProductSpec productSpec= 16;
-    }
+    // 规格
+    repeated Spec specs = 15;
 
 }
 message ListProductsRequest {
