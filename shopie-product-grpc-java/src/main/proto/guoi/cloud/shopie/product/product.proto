@@ -89,16 +89,10 @@ enum ServiceMethod {
 
 message CreateProductRequest {
     // 店铺名称
-    string productName = 1;
+    string title = 1;
 
     //分类
     Catalog catalog = 2;
-
-    //备注
-    string remark = 5;
-
-    // 服务商电话
-    string phone = 6;
 
     //产品性质 服务/商品
     ProductType productType = 7;
@@ -149,16 +143,10 @@ message Product {
     // id
     string name = 999;
     // 店铺名称
-    string productName = 1;
+    string title = 1;
 
     //分类
     Catalog catalog = 2;
-
-    //备注
-    string remark = 5;
-
-    // 服务商电话
-    string phone = 6;
 
     //产品性质 服务/商品
     ProductType productType = 7;
