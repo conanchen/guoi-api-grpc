@@ -23,6 +23,10 @@ service EmployeeApi {
 
     }
 
+    rpc GetEmployee (GetEmployeeRequest) returns (Employee) {
+
+    }
+
     rpc ActivateEmployee (ActivateEmployeeRequest) returns (ActivateEmployeeResponse) {
 
     }
@@ -61,6 +65,10 @@ message UpdateEmployeeRequest {
 }
 
 message ActivateEmployeeRequest {
+    string name = 1;
+}
+
+message GetEmployeeRequest {
     string name = 1;
 }
 message DeactivateEmployeeRequest {
