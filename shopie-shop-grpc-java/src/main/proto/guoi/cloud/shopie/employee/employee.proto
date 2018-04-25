@@ -1,0 +1,75 @@
+syntax = "proto3";
+package guoi.cloud.shopie.employee;
+
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.shopie.employee.grpc";
+option java_outer_classname = "EmployeeApiProto";
+
+import "guoi/cloud/common/common.proto";
+import "google/rpc/status.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+// The shop service definition.
+service EmployeeApi {
+
+    // Gets a shop.
+    rpc CreateEmployee (CreateEmployeeRequest) returns (Employee) {
+
+    }
+
+    rpc UpdateEmployee (UpdateEmployeeRequest) returns (Employee) {
+
+    }
+
+    rpc ActivateEmployee (ActivateEmployeeRequest) returns (ActivateEmployeeResponse) {
+
+    }
+
+    rpc DeactiveEmployee (DeactivateEmployeeRequest) returns (DeactivateEmployeeResponse) {
+
+    }
+}
+
+message Employee {
+    string name = 999;
+
+    string idno = 1;
+    string personName = 2;
+    string mobile = 3;
+    string healthLicense = 4;
+    bool isBoss = 5;
+
+    string avatar = 6;
+    // 位置信息
+    guoi.cloud.common.Address latestAddress = 7;
+    // 是否启用
+    bool isActivated = 8;
+    // 资质认证
+    bool isCertified = 9;
+}
+
+message CreateEmployeeRequest {
+    string idno = 1;
+    string personName = 2;
+    string mobile = 3;
+}
+
+message UpdateEmployeeRequest {
+    Employee employee = 1;
+}
+
+message ActivateEmployeeRequest {
+    string name = 1;
+}
+message DeactivateEmployeeRequest {
+    string name = 1;
+}
+message ActivateEmployeeResponse {
+    Employee employee = 2;
+}
+
+message DeactivateEmployeeResponse {
+    Employee employee = 2;
+}

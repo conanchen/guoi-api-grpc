@@ -50,12 +50,7 @@ service ShopApi {
     rpc DisableShop (DisableShopRequest) returns (DisableShopResponse) {
 
     }
-
-    rpc ListShops (ListShopsRequest) returns (ListShopsResponse) {
-
-    }
 }
-
 message UpdateShopRequest {
     Shop shop = 2;
 }
@@ -63,13 +58,6 @@ message UpdateShopRequest {
 message Catalog {
     string name = 2;
     string title = 3;
-}
-message Employee {
-    string idno = 1;
-    string personName = 2;
-    string mobile = 3;
-    string healthLicense = 4;
-    bool isBoss = 5;
 }
 message ActivateShopRequest {
     string name = 1;
@@ -168,8 +156,6 @@ message Shop {
     int32 signLevel = 13;
     //状态
     ShopStatus status = 14;
-    //员工
-    repeated Employee employees = 15;
 
     // 负责人
     string idno = 16;
@@ -180,6 +166,7 @@ message Shop {
 
     bool enable = 20;
 }
+
 enum ShopStatus {
     //正在营业
     ON = 0;
