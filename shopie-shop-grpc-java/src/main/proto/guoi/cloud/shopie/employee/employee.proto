@@ -34,6 +34,10 @@ service EmployeeApi {
     rpc DeactiveEmployee (DeactivateEmployeeRequest) returns (DeactivateEmployeeResponse) {
 
     }
+
+    rpc GetEmployeeByAccount (GetEmployeeByAccountRequest) returns (GetEmployeeByAccountResponse) {
+
+    }
 }
 
 message Employee {
@@ -52,6 +56,8 @@ message Employee {
     bool isActivated = 8;
     // 资质认证
     bool isCertified = 9;
+
+    string account = 10;
 }
 
 message CreateEmployeeRequest {
@@ -73,6 +79,15 @@ message GetEmployeeRequest {
 }
 message DeactivateEmployeeRequest {
     string name = 1;
+}
+
+message GetEmployeeByAccountRequest {
+    string account = 1;
+}
+
+
+message GetEmployeeByAccountResponse {
+    Employee employee = 1;
 }
 message ActivateEmployeeResponse {
     Employee employee = 2;
