@@ -341,6 +341,9 @@ message UpdatePersonRequest{
     Education education = 26;
 
     string name_refPerson = 27;
+
+    float high = 28;
+    float weight = 29;
 }
 message ListPersonRequest{
     string name_station = 99;
