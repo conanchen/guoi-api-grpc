@@ -128,6 +128,7 @@ message Org8n{
     string serialno = 15;
     string memo = 16;
     string email = 17;
+    repeated string shopid = 18;
 }
 
 message CreateOrg8nRequest{
