@@ -63,6 +63,7 @@ message ActivateProductRequest {
 }
 
 message ActivateProductResponse {
+    google.rpc.Status status = 999;
     Product product = 2;
 }
 
@@ -71,6 +72,7 @@ message DeactivateProductRequest {
     string note = 2;
 }
 message DeactivateProductResponse {
+    google.rpc.Status status = 999;
     Product product = 2;
 }
 enum ProductType {
