@@ -23,11 +23,24 @@ service EmployeeApi {
 
     }
 
+    rpc GetEmployee (GetEmployeeRequest) returns (Employee) {
+
+    }
+
+    rpc ListEmployee (ListEmployeeRequest) returns (ListEmployeeResponse) {
+
+    }
+
+
     rpc ActivateEmployee (ActivateEmployeeRequest) returns (ActivateEmployeeResponse) {
 
     }
 
     rpc DeactiveEmployee (DeactivateEmployeeRequest) returns (DeactivateEmployeeResponse) {
+
+    }
+
+    rpc GetEmployeeByAccount (GetEmployeeByAccountRequest) returns (GetEmployeeByAccountResponse) {
 
     }
 }
@@ -44,10 +57,14 @@ message Employee {
     string avatar = 6;
     // 位置信息
     guoi.cloud.common.Address latestAddress = 7;
+    //家庭住址
+    guoi.cloud.common.Address homeAddress = 11;
     // 是否启用
     bool isActivated = 8;
     // 资质认证
     bool isCertified = 9;
+    //账号
+    string account = 10;
 }
 
 message CreateEmployeeRequest {
@@ -63,13 +80,36 @@ message UpdateEmployeeRequest {
 message ActivateEmployeeRequest {
     string name = 1;
 }
+
+message GetEmployeeRequest {
+    string name = 1;
+}
 message DeactivateEmployeeRequest {
     string name = 1;
 }
+
+message GetEmployeeByAccountRequest {
+    string account = 1;
+}
+
+message ListEmployeeRequest {
+}
+
+message ListEmployeeResponse {
+    google.rpc.Status status = 999;
+    repeated Employee employee = 1;
+}
+
+message GetEmployeeByAccountResponse {
+    google.rpc.Status status = 999;
+    Employee employee = 1;
+}
 message ActivateEmployeeResponse {
+    google.rpc.Status status = 999;
     Employee employee = 2;
 }
 
 message DeactivateEmployeeResponse {
+    google.rpc.Status status = 999;
     Employee employee = 2;
 }
