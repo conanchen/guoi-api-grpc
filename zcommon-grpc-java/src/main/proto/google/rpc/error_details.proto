@@ -187,6 +187,7 @@ message Help {
     repeated Link links = 1;
 }
 
+
 // Provides a localized error message that is safe to return to the user
 // which can be attached to an RPC error.
 message LocalizedMessage {
