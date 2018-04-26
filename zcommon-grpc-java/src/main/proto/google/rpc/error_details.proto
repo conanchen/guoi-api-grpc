@@ -187,9 +187,9 @@ message Help {
     repeated Link links = 1;
 }
 
-
 // Provides a localized error message that is safe to return to the user
 // which can be attached to an RPC error.
+// kng
 message LocalizedMessage {
     // The locale used following the specification defined at
     // http://www.rfc-editor.org/rfc/bcp/bcp47.txt.
