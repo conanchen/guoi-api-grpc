@@ -14,7 +14,7 @@ import "google/rpc/status.proto";
 
 service BloodpressureApi {
     // Returns a list of all bloodpressures in the bloodpressure.
-    rpc ListBloodpressures (google.protobuf.Empty) returns (ListBloodpressuresResponse) {
+    rpc ListBloodpressures (ListBloodpressuresRequest) returns (ListBloodpressuresResponse) {
         //    option (google.api.http) = {
         //      get: "/v1/{parent=persons/*}/bloodpressures"
         //    };

@@ -14,7 +14,7 @@ import "google/rpc/status.proto";
 
 service BloodsugarApi {
     // Returns a list of all bloodsugars in the bloodsugar.
-    rpc ListBloodsugars (google.protobuf.Empty) returns (ListBloodsugarsResponse) {
+    rpc ListBloodsugars (ListBloodsugarsRequest) returns (ListBloodsugarsResponse) {
         //    option (google.api.http) = {
         //      get: "/v1/{parent=persons/*}/bloodsugars"
         //    };
