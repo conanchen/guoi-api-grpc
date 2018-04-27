@@ -4,7 +4,7 @@ buildscript {
     apply from: "$rootDir/blessedDeps.gradle"
 
     repositories {
-        jcenter()
+        maven { url "http://192.168.1.41:8081/nexus/content/repositories/central" }
     }
     dependencies {
         classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.5"
@@ -67,9 +67,7 @@ allprojects {
         snapshotRepositoryUrl = 'http://192.168.1.41:8081/nexus/content/repositories/snapshots/'
     }
     repositories {
-        jcenter()
-        mavenCentral()
-        maven { url "https://jitpack.io" }
+        maven { url "http://192.168.1.41:8081/nexus/content/repositories/central" }
     }
 }
 
@@ -93,11 +91,6 @@ subprojects {
         archives javadocJar
     }
 
-}
-repositories {
-    //mavenCentral()
-    jcenter()
-    //maven { url 'https://jitpack.io' }
 }
 
 project.logger.lifecycle("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
