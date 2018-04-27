@@ -67,19 +67,19 @@ message Person {
     //民族
     string nation = 8;
     //政治面貌
-    Politic politic = 9;
+    string politic = 9;
     //爱好
     string hobbies = 10;
     //老人类型
-    OldType oldType = 11;
+    string oldType = 11;
     //婚姻状况
-    MaritalStatus maritalStatus = 12;
+    string maritalStatus = 12;
     //医疗方式
-    TreatmentMethod treatmentMethod = 13;
+    string treatmentMethod = 13;
     //居住状态
-    LivingStatus livingStatus= 14;
+    string livingStatus= 14;
     //经济来源
-    EcnomicSource ecnomicSource= 15;
+    string ecnomicSource= 15;
     //用户来源
     string source= 16;
     //注册驿站id
@@ -99,7 +99,7 @@ message Person {
     VipType vipType = 24;
     google.protobuf.Timestamp vipEnd_time = 25;
     /********vipi 信息**********/
-    Education education = 26;
+    string education = 26;
 
     string name_refPerson = 27;
 
@@ -125,65 +125,7 @@ enum Gender{
     MAN = 0;
     WOMEN = 1;
 }
-enum OldType{
-    //普通
-    NORMAL = 0;
-    //三无
-    SANWU = 2;
-    //失能
-    DISABILITY = 3;
-    //五保户
-    FIVE_GUARANTEES = 4;
-    //空巢
-    EMPTY_NESTER = 5;
-    //独居
-    LIVE_ALONE = 6;
-    //失智
-    DEMENTIA = 7;
-    //优抚老人
-    SPECIAL_CARE = 8;
-}
-enum Education {
-    //文盲
-    EDU_NONE = 0;
-    //小学
-    PRIMARY_SCHOOL = 2;
-    //初中
-    JUNIOR_HIGH_SCHOOL = 3;
-    //高中/技校/中专
-    SENIOR_HIGH_SCHOOL = 4;
-    //不详
-    UNKNOWN = 5;
-}
 
-enum Politic{
-    // Communist Party of China member(CPC),中国共产党党员
-    CPCER = 0;
-    // Communist probationary member,中共预备党员
-    PRE_CPCER = 1;
-    // Communist Youth League members 共青团员
-    CYLER = 2;
-    // Revolutionary Committee of the Chinese Kuomintang,民革党员
-    RCCKER = 3;
-    // China Democratic League 民盟
-    MINMENGER = 4;
-    //China Democratic National Construction Association,民建会
-    CDNCAER = 5;
-    //China Association for Promoting Democracy,民进会
-    CAPDER = 6;
-    //Chinese Peasants' and Workers' Democratic Party 农工党
-    CPWDPER = 7;
-    //China Party for Public Interest 致公党
-    CPPIER = 8;
-    //Jiusan Society 九三学社
-    JIUSANER = 9;
-    //Taiwan Democratic Self-Government League 台盟
-    TDSGL = 10;
-    //无党派人士
-    NONE = 11;
-    //普通居民
-    NORMAL_PERSON = 12;
-}
 enum VipType{
     //不设期限
     LONG = 0;
@@ -199,57 +141,7 @@ enum PersonSortKey{
     //活跃度
     ACTIVITY = 4;
 }
-//婚姻状况
-enum MaritalStatus{
-    //已婚
-    MARRIED = 0;
-    //未婚
-    UNMARRIED = 1;
-    //丧偶
-    WIDOWED = 2;
-    //离婚
-    DIVORCE = 3;
-}
-//医疗方式
-enum TreatmentMethod{
-    //城镇
-    TOWN = 0;
-    //农村
-    COUNTRYSIDE = 2;
-    //自费
-    OWN = 3;
-}
 
-//居住状态
-enum LivingStatus{
-    //独居
-    ALONE = 0;
-    //与配偶
-    WITH_SPOUSE = 1;
-    //与子女
-    WITH_CHILDREN = 2;
-    //与父母
-    WITH_PARENT = 3;
-    //与兄弟姐妹
-    WITH_BRO_OR_SISTER = 4;
-    //与亲戚
-    WITH_RELATIVES = 5;
-    //与非亲戚
-    WITH_NOT_RELATIVES = 6;
-    //养老机构
-    PENSION_AGENCY = 7;
-}
-//经济来源
-enum EcnomicSource{
-    //退休金/养老金
-    FROM_PENSION = 0;
-    //子女补贴
-    FROM_CHILDREN = 1;
-    //亲友资助
-    FROM_RELATIVES = 2;
-    //其他
-    OTHER = 3;
-}
 message FamilyMember{
     //resource id
     string name = 99;
@@ -304,19 +196,19 @@ message UpdatePersonRequest{
     //民族
     string nation = 8;
     //政治面貌
-    Politic politic = 9;
+    string politic = 9;
     //爱好
     string hobbies = 10;
     //老人类型
-    OldType oldType = 11;
+    string oldType = 11;
     //婚姻状况
-    MaritalStatus maritalStatus = 12;
+    string maritalStatus = 12;
     //医疗方式
-    TreatmentMethod treatmentMethod = 13;
+    string treatmentMethod = 13;
     //居住状态
-    LivingStatus livingStatus = 14;
+    string livingStatus = 14;
     //经济来源
-    EcnomicSource ecnomicSource = 15;
+    string ecnomicSource = 15;
     //用户来源
     string source = 16;
     //注册驿站id
@@ -338,7 +230,7 @@ message UpdatePersonRequest{
 
     google.protobuf.Timestamp vipEnd_time = 25;
     /********vipi 信息**********/
-    Education education = 26;
+    string education = 26;
 
     string name_refPerson = 27;
     float high = 28;
