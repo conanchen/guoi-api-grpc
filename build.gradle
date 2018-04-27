@@ -9,6 +9,7 @@ buildscript {
     dependencies {
         classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.5"
         classpath "pl.allegro.tech.build:axion-release-plugin:1.8.1"
+        classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -31,8 +32,9 @@ scmVersion {
 allprojects {
     project.version = scmVersion.version
     group 'com.github.conanchen.guoi-micro-apis'
-
+    version 'master-SNAPSHOT'
     apply plugin: 'java'
+    apply plugin: 'com.bmuschko.nexus'
 
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
@@ -46,6 +48,23 @@ allprojects {
 
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"
+
+
+    }
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    }
+
+    extraArchive {
+        sources = false
+        tests = false
+        javadoc = false
+    }
+
+    nexus {
+        sign = true
+        repositoryUrl = 'http://192.168.1.41:8081/nexus/content/repositories/releases/'
+        snapshotRepositoryUrl = 'http://192.168.1.41:8081/nexus/content/repositories/snapshots/'
     }
     repositories {
         jcenter()
@@ -69,19 +88,16 @@ subprojects {
     }
 
     artifacts {
+        archives jar
         archives sourcesJar
         archives javadocJar
     }
 
 }
 repositories {
-    mavenCentral()
+    //mavenCentral()
     jcenter()
-    maven { url 'https://jitpack.io' }
-}
-
-configurations.all {
-    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    //maven { url 'https://jitpack.io' }
 }
 
 project.logger.lifecycle("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
