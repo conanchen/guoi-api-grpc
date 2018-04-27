@@ -101,6 +101,8 @@ message Catalog {
 
     string title = 2;
 
+    Catalog parent = 3;
+
     google.protobuf.Timestamp create_time = 13;
     google.protobuf.Timestamp update_time = 14;
 }
