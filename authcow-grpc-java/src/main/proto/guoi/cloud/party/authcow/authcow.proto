@@ -1,0 +1,75 @@
+syntax = "proto3";
+package guoi.cloud.party.org8n;
+
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.authcow";
+option java_outer_classname = "Org8nApiProto";
+
+import "guoi/cloud/common/common.proto";
+import "google/protobuf/empty.proto";
+import "google/rpc/status.proto";
+
+service AuthcowApi {
+
+    rpc CreateUser(CreateUserRequest) returns (User){
+
+    }
+
+    rpc GetUser (GetUserRequest) returns (User) {
+
+    }
+
+    rpc UpdateUser(UpdateUserRequest) returns (User){
+
+    }
+
+    rpc DeleteUser(DeleteUserRequest) returns (google.protobuf.Empty){
+
+    }
+
+}
+
+
+enum UserType{
+    ADMIN=0;
+    USER=1;
+}
+
+message User{
+    int32 id = 1;
+    string login = 2;
+    string pwd = 3;
+    UserType type = 4;
+    repeated Role role = 5;
+}
+
+message Role{
+    int32 id = 1;
+    string name = 2;
+    repeated Privilege privilege = 3;
+}
+
+message Privilege{
+    int32 id = 1;
+    string name = 2;
+}
+
+
+message CreateUserRequest{
+    User user = 1;
+}
+
+message GetUserRequest{
+    int32 id = 1;
+    string login = 2;
+}
+
+message UpdateUserRequest{
+    User user = 1;
+}
+
+message DeleteUserRequest{
+    int32 id = 1;
+    string login = 2;
+}
