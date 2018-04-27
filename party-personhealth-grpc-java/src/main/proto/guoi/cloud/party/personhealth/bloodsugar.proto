@@ -60,7 +60,8 @@ message Bloodsugar {
     google.protobuf.Timestamp check_time = 8;
 
     google.protobuf.Timestamp create_time = 9; //The creation timestamp of an entity.
-
+    //设备imei号
+    string imei = 10;
     // resource references
     // device resource
     string name_device = 100; //检测终端资源名称
@@ -101,4 +102,9 @@ message DeleteBloodsugarRequest {
     // For example: "persons/personid1/bloodsugars/sugarid2".
     string name = 1;
 
+}
+message ListBloodsugarsRequest {
+            string imei = 1;
+            google.protobuf.Timestamp startTime = 2;
+            google.protobuf.Timestamp endTime = 3;
 }
