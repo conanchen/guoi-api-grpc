@@ -48,10 +48,6 @@ service Org8nApi {
 
     }
 
-    rpc GetUser(GetUserRequest) returns (User){
-
-    }
-
     rpc UpdateEmployee(UpdateEmployeeRequest) returns (Employee){
 
     }
@@ -91,16 +87,8 @@ message Employee{
     UserType usertype = 12;
     string serialno = 13;
     int32 status = 14;
-    User user = 15;
+    string userid = 15;
     string email = 16;
-}
-
-message User{
-    string id = 1;
-    string login = 2;
-    string pwd = 3;
-    UserType type = 4;
-    Employee employee = 5;
 }
 
 message Org8n{
@@ -191,7 +179,6 @@ message CreateEmployeeRequest{
     // The catalog resource to create. the employee.name will be ignored.
     // The field name should match the Noun in the method name.
     Employee employee = 2;
-    User user = 3;
 }
 
 message GetEmployeeRequest{
