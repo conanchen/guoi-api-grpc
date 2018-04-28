@@ -1,0 +1,83 @@
+syntax = "proto3";
+package guoi.cloud.party.personhealth;
+
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.party.personhealth.grpc";
+option java_outer_classname = "DeviceApiProto";
+
+import "google/protobuf/any.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+import "google/rpc/status.proto";
+
+service DeviceApi {
+
+    rpc ListDevices (ListDevicesRequest) returns (ListDevicesResponse) {
+
+    }
+
+    rpc CreateDevice (CreateDeviceRequest) returns (CreateDeviceResponse) {
+
+    }
+}
+
+message DeviceGrpc {
+    //订单号
+    string orderNumber = 1;
+    //设备类型
+    string deviceType = 2;
+    //设备imei号
+    string imei = 3;
+    //设备sn号
+    string sn = 4;
+    //设备型号
+    string deviceModel = 5;
+    //设备sim号
+    string sim = 6;
+    //软件版本号
+    string softwareV = 7;
+    //固件版本号
+    string firmwareV = 8;
+    //激活状态
+    string activationState = 9;
+    //绑定状态
+    string bingState = 10;
+    //备注
+    string remarks = 11;
+
+}
+
+message CreateDeviceResponse {
+    // 总数
+    string total = 1;
+
+    // 导入成功数
+    string success = 2;
+
+    // 导入失败数
+    string fail = 3;
+    // 失败原因
+    string reason = 4;
+
+}
+
+message CreateDeviceRequest {
+repeated DeviceGrpc deviceGrpcs = 1;
+}
+
+message ListDevicesRequest{
+    //订单号
+    string orderNumber = 1;
+    //设备类型
+    string deviceType = 2;
+    //设备imei号
+    string imei = 3;
+    //激活状态
+    string activationState = 9;
+}
+
+message ListDevicesResponse{
+repeated DeviceGrpc deviceGrpcs = 1;
+}
