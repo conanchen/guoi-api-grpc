@@ -24,6 +24,8 @@ service DeviceApi {
 }
 
 message DeviceGrpc {
+    //设备uuid
+    string uuid = 12;
     //订单号
     string orderNumber = 1;
     //设备类型
@@ -46,7 +48,6 @@ message DeviceGrpc {
     string bingState = 10;
     //备注
     string remarks = 11;
-
 }
 
 message CreateDeviceResponse {
