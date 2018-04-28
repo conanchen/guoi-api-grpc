@@ -9,6 +9,7 @@ option java_outer_classname = "Org8nApiProto";
 import "guoi/cloud/common/common.proto";
 import "google/protobuf/empty.proto";
 import "google/rpc/status.proto";
+import "google/protobuf/timestamp.proto";
 
 service Org8nApi {
 
@@ -89,6 +90,7 @@ message Employee{
     int32 status = 14;
     string userid = 15;
     string email = 16;
+    google.protobuf.Timestamp createtime = 17;
 }
 
 message Org8n{
@@ -121,6 +123,7 @@ message Org8n{
     string memo = 16;
     string email = 17;
     repeated string shopid = 18;
+    string sosPhone = 19;
 }
 
 message CreateOrg8nRequest{

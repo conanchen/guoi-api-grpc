@@ -39,11 +39,11 @@ service ProductApi {
 
     }
 
-    rpc ActivateShop (ActivateProductRequest) returns (ActivateProductResponse) {
+    rpc ActivateProduct (ActivateProductRequest) returns (ActivateProductResponse) {
 
     }
 
-    rpc DeactiveShop (DeactivateProductRequest) returns (DeactivateProductResponse) {
+    rpc DeactiveProduct (DeactivateProductRequest) returns (DeactivateProductResponse) {
 
     }
 }
