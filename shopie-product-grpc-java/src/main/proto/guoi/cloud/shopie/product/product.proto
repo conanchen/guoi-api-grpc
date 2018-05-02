@@ -106,7 +106,7 @@ message CreateProductRequest {
     bool isActivated = 14;
 
     // 规格
-    repeated Variant variants = 15;
+    Variant variant = 15;
 
     // 新建
     google.protobuf.Timestamp create_time = 98;
@@ -160,7 +160,7 @@ message Product {
     bool isActivated = 14;
 
     // 规格
-    repeated Variant variants = 15;
+    Variant variant = 15;
 
 }
 message ListProductsRequest {
