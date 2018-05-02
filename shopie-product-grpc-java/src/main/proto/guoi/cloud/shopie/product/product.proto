@@ -85,12 +85,6 @@ enum ProductType {
     // 服务
     SERVICE = 1;
 }
-enum ProductType {
-    // 商品
-    PRODUT = 0;
-    // 服务
-    SERVICE = 1;
-}
 
 enum ServiceMethod {
     // 站内
