@@ -46,6 +46,10 @@ service ProductApi {
     rpc DeactiveProduct (DeactivateProductRequest) returns (DeactivateProductResponse) {
 
     }
+
+    rpc ListProductVariants(ListProductVariantsRequest) returns(ListProductVariantsResponse){
+
+    }
 }
 
 message UpdateProductRequest {
@@ -199,4 +203,12 @@ message ListProductsResponse {
     repeated Product products = 1;
 
     string next_page_token = 2;
+}
+
+message ListProductVariantsRequest{
+    string name_product = 1;
+}
+message ListProductVariantsResponse{
+    google.rpc.Status status = 999;
+    repeated Variant variants = 1;
 }
