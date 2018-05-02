@@ -162,6 +162,16 @@ message Product {
     // 规格
     repeated Variant variant = 15;
 
+    //描述信息
+    string description = 16;
+
+    //品牌
+    string brand = 17;
+
+    //供应商
+    string vendor = 18;
+
+    repeated string tags = 19;
 }
 message ListProductsRequest {
     // The parent catalog resource name, for example, "catalogs/catalog1".
