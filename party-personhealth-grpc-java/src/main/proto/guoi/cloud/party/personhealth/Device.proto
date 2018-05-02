@@ -65,7 +65,7 @@ message CreateDeviceResponse {
 }
 
 message CreateDeviceRequest {
-repeated DeviceGrpc deviceGrpcs = 1;
+    string filePath = 1;
 }
 
 message ListDevicesRequest{
