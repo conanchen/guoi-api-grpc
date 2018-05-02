@@ -80,10 +80,16 @@ message DeactivateProductResponse {
     Product product = 2;
 }
 enum ProductType {
-    //自营
-    OWN = 0;
-    //第三方
-    THIRD_PARTY = 1;
+    // 商品
+    PRODUT = 0;
+    // 服务
+    SERVICE = 1;
+}
+enum ProductType {
+    // 商品
+    PRODUT = 0;
+    // 服务
+    SERVICE = 1;
 }
 
 enum ServiceMethod {
