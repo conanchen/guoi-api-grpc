@@ -81,7 +81,7 @@ message DeactivateProductResponse {
 }
 enum ProductType {
     // 商品
-    PRODUT = 0;
+    PRODUCT = 0;
     // 服务
     SERVICE = 1;
 }
