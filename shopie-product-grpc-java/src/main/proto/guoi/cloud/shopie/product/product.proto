@@ -125,6 +125,10 @@ message CreateProductRequest {
 }
 
 message Variant{
+    string name = 999;
+
+    string name_product = 998;
+
     //服务时长
     int32 period = 1;
 
