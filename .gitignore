@@ -2,3 +2,5 @@
 /.idea
 /.gradle
 ./guoi-micro-apis.iml
+out
+build
