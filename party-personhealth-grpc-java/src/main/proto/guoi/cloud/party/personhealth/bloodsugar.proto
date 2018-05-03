@@ -104,7 +104,7 @@ message DeleteBloodsugarRequest {
 
 }
 message ListBloodsugarsRequest {
-            string imei = 1;
-            google.protobuf.Timestamp startTime = 2;
-            google.protobuf.Timestamp endTime = 3;
+    string imei = 1;
+    google.protobuf.Timestamp startTime = 2;
+    google.protobuf.Timestamp endTime = 3;
 }
