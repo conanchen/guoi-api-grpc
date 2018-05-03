@@ -66,6 +66,7 @@ message CreateDeviceResponse {
 
 message CreateDeviceRequest {
     string filePath = 1;
+    string orderNumber = 2;
 }
 
 message ListDevicesRequest{
