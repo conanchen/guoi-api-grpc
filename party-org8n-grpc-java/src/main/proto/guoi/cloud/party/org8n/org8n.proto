@@ -195,7 +195,7 @@ message GetEmployeeRequest{
 
 message GetUserRequest{
     string id = 1;
-    string employeeid = 2;
+    string employeeid = 3;
 }
 
 message UpdateEmployeeRequest{
