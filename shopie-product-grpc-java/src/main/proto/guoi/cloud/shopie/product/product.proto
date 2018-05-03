@@ -122,6 +122,8 @@ message CreateProductRequest {
     string vendor = 18;
 
     repeated string tags = 19;
+
+    repeated string images = 20;
 }
 
 message Variant{
@@ -191,6 +193,8 @@ message Product {
     string vendor = 18;
 
     repeated string tags = 19;
+
+    repeated string images = 20;
 }
 message ListProductsRequest {
     // The parent catalog resource name, for example, "catalogs/catalog1".
