@@ -65,12 +65,15 @@ message Employee {
     bool isCertified = 9;
     //账号
     string account = 10;
+
+    string userid = 12;
 }
 
 message CreateEmployeeRequest {
     string idno = 1;
     string personName = 2;
     string mobile = 3;
+    string userid = 4;
 }
 
 message UpdateEmployeeRequest {
