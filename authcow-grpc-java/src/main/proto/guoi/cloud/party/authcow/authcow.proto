@@ -37,21 +37,22 @@ enum UserType{
 }
 
 message User{
-    int32 id = 1;
+    int64 id = 1;
     string login = 2;
     string pwd = 3;
     UserType type = 4;
     repeated Role role = 5;
+    string platform = 6;
 }
 
 message Role{
-    int32 id = 1;
+    int64 id = 1;
     string name = 2;
     repeated Privilege privilege = 3;
 }
 
 message Privilege{
-    int32 id = 1;
+    int64 id = 1;
     string name = 2;
 }
 
@@ -61,7 +62,7 @@ message CreateUserRequest{
 }
 
 message GetUserRequest{
-    int32 id = 1;
+    int64 id = 1;
     string login = 2;
 }
 
@@ -70,6 +71,6 @@ message UpdateUserRequest{
 }
 
 message DeleteUserRequest{
-    int32 id = 1;
+    int64 id = 1;
     string login = 2;
 }
