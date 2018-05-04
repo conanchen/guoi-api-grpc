@@ -106,6 +106,9 @@ message Person {
     float high = 28;
     float weight = 29;
 
+    //归属驿站id list
+    repeated string name_jurisdictionStations = 30;
+
     //The creation timestamp of an entity.
     google.protobuf.Timestamp create_time = 98;
 }
