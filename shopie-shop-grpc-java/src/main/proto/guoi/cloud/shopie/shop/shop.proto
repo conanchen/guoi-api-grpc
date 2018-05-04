@@ -116,6 +116,7 @@ message CreateShopRequest {
     string idno = 8;
     string personName = 9;
     string mobile = 10;
+    string userid = 11;
 }
 
 
