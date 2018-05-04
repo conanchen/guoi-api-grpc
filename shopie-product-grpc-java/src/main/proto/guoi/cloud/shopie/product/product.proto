@@ -144,7 +144,7 @@ message Variant{
     float vipPrice = 11;
 
     // 重量
-    float weight = 12;
+    string weight = 12;
 
     // 描述
     string description = 13;
