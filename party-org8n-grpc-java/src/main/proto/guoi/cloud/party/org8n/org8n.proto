@@ -41,7 +41,7 @@ service Org8nApi {
 
     }
 
-    rpc ListOrg8nsByAddress(ListOrg8nsByAddressRequest) returns (ListOrg8nsByAddressResponse){
+    rpc ListOrg8nsByServiceRange(ListOrg8nsByServiceRangeRequest) returns (ListOrg8nsByServiceRangeResponse){
 
     }
 
@@ -183,12 +183,12 @@ message ListOrg8nsResponse{
 }
 
 
-message ListOrg8nsByAddressRequest{
+message ListOrg8nsByServiceRangeRequest{
     // list sub-org8ns belong to the org8n identified by field "name_parent" resource name
     guoi.cloud.common.Address address = 1;
 }
 
-message ListOrg8nsByAddressResponse{
+message ListOrg8nsByServiceRangeResponse{
     google.rpc.Status status = 999;
 
     // The field name should match the noun "org8ns" in the method name.
