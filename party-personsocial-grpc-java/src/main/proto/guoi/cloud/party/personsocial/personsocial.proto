@@ -19,9 +19,10 @@ service PersonsocialApi {
     //获取被关爱人
     rpc GetPerson(GetPersonRequest) returns (Person) {
     }
-
     //更新被关爱人
     rpc UpdatePerson(UpdatePersonRequest) returns (Person) {
+    }
+    rpc CreateOrUpdatePerson(CreateOrUpdatePersonRequest) returns (Person) {
     }
     //查询被关爱人
     rpc ListPerson(ListPersonRequest) returns (ListPersonResponse){
@@ -180,6 +181,9 @@ message CreatePersonRequest{
 }
 message GetPersonRequest{
     string name_person = 99;
+}
+message CreateOrUpdatePersonRequest{
+    Person person = 99;
 }
 message UpdatePersonRequest{
     //station id
