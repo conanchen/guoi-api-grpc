@@ -242,6 +242,9 @@ message UpdatePersonRequest{
     string name_refPerson = 27;
     float high = 28;
     float weight = 29;
+
+    //归属驿站id list
+    repeated string name_jurisdictionStations = 30;
 }
 message ListPersonRequest{
     string name_station = 99;
