@@ -7,7 +7,6 @@ option java_package = "com.github.conanchen.guoi.cloud.party.personsocial";
 option java_outer_classname = "PersonsocialApiProto";
 
 import "guoi/cloud/common/common.proto";
-import "guoi/cloud/party/device/device.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
 import "google/rpc/status.proto";
@@ -41,7 +40,7 @@ service PersonsocialApi {
     rpc CreateRelation(CreateRelationRequest) returns(CreateRelationResponse){
     }
     //关联设备
-    rpc BindingDevice(BindingDeviceRequest) returns(guoi.cloud.party.device.Device){
+    rpc BindingDevice(BindingDeviceRequest) returns(guoi.cloud.common.Device){
     }
     //解绑设备
     rpc DebindingDevice(DebindingDeviceRequest) returns(google.protobuf.Empty){
@@ -87,7 +86,7 @@ message Person {
     //注册驿站id
     string name_registerStation = 17;
     //关联设备
-    repeated guoi.cloud.party.device.Device devices= 18;
+    repeated guoi.cloud.common.Device devices= 18;
     //现居地址
     guoi.cloud.common.Address homeAddress= 19;
     //户籍地址
@@ -214,7 +213,7 @@ message UpdatePersonRequest{
     //注册驿站id
     string name_registerStation = 17;
     //关联设备
-    repeated guoi.cloud.party.device.Device devices = 18;
+    repeated guoi.cloud.common.Device devices = 18;
     //现居地址
     guoi.cloud.common.Address homeAddress = 19;
     //户籍地址
@@ -278,7 +277,7 @@ message DeleteFamilyMemberRequest{
 }
 message BindingDeviceRequest{
     string name_person = 99;
-    guoi.cloud.party.device.Device device = 1;
+    guoi.cloud.common.Device device = 1;
 }
 message DebindingDeviceRequest{
     string name_device = 99;
