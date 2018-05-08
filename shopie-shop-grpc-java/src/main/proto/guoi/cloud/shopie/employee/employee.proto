@@ -97,6 +97,7 @@ message GetEmployeeByAccountRequest {
 }
 
 message ListEmployeeRequest {
+    string name_shop = 99;
 }
 
 message ListEmployeeResponse {
