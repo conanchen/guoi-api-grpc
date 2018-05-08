@@ -51,6 +51,7 @@ service EmployeeApi {
 
 message Employee {
     string name = 999;
+    string name_shop = 998;
 
     string idno = 1;
     string personName = 2;
