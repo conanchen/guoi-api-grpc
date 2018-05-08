@@ -85,8 +85,8 @@ message Person {
     string source= 16;
     //注册驿站id
     string name_registerStation = 17;
-    //关联设备
-    repeated guoi.cloud.common.Device devices= 18;
+    //关联设备id list
+    repeated string deviceIds= 18;
     //现居地址
     guoi.cloud.common.Address homeAddress= 19;
     //户籍地址
