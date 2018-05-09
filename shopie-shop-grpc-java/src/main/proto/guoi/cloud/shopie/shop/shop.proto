@@ -122,6 +122,9 @@ message CreateShopRequest {
     string personName = 9;
     string mobile = 10;
     string userid = 11;
+    //服务范围
+    int32 serviceRange = 21;
+
 }
 
 
