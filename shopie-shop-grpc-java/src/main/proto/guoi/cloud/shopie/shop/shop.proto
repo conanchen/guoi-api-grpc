@@ -171,6 +171,9 @@ message Shop {
     string logo = 19;
 
     bool enable = 20;
+
+    //服务范围
+    int32 serviceRange = 21;
 }
 
 enum ShopStatus {
