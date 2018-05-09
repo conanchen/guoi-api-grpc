@@ -116,7 +116,6 @@ message CreateShopRequest {
     string phone = 6;
     //商铺性质
     ShopType shopType = 7;
-
     // 负责人
     string idno = 8;
     string personName = 9;
