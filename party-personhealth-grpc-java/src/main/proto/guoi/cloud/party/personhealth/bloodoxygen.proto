@@ -105,7 +105,7 @@ message DeleteBloodoxygenRequest {
 
 message ListBloodoxygensRequest{
     string imei = 1;
-    string personUuid = 2;
+    string personUuid = 4;
     google.protobuf.Timestamp startTime = 2;
     google.protobuf.Timestamp endTime = 3;
 }
