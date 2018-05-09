@@ -62,6 +62,8 @@ message Bloodsugar {
     google.protobuf.Timestamp create_time = 9; //The creation timestamp of an entity.
     //设备imei号
     string imei = 10;
+    //被观爱人uuid
+    string personUuid = 11;
     // resource references
     // device resource
     string name_device = 100; //检测终端资源名称
