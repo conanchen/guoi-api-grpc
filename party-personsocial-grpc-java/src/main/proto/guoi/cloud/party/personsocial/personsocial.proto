@@ -109,6 +109,8 @@ message Person {
 
     //归属驿站id list
     repeated string name_jurisdictionStations = 30;
+    //疾病id list
+    repeated string diseaseIds = 31;
 
     //The creation timestamp of an entity.
     google.protobuf.Timestamp create_time = 98;
@@ -237,6 +239,8 @@ message UpdatePersonRequest{
 
     //归属驿站id list
     repeated string name_jurisdictionStations = 30;
+    //疾病id list
+    repeated string diseaseIds = 31;
 }
 message ListPersonRequest{
     string name_station = 99;
