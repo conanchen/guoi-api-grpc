@@ -138,14 +138,15 @@ enum VipType{
     // 有时间期限
     PERIOD = 1;
 }
-enum PersonSortKey{
-    ALL =  0;
-    VIP = 1;
-    NOT_VIP = 2;
-    // 注册时间
-    REGISTER_DATE = 3;
-    //活跃度
-    ACTIVITY = 4;
+enum PersonSort{
+    //注册时间倒序
+    CREATEAT_DESC = 0;
+    //注册时间正序
+    CREATEAT_ASC = 1;
+    //活跃度倒序
+    ACTIVITY_DESC = 2;
+    //活跃度正序
+    ACTIVITY_ASC = 3;
 }
 
 message FamilyMember{
@@ -251,6 +252,8 @@ message ListPersonRequest{
     bool reverse = 5;
     //查询条件支持，编号,姓名,身份证号
     PersonFilter filter = 6;
+    //order by
+    PersonSort sort = 7;
 }
 
 message ListFamilyMemberRequest{
