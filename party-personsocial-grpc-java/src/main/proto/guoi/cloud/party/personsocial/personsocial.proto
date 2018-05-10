@@ -286,12 +286,11 @@ message DebindingDeviceRequest{
 
 //被关爱人查询条件
 message PersonFilter{
-    //编号
-    string idNumber = 1;
-    //姓名
-    string personName = 2;
-    //身份证
-    string idno = 3;
+    //编号 or 身份证 or 姓名
+    string idNumber_or_idno_or_name = 1;
+
+    //是否vip
+    bool isVip = 2;
 }
 
 message Boolean{
