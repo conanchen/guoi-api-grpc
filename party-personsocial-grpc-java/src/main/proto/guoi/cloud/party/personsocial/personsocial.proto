@@ -290,7 +290,7 @@ message PersonFilter{
     string idNumber_or_idno_or_name = 1;
 
     //是否vip
-    bool isVip = 2;
+    Boolean isVip = 2;
 }
 
 message Boolean{
