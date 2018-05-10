@@ -253,7 +253,7 @@ message ListPersonRequest{
     //查询条件支持，编号,姓名,身份证号
     PersonFilter filter = 6;
     //order by
-    PersonSort sort = 7;
+    repeated PersonSort sort = 7;
 }
 
 message ListFamilyMemberRequest{
