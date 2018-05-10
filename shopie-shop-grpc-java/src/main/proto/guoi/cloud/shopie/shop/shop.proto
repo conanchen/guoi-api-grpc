@@ -29,6 +29,12 @@ service ShopApi {
 
     }
 
+    // Gets a shop.
+    rpc GetShopByUserId (GetShopByUserIdRequest) returns (GetShopByUserIdResponse) {
+
+    }
+
+
     // Update shop
     rpc UpdateShop (UpdateShopRequest) returns (Shop) {
 
@@ -205,4 +211,13 @@ message ListShopsResponse {
     repeated Shop shops = 1;
 
     string next_page_token = 2;
+}
+
+message GetShopByUserIdRequest{
+    string name_user = 99;
+}
+
+message GetShopByUserIdResponse{
+    google.rpc.Status status = 999;
+    Shop shop = 1;
 }
