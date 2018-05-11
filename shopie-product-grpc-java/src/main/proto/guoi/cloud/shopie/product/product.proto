@@ -56,11 +56,6 @@ message UpdateProductRequest {
     Product product = 2;
 }
 
-message Catalog {
-    string name = 2;
-    string title = 3;
-}
-
 message ActivateProductRequest {
     string name = 1;
     string note = 2;
@@ -98,7 +93,7 @@ message CreateProductRequest {
     string title = 1;
 
     //分类
-    Catalog catalog = 2;
+    string name_catalog = 2;
 
     //产品性质 服务/商品
     ProductType productType = 7;
@@ -169,7 +164,7 @@ message Product {
     string title = 1;
 
     //分类
-    Catalog catalog = 2;
+    string name_catalog = 2;
 
     //产品性质 服务/商品
     ProductType productType = 7;
