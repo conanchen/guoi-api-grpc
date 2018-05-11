@@ -198,6 +198,8 @@ message Shop {
 
     //服务范围
     int32 serviceRange = 21;
+
+    bool isCertified = 22;
 }
 
 enum ShopStatus {
