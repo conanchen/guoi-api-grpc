@@ -111,6 +111,10 @@ message Person {
     repeated string name_jurisdictionStations = 30;
     //疾病id list
     repeated string diseaseIds = 31;
+    //二维码id
+    string qrCodeId = 32;
+    //二维码src
+    string qrCodeSrc = 33;
 
     //The creation timestamp of an entity.
     google.protobuf.Timestamp create_time = 98;
@@ -242,6 +246,10 @@ message UpdatePersonRequest{
     repeated string name_jurisdictionStations = 30;
     //疾病id list
     repeated string diseaseIds = 31;
+    //二维码id
+    string qrCodeId = 32;
+    //二维码src
+    string qrCodeSrc = 33;
 }
 message ListPersonRequest{
     string name_station = 99;
