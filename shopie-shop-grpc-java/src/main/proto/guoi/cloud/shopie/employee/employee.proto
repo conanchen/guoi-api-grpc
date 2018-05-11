@@ -80,6 +80,7 @@ message CreateEmployeeRequest {
     string personName = 2;
     string mobile = 3;
     string userid = 4;
+    bool isBoss = 5;
 }
 
 message UpdateEmployeeRequest {
