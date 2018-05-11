@@ -43,6 +43,7 @@ message User{
     UserType type = 4;
     repeated Role role = 5;
     string platform = 6;
+    int32 enabled = 7;
 }
 
 message Role{
