@@ -89,6 +89,8 @@ enum ServiceMethod {
 }
 
 message CreateProductRequest {
+    //店铺id
+    string name_shop = 999;
     // 店铺名称
     string title = 1;
 
@@ -160,6 +162,9 @@ message GetProductRequest {
 message Product {
     // id
     string name = 999;
+
+    string name_shop = 998;
+
     // 店铺名称
     string title = 1;
 
