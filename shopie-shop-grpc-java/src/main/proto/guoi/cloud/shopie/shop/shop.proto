@@ -107,7 +107,6 @@ message CreateShopRequest {
     string shopName = 1;
     //分类
     repeated Catalog catalogs = 2;
-
     //地址
     guoi.cloud.common.Address defaultAddress = 4;
     //备注
@@ -123,6 +122,24 @@ message CreateShopRequest {
     string userid = 11;
     //服务范围
     int32 serviceRange = 21;
+
+    string logo = 12;
+    //营业执照
+    string businessLicense = 14;
+    //餐饮许可证
+    string foodLicense = 15;
+    //餐饮服务安全级别
+    string securityLevel = 16;
+
+    string shopCode = 17;
+
+    int32  signLevel = 18;
+
+     ShopStatus status = 19;
+
+     bool enable = 20;
+
+     string description = 22;
 
 }
 
@@ -164,7 +181,6 @@ message Shop {
     int32 signLevel = 13;
     //状态
     ShopStatus status = 14;
-
     // 负责人
     string idno = 16;
     string personName = 17;
