@@ -109,6 +109,8 @@ message Person {
 
     //归属驿站id list
     repeated string name_jurisdictionStations = 30;
+    //疾病id list
+    repeated string diseaseIds = 31;
 
     //The creation timestamp of an entity.
     google.protobuf.Timestamp create_time = 98;
@@ -136,14 +138,15 @@ enum VipType{
     // 有时间期限
     PERIOD = 1;
 }
-enum PersonSortKey{
-    ALL =  0;
-    VIP = 1;
-    NOT_VIP = 2;
-    // 注册时间
-    REGISTER_DATE = 3;
-    //活跃度
-    ACTIVITY = 4;
+enum PersonSort{
+    //注册时间倒序
+    CREATEAT_DESC = 0;
+    //注册时间正序
+    CREATEAT_ASC = 1;
+    //活跃度倒序
+    ACTIVITY_DESC = 2;
+    //活跃度正序
+    ACTIVITY_ASC = 3;
 }
 
 message FamilyMember{
@@ -237,6 +240,8 @@ message UpdatePersonRequest{
 
     //归属驿站id list
     repeated string name_jurisdictionStations = 30;
+    //疾病id list
+    repeated string diseaseIds = 31;
 }
 message ListPersonRequest{
     string name_station = 99;
@@ -247,6 +252,8 @@ message ListPersonRequest{
     bool reverse = 5;
     //查询条件支持，编号,姓名,身份证号
     PersonFilter filter = 6;
+    //order by
+    repeated PersonSort sort = 7;
 }
 
 message ListFamilyMemberRequest{
@@ -256,7 +263,7 @@ message ListFamilyMemberRequest{
     int32 first = 3;
     int32 last = 4;
     bool reverse = 5;
-    //查询条件支持，手机号,姓名
+    //查询条件支持,姓名，编号，身份证
     PersonFilter filter = 6;
 }
 message CreateRelationRequest{
@@ -284,11 +291,13 @@ message DebindingDeviceRequest{
     string name_person = 1;
 }
 
+//被关爱人查询条件
 message PersonFilter{
-    repeated PersonFilter and = 100;
-    repeated PersonFilter or = 99;
-    string mobile = 1;
-    string personName = 2;
+    //编号 or 身份证 or 姓名
+    string idNumber_or_idno_or_name = 1;
+
+    //是否vip
+    Boolean isVip = 2;
 }
 
 message Boolean{
