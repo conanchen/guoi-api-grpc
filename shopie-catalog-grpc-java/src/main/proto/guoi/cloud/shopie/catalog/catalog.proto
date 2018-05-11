@@ -109,6 +109,8 @@ message Catalog {
 
 message ListCatalogsRequest {
     // The parent catalog resource name, for example, "catalogs/catalog1".
+    repeated string names = 999;
+
     string name_parent = 1;
 
     // The maximum number of items to return.
