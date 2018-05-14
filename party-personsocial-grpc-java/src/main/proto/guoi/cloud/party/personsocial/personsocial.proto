@@ -10,6 +10,9 @@ import "guoi/cloud/common/common.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
 import "google/rpc/status.proto";
+import "google/protobuf/field_mask.proto";
+
+
 
 // The person service definition.
 service PersonsocialApi {
@@ -263,6 +266,9 @@ message UpdatePersonRequest{
     string qrCodeId = 32;
     //二维码src
     string qrCodeSrc = 33;
+
+    //部分更新标记
+    google.protobuf.FieldMask mask = 100;
 }
 message ListPersonRequest{
     string name_station = 99;
