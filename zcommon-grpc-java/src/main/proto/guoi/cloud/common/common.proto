@@ -72,6 +72,8 @@ message Address {
     string township = 18;
     //社区
     string community = 19;
+    //街道
+    string street = 20;
 }
 
 //设备通用message
