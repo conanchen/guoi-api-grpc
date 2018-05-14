@@ -68,6 +68,10 @@ message Address {
     string provinceCode = 16;
     //邮编
     string zip = 17;
+    //乡镇
+    string township = 18;
+    //社区
+    string community = 19;
 }
 
 //设备通用message

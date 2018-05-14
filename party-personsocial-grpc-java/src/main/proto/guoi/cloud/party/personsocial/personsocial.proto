@@ -116,6 +116,17 @@ message Person {
     //二维码src
     string qrCodeSrc = 33;
 
+    //妇联组织
+    WomenAndChildrenFederation womenAndChildrenFederationOrg8n = 34;
+    //家庭信息
+    FamilyInfo FamilyInfo = 35;
+    //学校名称
+    string schoolName = 36;
+    //是否留守儿童
+    bool isLeftBehind = 37;
+    //籍贯
+    string nativePlace = 38;
+
     //The creation timestamp of an entity.
     google.protobuf.Timestamp create_time = 98;
 }
@@ -310,4 +321,17 @@ message PersonFilter{
 
 message Boolean{
     bool value = 1;
+}
+
+//妇联组织
+message WomenAndChildrenFederation{
+    //组织名称
+    string title = 1;
+}
+//家庭信息
+message FamilyInfo{
+    //家庭人口总数
+    int32 peopleCount = 1;
+    //家庭总收入(年)
+    string yearlyIncome = 2;
 }
