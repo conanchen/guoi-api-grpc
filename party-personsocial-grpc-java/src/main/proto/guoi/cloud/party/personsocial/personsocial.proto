@@ -190,6 +190,10 @@ message FamilyMember{
     string remark = 8;
     //头像
     string avatar = 9;
+    //是否监护人
+    Boolean isGuardian = 10;
+    //监护人类型
+    string guardianType = 11;
 }
 message CreatePersonRequest{
     Person person = 99;
