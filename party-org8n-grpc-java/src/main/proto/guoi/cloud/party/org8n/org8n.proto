@@ -133,6 +133,7 @@ message Org8n{
     string email = 17;
     repeated string shopid = 18;
     string sosPhone = 19;
+    string ownshopid = 20;
 }
 
 message CreateOrg8nRequest{
