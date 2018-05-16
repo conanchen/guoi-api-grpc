@@ -146,6 +146,7 @@ message CreateShopRequest {
      bool enable = 20;
 
      string description = 22;
+     string org8nid = 23;
 
 }
 
