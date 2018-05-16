@@ -208,7 +208,11 @@ message ListProductsRequest {
 
     // The next_page_token value returned from a previous List request, if any.
     string page_token = 998;
+    // search condition title
+    string title = 3;
 }
+
+
 
 // The response message containing the catalogs
 message ListProductsResponse {
