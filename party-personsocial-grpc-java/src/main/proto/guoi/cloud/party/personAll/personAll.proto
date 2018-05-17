@@ -1,10 +1,10 @@
 syntax = "proto3";
-package guoi.cloud.party.personsocial;
+package guoi.cloud.party.personAll;
 
 
 option java_multiple_files = true;
-option java_package = "com.github.conanchen.guoi.cloud.party.personsocial";
-option java_outer_classname = "PersonsocialApiProto";
+option java_package = "com.github.conanchen.guoi.cloud.party.personAll";
+option java_outer_classname = "PersonAllApiProto";
 
 import "guoi/cloud/common/common.proto";
 import "google/protobuf/timestamp.proto";
