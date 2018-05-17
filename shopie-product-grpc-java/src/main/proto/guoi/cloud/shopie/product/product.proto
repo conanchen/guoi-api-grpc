@@ -121,6 +121,10 @@ message CreateProductRequest {
     repeated string tags = 19;
 
     repeated string images = 20;
+
+    string  shopType = 21;//店铺类型
+
+    float price = 22;//价格
 }
 
 message Variant{
