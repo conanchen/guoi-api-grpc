@@ -131,6 +131,8 @@ message Person {
     string nativePlace = 38;
     //是否新创建
     Boolean isNew = 39;
+    //被关爱人编号
+    string idNumber = 40;
 
     //The creation timestamp of an entity.
     google.protobuf.Timestamp create_time = 98;
