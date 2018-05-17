@@ -70,6 +70,10 @@ service Org8nApi {
     rpc Updateorg8nstatus(Updateorg8nstatusRequest) returns (Org8n){
 
     }
+
+    rpc CreateIndoorGis(CreateIndoorGisRequest) returns (IndoorGis){
+
+    }
 }
 
 message GetToplevelOrg8nRequest{
@@ -253,4 +257,22 @@ message ListEmployeesResponse{
 message Updateorg8nstatusRequest{
     string id = 1;
     int32 status = 2;
+}
+
+//创建驿站平面图请求
+message CreateIndoorGisRequest{
+    IndoorGis indoorGis = 1;
+}
+
+//驿站平面图
+message IndoorGis{
+    string id = 1;
+    //关联驿站
+    string org8nId = 2;
+    //名称
+    string title = 3;
+    //室内设计图url
+    string designsImageUrl = 4;
+    //排序值
+    int32 orderSequence = 5;
 }
