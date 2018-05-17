@@ -32,6 +32,15 @@ service AuthcowApi {
 
     }
 
+    rpc valiCode(ValiCodeRequest) returns (SmsCode){
+
+    }
+
+}
+
+message ValiCodeRequest{
+    string id = 1;
+    string code = 2;
 }
 
 message SmsCodeRequest{
@@ -42,6 +51,8 @@ message SmsCode{
     string id = 1;
     string mobile = 2;
     string code = 3;
+    string msg = 4;
+    bool vali = 5;
 }
 
 enum UserType{
