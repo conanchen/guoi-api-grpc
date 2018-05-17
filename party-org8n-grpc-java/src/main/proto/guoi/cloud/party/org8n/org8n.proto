@@ -265,7 +265,7 @@ message CreateIndoorGisRequest{
 }
 
 //驿站平面图
-message IndoorGis{
+message IndoorGis {
     string id = 1;
     //关联驿站
     string org8nId = 2;
@@ -275,4 +275,6 @@ message IndoorGis{
     string designsImageUrl = 4;
     //排序值
     int32 orderSequence = 5;
+
+    google.protobuf.Timestamp createtime = 6;
 }
