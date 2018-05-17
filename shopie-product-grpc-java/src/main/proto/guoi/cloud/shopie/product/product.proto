@@ -210,8 +210,24 @@ message ListProductsRequest {
     string page_token = 998;
     // search condition title
     string title = 3;
+    //product sort
+    ProductSort product_sort = 4;
 }
-
+//product sort
+enum ProductSort{
+    //价格倒序
+    PRICE_DESC = 0;
+    //价格正序
+    PRICE_ASC = 1;
+    //店铺类型倒序
+    SHOPTYPE_DESC = 2;
+    //店铺类型正序
+    SHOPTYPE_ASC = 3;
+    //销量倒序
+    SOLDNUM_DESC = 4;
+    //销量正序
+    SOLDNUM_ASC = 5;
+}
 
 
 // The response message containing the catalogs
