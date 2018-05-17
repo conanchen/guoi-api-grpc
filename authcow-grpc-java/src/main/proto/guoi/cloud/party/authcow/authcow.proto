@@ -36,6 +36,15 @@ service AuthcowApi {
 
     }
 
+    rpc sendSms(SendSmsRequest) returns (google.protobuf.Empty){
+
+    }
+
+}
+
+message SendSmsRequest{
+    string mobile = 1;
+    string content = 2;
 }
 
 message ValiCodeRequest{
