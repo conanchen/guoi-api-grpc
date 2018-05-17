@@ -10,6 +10,7 @@ import "guoi/cloud/common/common.proto";
 import "google/protobuf/empty.proto";
 import "google/rpc/status.proto";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/field_mask.proto";
 
 service Org8nApi {
 
@@ -72,6 +73,18 @@ service Org8nApi {
     }
 
     rpc CreateIndoorGis(CreateIndoorGisRequest) returns (IndoorGis){
+
+    }
+
+    rpc UpdateIndoorGis(UpdateIndoorGisRequest) returns (IndoorGis) {
+
+    }
+
+    rpc DeleteIndoorGis(DeleteIndoorGisRequest) returns (google.protobuf.Empty){
+
+    }
+
+    rpc ListIndoorGis(ListIndoorGisRequest) returns (ListIndoorGisResponse){
 
     }
 }
@@ -262,6 +275,27 @@ message Updateorg8nstatusRequest{
 //创建驿站平面图请求
 message CreateIndoorGisRequest{
     IndoorGis indoorGis = 1;
+}
+
+//创建驿站平面图请求
+message UpdateIndoorGisRequest{
+    IndoorGis indoorGis = 1;
+
+    //部分更新标记
+    google.protobuf.FieldMask mask = 100;
+}
+
+message DeleteIndoorGisRequest{
+    string id = 1;
+}
+
+message ListIndoorGisRequest{
+    string org8nId = 1;
+}
+
+message ListIndoorGisResponse{
+    google.rpc.Status status = 999;
+    repeated IndoorGis indoorGises = 1;
 }
 
 //驿站平面图
