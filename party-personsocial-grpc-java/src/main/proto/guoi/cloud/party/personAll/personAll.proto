@@ -168,7 +168,13 @@ enum PersonSort{
     //活跃度正序
     ACTIVITY_ASC = 3;
 }
-
+enum Org8nType{
+    TOPCENTER = 0;
+    AREACENTER = 1;
+    OPCENTER = 2;
+    STATION = 3;
+    SHOP = 4;
+}
 message FamilyMember{
     //resource id
     string name = 99;
@@ -329,6 +335,12 @@ message PersonFilter{
 
     //是否vip
     Boolean isVip = 2;
+
+    //老人所属机构
+    Org8nType org8nType = 3;
+
+    //儿童所属妇联
+    string women_unite = 4;
 }
 
 message Boolean{
