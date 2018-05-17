@@ -28,8 +28,21 @@ service AuthcowApi {
 
     }
 
+    rpc genCode(SmsCodeRequest) returns (SmsCode){
+
+    }
+
 }
 
+message SmsCodeRequest{
+    string mobile = 1;
+}
+
+message SmsCode{
+    string id = 1;
+    string mobile = 2;
+    string code = 3;
+}
 
 enum UserType{
     ADMIN=0;
