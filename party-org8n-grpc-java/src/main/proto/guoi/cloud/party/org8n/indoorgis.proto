@@ -1,0 +1,120 @@
+syntax = "proto3";
+package guoi.cloud.party.org8n;
+
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.org8n";
+option java_outer_classname = "IndoorGisProto";
+option objc_class_prefix = "GDA";
+
+import "guoi/cloud/common/common.proto";
+import "google/rpc/status.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/field_mask.proto";
+
+//驿站平面图
+message IndoorGis {
+    string id = 1;
+    //关联驿站
+    string org8nId = 2;
+    //名称
+    string title = 3;
+    //室内设计图url
+    string designsImageUrl = 4;
+    //排序值
+    int32 orderSequence = 5;
+
+    google.protobuf.Timestamp createtime = 6;
+}
+
+//创建驿站平面图请求
+message CreateIndoorGisRequest{
+    IndoorGis indoorGis = 1;
+}
+
+//创建驿站平面图请求
+message UpdateIndoorGisRequest{
+    IndoorGis indoorGis = 1;
+
+    //部分更新标记
+    google.protobuf.FieldMask mask = 100;
+}
+
+message DeleteIndoorGisRequest{
+    string id = 1;
+}
+
+message ListIndoorGisRequest{
+    string org8nId = 1;
+}
+
+message ListIndoorGisResponse{
+    google.rpc.Status status = 999;
+    repeated IndoorGis indoorGises = 1;
+}
+
+//驿站平面图内部区域
+message IndoorGisRoom {
+    string id = 1;
+    //关联室内平面图
+    string indoorGisId = 2;
+    //名称
+    string title = 3;
+    //负责人
+    string manager = 4;
+    //区域内人数
+    int32 peopleCount = 5;
+    //区域类型
+    RoomMapType roomMapType = 6;
+    //坐标点
+    string coordinates = 7;
+    //区域内设施
+    repeated IndoorGisRoomItem items = 8;
+
+    google.protobuf.Timestamp createtime = 99;
+}
+
+//区域类型
+enum RoomMapType{
+    Point = 0;
+    MultiPoint = 1;
+    LineString = 2;
+    MultiLineString = 3;
+    Polygon = 4;
+    MultiPolygon = 5;
+    GeometryCollection = 6;
+}
+
+//驿站平面图区域内设施
+message IndoorGisRoomItem {
+    //名称
+    string title = 1;
+    //数量
+    int32 count = 2;
+}
+
+//创建驿站平面图请求
+message CreateIndoorGisRoomRequest{
+    IndoorGisRoom indoorGisRoom = 1;
+}
+
+//创建驿站平面图请求
+message UpdateIndoorGisRoomRequest{
+    IndoorGisRoom indoorGisRoom = 1;
+
+    //部分更新标记
+    google.protobuf.FieldMask mask = 100;
+}
+
+message DeleteIndoorGisRoomRequest{
+    string id = 1;
+}
+
+message ListIndoorGisRoomRequest{
+    string indoorGisId = 1;
+}
+
+message ListIndoorGisRoomResponse{
+    google.rpc.Status status = 999;
+    repeated IndoorGisRoom indoorGisRooms = 1;
+}
