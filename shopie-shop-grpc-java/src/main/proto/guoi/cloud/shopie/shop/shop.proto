@@ -10,6 +10,7 @@ import "guoi/cloud/common/common.proto";
 import "google/rpc/status.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/field_mask.proto";
 
 // The shop service definition.
 service ShopApi {
@@ -64,6 +65,7 @@ service ShopApi {
 
 message UpdateShopRequest {
     Shop shop = 2;
+    google.protobuf.FieldMask fieldMask = 888;
 }
 
 message Catalog {
@@ -112,7 +114,7 @@ message CreateShopRequest {
     // 店铺名称
     string shopName = 1;
     //分类
-    repeated Catalog catalogs = 2;
+    repeated string catalogs = 2;
     //地址
     guoi.cloud.common.Address defaultAddress = 4;
     //备注
@@ -121,6 +123,7 @@ message CreateShopRequest {
     string phone = 6;
     //商铺性质
     ShopType shopType = 7;
+
     // 负责人
     string idno = 8;
     string personName = 9;
@@ -129,15 +132,15 @@ message CreateShopRequest {
     //服务范围
     int32 serviceRange = 21;
 
-    string logo = 12;
+    guoi.cloud.common.Image logo = 12;
     //营业执照
-    string businessLicense = 14;
+    guoi.cloud.common.Image businessLicense = 14;
     //餐饮许可证
-    string foodLicense = 15;
+    guoi.cloud.common.Image foodLicense = 15;
     //餐饮服务安全级别
-    string securityLevel = 16;
+    guoi.cloud.common.Image securityLevel = 16;
 
-    string shopCode = 17;
+    guoi.cloud.common.Image shopCode = 17;
 
     int32  signLevel = 18;
 
@@ -146,8 +149,10 @@ message CreateShopRequest {
      bool enable = 20;
 
      string description = 22;
+
      string org8nid = 23;
 
+     google.protobuf.FieldMask fieldMask = 888;
 }
 
 
@@ -165,7 +170,7 @@ message Shop {
     // 店铺名称
     string shopName = 1;
     //分类
-    repeated Catalog catalogs = 2;
+    repeated string catalogs = 2;
     //地址
     guoi.cloud.common.Address defaultAddress = 4;
     //备注
@@ -177,23 +182,24 @@ message Shop {
     // 服务商电话
     string phone = 8;
     //营业执照
-    string businessLicense = 9;
+    guoi.cloud.common.Image businessLicense = 9;
     //餐饮许可证
-    string foodLicense = 10;
+    guoi.cloud.common.Image foodLicense = 10;
     //餐饮服务安全级别
-    string securityLevel = 11;
+    guoi.cloud.common.Image securityLevel = 11;
     //编码
     string shopCode = 12;
     //星级
     int32 signLevel = 13;
     //状态
     ShopStatus status = 14;
+
     // 负责人
     string idno = 16;
     string personName = 17;
     string mobile = 18;
     //logo
-    string logo = 19;
+    guoi.cloud.common.Image logo = 19;
 
     bool enable = 20;
 

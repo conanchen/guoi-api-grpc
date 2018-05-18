@@ -103,3 +103,9 @@ message Device {
     //设备uuid
     string uuid = 12;
 }
+
+message Image{
+    string name = 99;
+    string src = 1;
+    string altText = 2;
+}
