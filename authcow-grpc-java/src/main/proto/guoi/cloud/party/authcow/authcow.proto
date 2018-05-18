@@ -28,8 +28,41 @@ service AuthcowApi {
 
     }
 
+    rpc genCode(SmsCodeRequest) returns (SmsCode){
+
+    }
+
+    rpc valiCode(ValiCodeRequest) returns (SmsCode){
+
+    }
+
+    rpc sendSms(SendSmsRequest) returns (google.protobuf.Empty){
+
+    }
+
 }
 
+message SendSmsRequest{
+    string mobile = 1;
+    string content = 2;
+}
+
+message ValiCodeRequest{
+    string id = 1;
+    string code = 2;
+}
+
+message SmsCodeRequest{
+    string mobile = 1;
+}
+
+message SmsCode{
+    string id = 1;
+    string mobile = 2;
+    string code = 3;
+    string msg = 4;
+    bool vali = 5;
+}
 
 enum UserType{
     ADMIN=0;

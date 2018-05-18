@@ -121,6 +121,10 @@ message CreateProductRequest {
     repeated string tags = 19;
 
     repeated string images = 20;
+
+    string  shopType = 21;//店铺类型
+
+    float price = 22;//价格
 }
 
 message Variant{
@@ -195,8 +199,17 @@ message Product {
     repeated string tags = 19;
 
     repeated string images = 20;
-}
-message ListProductsRequest {
+
+    int32 soldNum = 21;//销量
+
+    string  shopType = 22;//店铺类型
+
+    float price = 23;//价格
+
+    }
+
+
+    message ListProductsRequest {
 
     // id for catalogId
     string name_catalog = 1;
