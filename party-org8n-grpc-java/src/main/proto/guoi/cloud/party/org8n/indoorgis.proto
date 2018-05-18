@@ -5,7 +5,6 @@ package guoi.cloud.party.org8n;
 option java_multiple_files = true;
 option java_package = "com.github.conanchen.guoi.cloud.org8n";
 option java_outer_classname = "IndoorGisProto";
-option objc_class_prefix = "GDA";
 
 import "guoi/cloud/common/common.proto";
 import "google/rpc/status.proto";
@@ -63,7 +62,7 @@ message IndoorGisRoom {
     //负责人
     string manager = 4;
     //区域内人数
-    int32 peopleCount = 5;
+    Integer peopleCount = 5;
     //区域类型
     RoomMapType roomMapType = 6;
     //坐标点
@@ -90,7 +89,7 @@ message IndoorGisRoomItem {
     //名称
     string title = 1;
     //数量
-    int32 count = 2;
+    Integer count = 2;
 }
 
 //创建驿站平面图请求
@@ -119,7 +118,6 @@ message ListIndoorGisRoomResponse{
     repeated IndoorGisRoom indoorGisRooms = 1;
 }
 
-message ListIndoorGisRoomResponse{
-    google.rpc.Status status = 999;
-    repeated IndoorGisRoom indoorGisRooms = 1;
+message Integer {
+    int32 value = 1;
 }
