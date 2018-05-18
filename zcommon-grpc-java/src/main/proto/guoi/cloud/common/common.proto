@@ -109,3 +109,7 @@ message Image{
     string src = 1;
     string altText = 2;
 }
+
+message Integer{
+    int32 value = 1;
+}

@@ -63,7 +63,7 @@ message IndoorGisRoom {
     //负责人
     string manager = 4;
     //区域内人数
-    int32 peopleCount = 5;
+    Integer peopleCount = 5;
     //区域类型
     RoomMapType roomMapType = 6;
     //坐标点
@@ -90,7 +90,7 @@ message IndoorGisRoomItem {
     //名称
     string title = 1;
     //数量
-    int32 count = 2;
+    Integer count = 2;
 }
 
 //创建驿站平面图请求
@@ -112,6 +112,11 @@ message DeleteIndoorGisRoomRequest{
 
 message ListIndoorGisRoomRequest{
     string indoorGisId = 1;
+}
+
+message ListIndoorGisRoomResponse{
+    google.rpc.Status status = 999;
+    repeated IndoorGisRoom indoorGisRooms = 1;
 }
 
 message ListIndoorGisRoomResponse{
