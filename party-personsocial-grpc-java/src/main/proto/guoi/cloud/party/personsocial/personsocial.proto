@@ -338,6 +338,9 @@ message PersonFilter{
 
     //儿童所属妇联
     string women_unite = 4;
+
+    //所属机构
+    string jurisdictionStationId = 5;
 }
 
 message Boolean{
