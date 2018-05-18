@@ -336,11 +336,14 @@ message PersonFilter{
     //是否vip
     Boolean isVip = 2;
 
+    //是否有归属驿站
+    Boolean isBelongToStation= 3 ;
+
     //老人所属机构
-    Org8nType org8nType = 3;
+    string org8nId = 4;
 
     //儿童所属妇联
-    string women_unite = 4;
+    string women_unite = 5;
 }
 
 message Boolean{
