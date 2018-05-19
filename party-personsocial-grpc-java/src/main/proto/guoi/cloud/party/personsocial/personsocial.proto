@@ -133,7 +133,8 @@ message Person {
     Boolean isNew = 39;
     //被关爱人编号
     string idNumber = 40;
-
+    //是否健康儿童
+    bool isHealthy = 41;
     //The creation timestamp of an entity.
     google.protobuf.Timestamp create_time = 98;
 }
@@ -272,6 +273,23 @@ message UpdatePersonRequest{
     string qrCodeId = 32;
     //二维码src
     string qrCodeSrc = 33;
+
+    //妇联组织
+    WomenAndChildrenFederation womenAndChildrenFederationOrg8n = 34;
+    //家庭信息
+    FamilyInfo FamilyInfo = 35;
+    //学校名称
+    string schoolName = 36;
+    //是否留守儿童
+    bool isLeftBehind = 37;
+    //籍贯
+    string nativePlace = 38;
+    //是否新创建
+    Boolean isNew = 39;
+    //被关爱人编号
+    string idNumber = 40;
+    //是否健康儿童
+    bool isHealthy = 41;
 
     //部分更新标记
     google.protobuf.FieldMask mask = 100;
