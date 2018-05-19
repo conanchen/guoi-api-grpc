@@ -10,6 +10,7 @@ import "guoi/cloud/common/common.proto";
 import "google/rpc/status.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/field_mask.proto";
 
 // The shop service definition.
 service EmployeeApi {
@@ -56,10 +57,12 @@ message Employee {
     string idno = 1;
     string personName = 2;
     string mobile = 3;
-    string healthLicense = 4;
+
+    guoi.cloud.common.Image healthLicense = 4;
+
     bool isBoss = 5;
 
-    string avatar = 6;
+    guoi.cloud.common.Image avatar = 6;
     // 位置信息
     guoi.cloud.common.Address latestAddress = 7;
     //家庭住址
@@ -72,6 +75,8 @@ message Employee {
     string account = 10;
 
     string userid = 12;
+
+    guoi.cloud.common.Image idnoImage = 13;
 }
 
 message CreateEmployeeRequest {
@@ -85,6 +90,7 @@ message CreateEmployeeRequest {
 
 message UpdateEmployeeRequest {
     Employee employee = 1;
+    google.protobuf.FieldMask fieldMask = 888;
 }
 
 message ActivateEmployeeRequest {
