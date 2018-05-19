@@ -209,6 +209,9 @@ message Shop {
     bool isCertified = 22;
 
     bool isAutoAcceptOrder = 23;
+
+    string org8nid = 24;
+
 }
 
 enum ShopStatus {
