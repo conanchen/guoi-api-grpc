@@ -211,9 +211,15 @@ message Shop {
     bool isAutoAcceptOrder = 23;
 
     string org8nid = 24;
-
 }
 
+message GeoResult{
+
+    Shop shop = 1;
+
+    double distance= 25;//距离
+
+}
 enum ShopStatus {
     //正在营业
     ON = 0;
@@ -231,6 +237,10 @@ message ListShopsRequest {
 
     // The next_page_token value returned from a previous List request, if any.
     string page_token = 3;
+
+    double lon = 4;//经度
+
+    double lat = 5;//纬度
 }
 
 // The response message containing the catalogs
