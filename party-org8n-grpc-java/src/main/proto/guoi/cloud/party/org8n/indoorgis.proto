@@ -21,7 +21,7 @@ message IndoorGis {
     //室内设计图url
     string designsImageUrl = 4;
     //排序值
-    int32 orderSequence = 5;
+    IntObject orderSequence = 5;
 
     google.protobuf.Timestamp createtime = 6;
 }
