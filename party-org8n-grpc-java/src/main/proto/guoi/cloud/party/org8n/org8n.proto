@@ -106,7 +106,7 @@ service Org8nApi {
     rpc DeletePersonVisitRecord(DeletePersonVisitRecordRequest) returns (google.protobuf.Empty){
     }
 
-    rpc ListPersonVisitRecordRequest(ListPersonVisitRecordRequest) returns (ListPersonVisitRecordResponse){
+    rpc ListPersonVisitRecord(ListPersonVisitRecordRequest) returns (ListPersonVisitRecordResponse){
     }
 }
 
