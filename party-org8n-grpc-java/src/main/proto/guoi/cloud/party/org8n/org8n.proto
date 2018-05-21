@@ -35,6 +35,10 @@ service Org8nApi {
 
     }
 
+    rpc AddShop(AddShopRequest) returns (google.protobuf.Empty){
+
+    }
+
     rpc DeleteOrg8n(DeleteOrg8nRequest) returns (google.protobuf.Empty){
 
     }
@@ -291,4 +295,8 @@ message ListEmployeesResponse{
 message Updateorg8nstatusRequest{
     string id = 1;
     int32 status = 2;
+}
+message AddShopRequest{
+    string org8nid = 1;
+    string shopid = 2;
 }
