@@ -157,8 +157,8 @@ enum Gender{
     WOMEN = 1;
 }
 enum PersonType{
-    child = 0;
-    elder = 1;
+    CHILD = 0;
+    ELDER = 1;
 }
 enum VipType{
     //不设期限
