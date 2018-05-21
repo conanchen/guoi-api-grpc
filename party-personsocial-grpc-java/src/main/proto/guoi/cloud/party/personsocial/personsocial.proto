@@ -310,8 +310,6 @@ message ListPersonRequest{
     PersonFilter filter = 6;
     //order by
     repeated PersonSort sort = 7;
-    //儿童老人分类
-    PersonType personType = 8;
 }
 
 message ListFamilyMemberRequest{
@@ -366,6 +364,9 @@ message PersonFilter{
 
     //所属机构
     string jurisdictionStationId = 5;
+
+    //儿童老人分类
+    PersonType personType = 6;
 }
 
 message Boolean{
