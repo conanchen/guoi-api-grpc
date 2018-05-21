@@ -96,6 +96,18 @@ service Org8nApi {
 
     rpc ListIndoorGisRoom(ListIndoorGisRoomRequest) returns (ListIndoorGisRoomResponse){
     }
+
+    rpc ComeInPersonVisitRecord(ComeInPersonVisitRecordRequest) returns (PersonVisitRecord){
+    }
+
+    rpc ComeOutPersonVisitRecord(ComeOutPersonVisitRecordRequest) returns (PersonVisitRecord) {
+    }
+
+    rpc DeletePersonVisitRecord(DeletePersonVisitRecordRequest) returns (google.protobuf.Empty){
+    }
+
+    rpc ListPersonVisitRecordRequest(ListPersonVisitRecordRequest) returns (ListPersonVisitRecordResponse){
+    }
 }
 
 message GetToplevelOrg8nRequest{

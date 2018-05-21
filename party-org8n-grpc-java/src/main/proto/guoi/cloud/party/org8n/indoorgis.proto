@@ -143,6 +143,10 @@ message ComeOutPersonVisitRecordRequest{
     PersonVisitRecord personVisitRecord = 1;
 }
 
+message DeletePersonVisitRecordRequest{
+    string id = 1;
+}
+
 //查询记录列表
 message ListPersonVisitRecordRequest{
     //所属驿站
