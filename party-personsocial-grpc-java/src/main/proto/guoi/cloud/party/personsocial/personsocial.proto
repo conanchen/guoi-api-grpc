@@ -135,6 +135,8 @@ message Person {
     string idNumber = 40;
     //是否健康儿童
     bool isHealthy = 41;
+    //儿童老人分类
+    PersonType personType = 42;
     //The creation timestamp of an entity.
     google.protobuf.Timestamp create_time = 98;
 }
@@ -154,7 +156,10 @@ enum Gender{
     MAN = 0;
     WOMEN = 1;
 }
-
+enum PersonType{
+    child = 0;
+    elder = 1;
+}
 enum VipType{
     //不设期限
     LONG = 0;
