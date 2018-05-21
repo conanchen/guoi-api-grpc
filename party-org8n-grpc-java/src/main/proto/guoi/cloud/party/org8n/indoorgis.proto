@@ -118,6 +118,77 @@ message ListIndoorGisRoomResponse{
     repeated IndoorGisRoom indoorGisRooms = 1;
 }
 
+//驿站访问人员记录
+message PersonVisitRecord {
+    string id = 1;
+    //关联驿站
+    string org8nId = 2;
+    //关联被关爱人
+    string personId = 3;
+    // 当前状态: 0 已进站， 1 已出站
+    IntObject status = 4;
+    //进站时间
+    google.protobuf.Timestamp inTime = 5;
+    //出站时间
+    google.protobuf.Timestamp outTime = 6;
+}
+
+//创建进入记录请求
+message ComeInPersonVisitRecordRequest{
+    PersonVisitRecord personVisitRecord = 1;
+}
+
+//创建离开记录请求
+message ComeOutPersonVisitRecordRequest{
+    PersonVisitRecord personVisitRecord = 1;
+}
+
+//查询记录列表
+message ListPersonVisitRecordRequest{
+    //所属驿站
+    string org8nId = 1;
+    //筛选
+    ListPersonVisitRecordFilter filter = 2;
+    //排序
+    ListPersonVisitRecordSort sort = 3;
+    //分页
+    Pagination pagination = 4;
+}
+
+message ListPersonVisitRecordResponse{
+    google.rpc.Status status = 999;
+    repeated PersonVisitRecord personVisitRecord = 1;
+}
+
+message Pagination {
+    //Returns the elements in the list that come after the specified global ID.
+    string after = 1;
+
+    //Returns the elements in the list that come before the specified global ID.
+    string before = 2;
+
+    //Returns the first _n_ elements from the list.
+    int32 first = 3;
+
+    //Returns the last _n_ elements from the list.
+    int32 last = 4;
+}
+
+message ListPersonVisitRecordFilter {
+    google.protobuf.Timestamp startTime = 1;
+}
+
+enum ListPersonVisitRecordSort{
+    //进入时间倒序
+    INTIME_DESC = 0;
+    //进入时间正序
+    INTIME_ASC = 1;
+    //离开时间倒序
+    OUTTIME_DESC = 2;
+    //离开时间正序
+    OUTTIME_ASC = 3;
+}
+
 message IntObject {
     int32 value = 1;
 }
