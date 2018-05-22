@@ -367,6 +367,9 @@ message PersonFilter{
 
     //儿童老人分类
     PersonType personType = 6;
+
+    //查询妇联下拉框
+    Boolean isSelectWomenUnite = 7;
 }
 
 message Boolean{
