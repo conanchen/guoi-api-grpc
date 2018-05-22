@@ -47,9 +47,9 @@ message Order{
 
     string name_shop = 1;
     //货币
-    CurrencyCode currencyCode = 2;
+    //CurrencyCode currencyCode = 2;
     //当特殊订单发生时，客户的国际码
-    string customerLocale = 3;
+    //string customerLocale = 3;
     //订单编号
     string orderNumber = 4;
     //下单人id
@@ -77,78 +77,78 @@ message Order{
 
 }
 
-enum CurrencyCode {
-    //  // United States Dollars (USD)
-    USD = 0;
-
-    //  // Euro (EUR)
-    EUR = 1;
-
-    //  // United Kingdom Pounds (GBP)
-    GBP = 2;
-
-    //  // Canadian Dollars (CAD)
-    CAD = 3;
-
-    //  // Afghan Afghani (AFN)
-    AFN = 4;
-
-    //  // Albanian Lek (ALL)
-    ALL = 5;
-
-    //  // Algerian Dinar (DZD)
-    DZD = 6;
-
-    //  // Angolan Kwanza (AOA)
-    AOA = 7;
-
-    //  // Argentine Pesos (ARS)
-    ARS = 8;
-
-    //  // Armenian Dram (AMD)
-    AMD = 9;
-
-    //  // Aruban Florin (AWG)
-    AWG = 10;
-
-    //  // Australian Dollars (AUD)
-    AUD = 11;
-
-    //  // Barbadian Dollar (BBD)
-    BBD = 12;
-
-    //  // Azerbaijani Manat (AZN)
-    AZN = 13;
-
-    //  // Bangladesh Taka (BDT)
-    BDT = 14;
-
-    //  // Bahamian Dollar (BSD)
-    BSD = 15;
-
-    //  // Bahraini Dinar (BHD)
-    BHD = 16;
-
-    //  // Belarusian Ruble (BYR)
-    BYR = 17;
-
-    //  // Belize Dollar (BZD)
-    BZD = 18;
-
-    //  // Bhutanese Ngultrum (BTN)
-    BTN = 19;
-
-    //  // Bosnia and Herzegovina Convertible Mark (BAM)
-    BAM = 20;
-
-    //  // Brazilian Real (BRL)
-    BRL = 21;
-
-    //  // Bolivian Boliviano (BOB)
-    BOB = 22;
-
-    //  // Botswana Pula (BWP)
-    BWP = 23;
-
-}
+//enum CurrencyCode {
+//    //  // United States Dollars (USD)
+//    USD = 0;
+//
+//    //  // Euro (EUR)
+//    EUR = 1;
+//
+//    //  // United Kingdom Pounds (GBP)
+//    GBP = 2;
+//
+//    //  // Canadian Dollars (CAD)
+//    CAD = 3;
+//
+//    //  // Afghan Afghani (AFN)
+//    AFN = 4;
+//
+//    //  // Albanian Lek (ALL)
+//    ALL = 5;
+//
+//    //  // Algerian Dinar (DZD)
+//    DZD = 6;
+//
+//    //  // Angolan Kwanza (AOA)
+//    AOA = 7;
+//
+//    //  // Argentine Pesos (ARS)
+//    ARS = 8;
+//
+//    //  // Armenian Dram (AMD)
+//    AMD = 9;
+//
+//    //  // Aruban Florin (AWG)
+//    AWG = 10;
+//
+//    //  // Australian Dollars (AUD)
+//    AUD = 11;
+//
+//    //  // Barbadian Dollar (BBD)
+//    BBD = 12;
+//
+//    //  // Azerbaijani Manat (AZN)
+//    AZN = 13;
+//
+//    //  // Bangladesh Taka (BDT)
+//    BDT = 14;
+//
+//    //  // Bahamian Dollar (BSD)
+//    BSD = 15;
+//
+//    //  // Bahraini Dinar (BHD)
+//    BHD = 16;
+//
+//    //  // Belarusian Ruble (BYR)
+//    BYR = 17;
+//
+//    //  // Belize Dollar (BZD)
+//    BZD = 18;
+//
+//    //  // Bhutanese Ngultrum (BTN)
+//    BTN = 19;
+//
+//    //  // Bosnia and Herzegovina Convertible Mark (BAM)
+//    BAM = 20;
+//
+//    //  // Brazilian Real (BRL)
+//    BRL = 21;
+//
+//    //  // Bolivian Boliviano (BOB)
+//    BOB = 22;
+//
+//    //  // Botswana Pula (BWP)
+//    BWP = 23;
+//
+//}
 
