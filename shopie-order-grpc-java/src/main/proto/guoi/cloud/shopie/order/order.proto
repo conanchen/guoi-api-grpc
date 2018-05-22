@@ -5,7 +5,6 @@ option java_multiple_files = true;
 option java_package = "com.github.conanchen.guoi.cloud.shopie.order.grpc";
 option java_outer_classname = "OrderApiProto";
 
-import  "guoi/cloud/shopie/shop/shop.proto";
 import "guoi/cloud/common/common.proto";
 import "google/rpc/status.proto";
 import "google/protobuf/empty.proto";
@@ -45,8 +44,8 @@ message ListOrdersResponse{
 message Order{
 
     string name = 999;
-    // 订单的店铺
-    guoi.cloud.shopie.shop.Shop shop = 1;
+
+    string name_shop = 1;
     //货币
     CurrencyCode currencyCode = 2;
     //当特殊订单发生时，客户的国际码
