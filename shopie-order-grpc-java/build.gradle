@@ -34,7 +34,7 @@ protobuf {
 
 jar{
     exclude (
-            "/**/google/**"= 0;
+            "/**/google/**",
             "**/*.proto"
     )
 }
