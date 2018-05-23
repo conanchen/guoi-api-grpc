@@ -29,7 +29,7 @@ message ListOrdersRequest{
 
     // The next_page_token value returned from a previous List request= 0; if any.
     string page_token = 5;
-    //状态条件查询
+    //状态条件
     OrderStatus orderStatus_NOT = 6;
 }
 
