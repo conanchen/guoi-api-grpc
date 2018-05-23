@@ -136,6 +136,7 @@ message Org8n{
         OPCENTER = 2;
         STATION = 3;
         SHOP = 4;
+        GOV = 5;
     }
     Org8n parent = 2;
     Org8nType type = 3;
