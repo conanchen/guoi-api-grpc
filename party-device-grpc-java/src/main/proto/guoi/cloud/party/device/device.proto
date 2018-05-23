@@ -50,6 +50,10 @@ message ListDevicesRequest{
     string deviceType = 2;
     //设备imei号
     string imei = 3;
+    //是否查询设备类别
+    bool isSelect = 4;
+    //是否查询订单号
+    bool isSelectOrderNumber = 5;
     //激活状态
     string activationState = 9;
 }

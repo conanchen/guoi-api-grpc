@@ -207,6 +207,10 @@ message Shop {
     int32 serviceRange = 21;
 
     bool isCertified = 22;
+
+    bool isAutoAcceptOrder = 23;
+
+    string org8nid = 24;
 }
 
 enum ShopStatus {
@@ -226,6 +230,10 @@ message ListShopsRequest {
 
     // The next_page_token value returned from a previous List request, if any.
     string page_token = 3;
+
+    double lon = 4;//经度
+
+    double lat = 5;//纬度
 }
 
 // The response message containing the catalogs
@@ -236,6 +244,9 @@ message ListShopsResponse {
     repeated Shop shops = 1;
 
     string next_page_token = 2;
+
+    double distance= 3;//距离
+
 }
 
 message GetShopByUserIdRequest{

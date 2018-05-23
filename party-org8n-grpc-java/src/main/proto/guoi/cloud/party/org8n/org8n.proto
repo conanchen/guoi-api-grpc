@@ -35,6 +35,10 @@ service Org8nApi {
 
     }
 
+    rpc AddShop(AddShopRequest) returns (google.protobuf.Empty){
+
+    }
+
     rpc DeleteOrg8n(DeleteOrg8nRequest) returns (google.protobuf.Empty){
 
     }
@@ -95,6 +99,18 @@ service Org8nApi {
     }
 
     rpc ListIndoorGisRoom(ListIndoorGisRoomRequest) returns (ListIndoorGisRoomResponse){
+    }
+
+    rpc ComeInPersonVisitRecord(ComeInPersonVisitRecordRequest) returns (PersonVisitRecord){
+    }
+
+    rpc ComeOutPersonVisitRecord(ComeOutPersonVisitRecordRequest) returns (PersonVisitRecord) {
+    }
+
+    rpc DeletePersonVisitRecord(DeletePersonVisitRecordRequest) returns (google.protobuf.Empty){
+    }
+
+    rpc ListPersonVisitRecord(ListPersonVisitRecordRequest) returns (ListPersonVisitRecordResponse){
     }
 }
 
@@ -280,4 +296,8 @@ message ListEmployeesResponse{
 message Updateorg8nstatusRequest{
     string id = 1;
     int32 status = 2;
+}
+message AddShopRequest{
+    string org8nid = 1;
+    string shopid = 2;
 }

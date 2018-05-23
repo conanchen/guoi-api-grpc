@@ -1,0 +1,55 @@
+syntax = "proto3";
+package guoi.cloud.shopie.order;
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.shopie.order.grpc";
+option java_outer_classname = "OrderLineItemApiProto";
+
+import "guoi/cloud/common/common.proto";
+import "google/rpc/status.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+
+service OrderLineItemApi{
+
+    rpc ListOrderItems(ListOrderItemsRequest) returns (ListOrderItemsResponse){}
+
+}
+
+message ListOrderItemsRequest{
+    //订单编号
+    string name_order = 1;
+
+    // The maximum number of items to return.
+    int32 page_size = 4;
+
+    // The next_page_token value returned from a previous List request= 0; if any.
+    string page_token = 5;
+}
+
+
+message OrderLineItem{
+
+    string name = 999;
+
+    string name_order = 1;
+
+    map<string, google.protobuf.Value> customAttributes = 2;
+
+    int32 quantity = 3;
+
+    string title = 4;
+
+    string name_variant = 5;
+
+
+    google.protobuf.Timestamp createdAt = 6;
+
+    google.protobuf.Timestamp modifiedAt = 7;
+}
+message ListOrderItemsResponse{
+    google.rpc.Status status = 1;
+
+    repeated OrderLineItem lineItems = 2;
+}

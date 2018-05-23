@@ -1,0 +1,60 @@
+syntax = "proto3";
+package guoi.cloud.shopie.shippingffevent;
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.shopie.shippingffevent.grpc";
+option java_outer_classname = "ShippingffEventApiProto";
+
+import "guoi/cloud/common/common.proto";
+import "google/rpc/status.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+
+service ShippingffEventApi{
+
+
+    rpc ListShippingffEvents(ListShippingffEventsRequest) returns (ListShippingffEventsResponse){}
+
+}
+
+enum ShippingffEventType{
+    //待接单
+    AWAITING_RECEIVE = 0;
+    // 备货中
+    AWAITING_SHIPMENT = 1;
+    // 上门中
+    GOING = 2;
+    // 服务中
+    SERVING = 3;
+    // 已完成
+    COMPLETED = 4;
+}
+
+message ShippingffEvent{
+    // id
+    string name = 1;
+    // 时间标题
+    string title = 2;
+
+    // 店铺id
+    string orderId = 3;
+    // 事件描述
+    string desc = 4;
+
+    // 相关图片
+    repeated guoi.cloud.common.Image images = 5;
+
+    google.protobuf.Timestamp createdAt = 6;
+
+    // 配送状态
+    ShippingffEventType shippingffEventType = 7;
+}
+
+message ListShippingffEventsRequest{
+
+}
+message ListShippingffEventsResponse{
+    google.rpc.Status status = 1;
+    repeated ShippingffEvent events = 2;
+}

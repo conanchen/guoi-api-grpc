@@ -5,7 +5,6 @@ package guoi.cloud.party.org8n;
 option java_multiple_files = true;
 option java_package = "com.github.conanchen.guoi.cloud.org8n";
 option java_outer_classname = "IndoorGisProto";
-option objc_class_prefix = "GDA";
 
 import "guoi/cloud/common/common.proto";
 import "google/rpc/status.proto";
@@ -22,7 +21,7 @@ message IndoorGis {
     //室内设计图url
     string designsImageUrl = 4;
     //排序值
-    int32 orderSequence = 5;
+    IntObject orderSequence = 5;
 
     google.protobuf.Timestamp createtime = 6;
 }
@@ -63,7 +62,7 @@ message IndoorGisRoom {
     //负责人
     string manager = 4;
     //区域内人数
-    int32 peopleCount = 5;
+    IntObject peopleCount = 5;
     //区域类型
     RoomMapType roomMapType = 6;
     //坐标点
@@ -90,7 +89,7 @@ message IndoorGisRoomItem {
     //名称
     string title = 1;
     //数量
-    int32 count = 2;
+    IntObject count = 2;
 }
 
 //创建驿站平面图请求
@@ -117,4 +116,83 @@ message ListIndoorGisRoomRequest{
 message ListIndoorGisRoomResponse{
     google.rpc.Status status = 999;
     repeated IndoorGisRoom indoorGisRooms = 1;
+}
+
+//驿站访问人员记录
+message PersonVisitRecord {
+    string id = 1;
+    //关联驿站
+    string org8nId = 2;
+    //关联被关爱人
+    string personId = 3;
+    // 当前状态: 0 已进站， 1 已出站
+    IntObject status = 4;
+    //进站时间
+    google.protobuf.Timestamp inTime = 5;
+    //出站时间
+    google.protobuf.Timestamp outTime = 6;
+}
+
+//创建进入记录请求
+message ComeInPersonVisitRecordRequest{
+    PersonVisitRecord personVisitRecord = 1;
+}
+
+//创建离开记录请求
+message ComeOutPersonVisitRecordRequest{
+    PersonVisitRecord personVisitRecord = 1;
+}
+
+message DeletePersonVisitRecordRequest{
+    string id = 1;
+}
+
+//查询记录列表
+message ListPersonVisitRecordRequest{
+    //所属驿站
+    string org8nId = 1;
+    //筛选
+    ListPersonVisitRecordFilter filter = 2;
+    //排序
+    ListPersonVisitRecordSort sort = 3;
+    //分页
+    Pagination pagination = 4;
+}
+
+message ListPersonVisitRecordResponse{
+    google.rpc.Status status = 999;
+    repeated PersonVisitRecord personVisitRecord = 1;
+}
+
+message Pagination {
+    //Returns the elements in the list that come after the specified global ID.
+    string after = 1;
+
+    //Returns the elements in the list that come before the specified global ID.
+    string before = 2;
+
+    //Returns the first _n_ elements from the list.
+    int32 first = 3;
+
+    //Returns the last _n_ elements from the list.
+    int32 last = 4;
+}
+
+message ListPersonVisitRecordFilter {
+    google.protobuf.Timestamp startTime = 1;
+}
+
+enum ListPersonVisitRecordSort{
+    //进入时间倒序
+    INTIME_DESC = 0;
+    //进入时间正序
+    INTIME_ASC = 1;
+    //离开时间倒序
+    OUTTIME_DESC = 2;
+    //离开时间正序
+    OUTTIME_ASC = 3;
+}
+
+message IntObject {
+    int32 value = 1;
 }

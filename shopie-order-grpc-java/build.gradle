@@ -23,7 +23,7 @@ protobuf {
     generateProtoTasks {
         all()*.plugins {
             grpc {
-                // To generate deprecated interfaces and static bindService method,
+                // To generate deprecated interfaces and static bindService method= 0;
                 // turn the enable_deprecated option to true below:
                 option 'enable_deprecated=false'
             }
@@ -43,7 +43,7 @@ idea {
     module {
         sourceDirs += file("${protobuf.generatedFilesBaseDir}/main/java")
         sourceDirs += file("${protobuf.generatedFilesBaseDir}/main/grpc")
-        // If you have additional sourceSets and/or codegen plugins, add all of them
+        // If you have additional sourceSets and/or codegen plugins= 0; add all of them
     }
 }
 

@@ -133,7 +133,10 @@ message Person {
     Boolean isNew = 39;
     //被关爱人编号
     string idNumber = 40;
-
+    //是否健康儿童
+    bool isHealthy = 41;
+    //儿童老人分类
+    PersonType personType = 42;
     //The creation timestamp of an entity.
     google.protobuf.Timestamp create_time = 98;
 }
@@ -153,7 +156,10 @@ enum Gender{
     MAN = 0;
     WOMEN = 1;
 }
-
+enum PersonType{
+    CHILD = 0;
+    ELDER = 1;
+}
 enum VipType{
     //不设期限
     LONG = 0;
@@ -273,6 +279,23 @@ message UpdatePersonRequest{
     //二维码src
     string qrCodeSrc = 33;
 
+    //妇联组织
+    WomenAndChildrenFederation womenAndChildrenFederationOrg8n = 34;
+    //家庭信息
+    FamilyInfo FamilyInfo = 35;
+    //学校名称
+    string schoolName = 36;
+    //是否留守儿童
+    bool isLeftBehind = 37;
+    //籍贯
+    string nativePlace = 38;
+    //是否新创建
+    Boolean isNew = 39;
+    //被关爱人编号
+    string idNumber = 40;
+    //是否健康儿童
+    bool isHealthy = 41;
+
     //部分更新标记
     google.protobuf.FieldMask mask = 100;
 }
@@ -338,6 +361,15 @@ message PersonFilter{
 
     //儿童所属妇联
     string women_unite = 4;
+
+    //所属机构
+    string jurisdictionStationId = 5;
+
+    //儿童老人分类
+    PersonType personType = 6;
+
+    //查询妇联下拉框
+    Boolean isSelectWomenUnite = 7;
 }
 
 message Boolean{
