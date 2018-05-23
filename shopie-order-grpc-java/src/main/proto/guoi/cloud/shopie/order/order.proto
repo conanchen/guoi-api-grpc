@@ -74,9 +74,39 @@ message Order{
     float totalShippingPrice = 14;
     // 税（总税款）
     float totalTax = 15;
-
+    // 订单状态
+    OrderStatus orderStatus = 16;
 }
 
+// 订单状态
+enum OrderStatus{
+    // 进行中
+    PENDING = 0;
+    // 待付款
+    AWAITING_PAYMENT = 1;
+    //客户已经完成结帐过程并且付款已经确认
+    AWAITING_FULFILLMENT = 2;
+    // 已结单且在派货中
+    AWAITING_SHIPMENT = 3;
+    // 待签收
+    AWAITING_PICKUP = 4;
+    // 部分已发货，由于某些产品仅限预购或其他原因，订单中只有一些商品已经发货
+    PARTIALLY_SHIPPED = 5;
+    // 已完成
+    COMPLETED = 6;
+    // 已配送未签收
+    SHIPPED = 7;
+    // 取消
+    CANCELLED = 8;
+    // 拒接单
+    DECLINED = 9;
+    // 退款
+    REFUNDED = 10;
+    // 启动争议流程
+    DISPUTED = 11;
+    // 需要手动确认的流程
+    VERIFICATION_REQUIRED = 12;
+}
 //enum CurrencyCode {
 //    //  // United States Dollars (USD)
 //    USD = 0;
