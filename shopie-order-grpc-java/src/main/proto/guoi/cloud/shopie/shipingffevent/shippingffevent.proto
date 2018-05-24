@@ -9,11 +9,14 @@ import "guoi/cloud/common/common.proto";
 import "google/rpc/status.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/field_mask.proto";
 
 
 service ShippingffEventApi{
+    // 创建配送事件
+    rpc CreateShippingffEvent(CreateShippingffEventsRequest) returns (ShippingffEvent){}
 
-
+    // 获取配送事件
     rpc ListShippingffEvents(ListShippingffEventsRequest) returns (ListShippingffEventsResponse){}
 
 }
@@ -57,4 +60,8 @@ message ListShippingffEventsRequest{
 message ListShippingffEventsResponse{
     google.rpc.Status status = 1;
     repeated ShippingffEvent events = 2;
+}
+message CreateShippingffEventsRequest{
+    ShippingffEvent shippingffEvent = 1;
+    google.protobuf.FieldMask fieldMask = 888;
 }
