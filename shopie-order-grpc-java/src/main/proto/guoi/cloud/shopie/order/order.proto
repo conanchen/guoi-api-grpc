@@ -15,7 +15,14 @@ service OrderApi{
 
     rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse){}
 
+    rpc GetOrder(GetOrderRequest) returns(Order){}
+
 }
+
+message GetOrderRequest{
+    string name = 1;
+}
+
 
 message ListOrdersRequest{
     //订单编号
@@ -56,7 +63,7 @@ message Order{
     string orderNumber = 4;
     //下单人id
     string name_orderPerson = 5;
-    //被下单人id
+    //收货人id
     string name_person = 6;
     //订单产生时间
     google.protobuf.Timestamp processedAt = 7;
