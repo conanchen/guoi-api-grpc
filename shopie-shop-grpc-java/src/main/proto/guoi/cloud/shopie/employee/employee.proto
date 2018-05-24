@@ -28,6 +28,10 @@ service EmployeeApi {
 
     }
 
+    rpc GetShopOwner(GetShopOwnerRequst) returns (Employee) {
+
+    }
+
     rpc GetEmployeeByUserId (GetEmployeeByUserIdRequest) returns (GetEmployeeByUserIdResponse) {
 
     }
@@ -136,4 +140,7 @@ message GetEmployeeByUserIdRequest{
 }
 message GetEmployeeByUserIdResponse{
     Employee employee = 2;
+}
+message GetShopOwnerRequst{
+    string name_shop = 99;
 }

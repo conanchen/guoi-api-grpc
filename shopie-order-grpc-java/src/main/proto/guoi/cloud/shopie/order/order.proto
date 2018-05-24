@@ -9,14 +9,29 @@ import "guoi/cloud/common/common.proto";
 import "google/rpc/status.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/field_mask.proto";
 
 
 service OrderApi{
 
+    rpc CreateOrder(CreateOrderRequest) returns (Order){}
+
     rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse){}
+
+    rpc GetOrder(GetOrderRequest) returns(Order){}
 
 }
 
+message GetOrderRequest{
+    string name = 1;
+}
+
+
+message CreateOrderRequest{
+    // igore id name
+    Order order = 1;
+    google.protobuf.FieldMask fieldMask = 888;
+}
 message ListOrdersRequest{
     //订单编号
     string orderNumber = 1;
@@ -29,6 +44,8 @@ message ListOrdersRequest{
 
     // The next_page_token value returned from a previous List request= 0; if any.
     string page_token = 5;
+    //状态条件
+    OrderStatus orderStatus_NOT = 6;
 }
 
 message ListOrdersResponse{
@@ -54,7 +71,7 @@ message Order{
     string orderNumber = 4;
     //下单人id
     string name_orderPerson = 5;
-    //被下单人id
+    //收货人id
     string name_person = 6;
     //订单产生时间
     google.protobuf.Timestamp processedAt = 7;
