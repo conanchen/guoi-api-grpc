@@ -31,8 +31,8 @@ service Org8nApi {
 
     }
 
-    rpc GetOrg8nByType(GetOrg8nRequest) returns (Org8n){
-        
+    rpc GetOrg8nByType(GetOrg8nRequest) returns (ListOrg8nsResponse){
+
     }
 
     rpc UpdateOrg8n(UpdateOrg8nRequest) returns (Org8n){
