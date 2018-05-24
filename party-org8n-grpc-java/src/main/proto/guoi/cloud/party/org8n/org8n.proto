@@ -31,6 +31,10 @@ service Org8nApi {
 
     }
 
+    rpc GetOrg8nByType(GetOrg8nRequest) returns (Org8n){
+        
+    }
+
     rpc UpdateOrg8n(UpdateOrg8nRequest) returns (Org8n){
 
     }
@@ -191,6 +195,7 @@ message CreateOrg8nRequest{
 
 message GetOrg8nRequest{
     string id = 1;
+    string type = 2;
 }
 
 message UpdateOrg8nRequest{
