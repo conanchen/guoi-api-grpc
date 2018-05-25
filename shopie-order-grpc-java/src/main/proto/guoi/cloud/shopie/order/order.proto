@@ -67,12 +67,14 @@ message Order{
     //CurrencyCode currencyCode = 2;
     //当特殊订单发生时，客户的国际码
     //string customerLocale = 3;
+    // 下单操作人
+    string name_operator = 3;
     //订单编号
     string orderNumber = 4;
     //下单人id
     string name_orderPerson = 5;
     //收货人id
-    string name_person = 6;
+    string name_receiver = 6;
     //订单产生时间
     google.protobuf.Timestamp processedAt = 7;
     // 预计服务开始时间
