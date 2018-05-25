@@ -254,6 +254,8 @@ message ListProductsResponse {
 
 message ListProductVariantsRequest{
     string name_product = 1;
+
+    repeated string id_IN = 2;
 }
 message ListProductVariantsResponse{
     google.rpc.Status status = 999;
