@@ -213,6 +213,13 @@ message Shop {
     string org8nid = 24;
 }
 
+message GeoResult{
+
+    Shop shop = 1;
+
+    double distance= 25;//距离
+
+}
 enum ShopStatus {
     //正在营业
     ON = 0;
@@ -241,12 +248,9 @@ message ListShopsResponse {
 
     google.rpc.Status status = 999;
 
-    repeated Shop shops = 1;
+    repeated GeoResult shops = 1;
 
     string next_page_token = 2;
-
-    double distance= 3;//距离
-
 }
 
 message GetShopByUserIdRequest{
