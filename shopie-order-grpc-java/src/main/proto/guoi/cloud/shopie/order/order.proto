@@ -48,6 +48,10 @@ message ListOrdersRequest{
     string page_token = 5;
     //状态条件
     OrderStatus orderStatus_NOT = 6;
+    // equal
+    OrderStatus orderStatus = 7;
+
+    string name_shop = 8;
 }
 
 message ListOrdersResponse{
