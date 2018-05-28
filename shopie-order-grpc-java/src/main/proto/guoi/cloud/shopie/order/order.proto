@@ -52,6 +52,9 @@ message ListOrdersRequest{
     OrderStatus orderStatus = 7;
 
     string name_shop = 8;
+
+    guoi.cloud.shopie.shippingffevent.ShippingffEventType  shippingffEventType = 9;
+
 }
 
 message ListOrdersResponse{
