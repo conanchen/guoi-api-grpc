@@ -10,6 +10,8 @@ import "google/rpc/status.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/field_mask.proto";
+import "guoi/cloud/shopie/order/orderlineitem.proto";
+import "guoi/cloud/shopie/shipingffevent/shippingffevent.proto";
 
 
 service OrderApi{
@@ -95,6 +97,12 @@ message Order{
     float totalTax = 15;
     // 订单状态
     OrderStatus orderStatus = 16;
+    // 订单项
+    repeated guoi.cloud.shopie.order.OrderLineItem lineItem = 17;
+    //新配送事件
+    guoi.cloud.shopie.shippingffevent.ShippingffEvent latestShippingffEvent = 18;
+    //配送事件列表
+    repeated guoi.cloud.shopie.shippingffevent.ShippingffEvent shippingffEvents = 19;
 }
 
 // 订单状态

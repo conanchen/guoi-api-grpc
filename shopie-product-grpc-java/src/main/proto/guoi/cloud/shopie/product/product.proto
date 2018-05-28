@@ -209,12 +209,14 @@ message Product {
     }
 
 
-    message ListProductsRequest {
+message ListProductsRequest {
 
     // id for catalogId
     string name_catalog = 1;
 
     string name_shop = 2;
+
+    repeated string name_IN = 5;
 
     // The maximum number of items to return.
     int32 page_size = 999;
@@ -255,7 +257,7 @@ message ListProductsResponse {
 message ListProductVariantsRequest{
     string name_product = 1;
 
-    repeated string id_IN = 2;
+    repeated string name_IN = 2;
 }
 message ListProductVariantsResponse{
     google.rpc.Status status = 999;
