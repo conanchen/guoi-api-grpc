@@ -129,9 +129,10 @@ message AssignShippingResponse{
 }
 message StatusTransformRequest{
     string name_shippingEmployee = 1;
+
     string name_order = 2;
-    OrderStatus orderStatus = 3;
-    guoi.cloud.shopie.shippingffevent.ShippingffEventType  shippingffEventType = 4;
+
+    guoi.cloud.shopie.shippingffevent.ShippingffEvent  shippingffEventType = 4;
 }
 message StatusTransformResponse{
     Order order = 1;
