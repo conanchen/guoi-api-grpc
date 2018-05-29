@@ -117,6 +117,8 @@ message Order{
     repeated guoi.cloud.shopie.shippingffevent.ShippingffEvent shippingffEvents = 19;
 
     string name_shippingEmployee = 20;
+
+    string serviceType = 21;
 }
 message AssignShippingRequest{
     string name_shippingEmployee = 1;

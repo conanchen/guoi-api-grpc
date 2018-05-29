@@ -35,10 +35,11 @@ message OrderLineItem{
 
     string name_variant = 5;
 
-
     google.protobuf.Timestamp createdAt = 6;
 
     google.protobuf.Timestamp modifiedAt = 7;
+
+    float price = 8;
 }
 message ListOrderItemsResponse{
     google.rpc.Status status = 1;
