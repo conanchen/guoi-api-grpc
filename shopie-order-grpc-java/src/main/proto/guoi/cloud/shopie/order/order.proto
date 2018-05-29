@@ -22,6 +22,12 @@ service OrderApi{
 
     rpc GetOrder(GetOrderRequest) returns(Order){}
 
+    // 分配配送
+    rpc AssignShipping(AssignShippingRequest) returns (AssignShippingResponse){}
+
+    // 状态转换
+    rpc StatusTransform(StatusTransformRequest) returns (StatusTransformResponse){}
+
 }
 
 message GetOrderRequest{
@@ -110,6 +116,24 @@ message Order{
     guoi.cloud.shopie.shippingffevent.ShippingffEvent latestShippingffEvent = 18;
     //配送事件列表
     repeated guoi.cloud.shopie.shippingffevent.ShippingffEvent shippingffEvents = 19;
+
+    string name_shippingEmployee = 20;
+}
+message AssignShippingRequest{
+    string name_shippingEmployee = 1;
+    string name_order = 2;
+}
+message AssignShippingResponse{
+    Order order = 1;
+}
+message StatusTransformRequest{
+    string name_shippingEmployee = 1;
+    string name_order = 2;
+    OrderStatus orderStatus = 3;
+    guoi.cloud.shopie.shippingffevent.ShippingffEventType  shippingffEventType = 4;
+}
+message StatusTransformResponse{
+    Order order = 1;
 }
 
 // 订单状态
