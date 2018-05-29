@@ -50,6 +50,8 @@ service ProductApi {
     rpc ListProductVariants(ListProductVariantsRequest) returns(ListProductVariantsResponse){
 
     }
+
+    rpc GetProductVariant(GetProductVariantRequest) returns(Variant){}
 }
 
 message UpdateProductRequest {
@@ -262,4 +264,7 @@ message ListProductVariantsRequest{
 message ListProductVariantsResponse{
     google.rpc.Status status = 999;
     repeated Variant variants = 1;
+}
+message GetProductVariantRequest{
+    string name = 1;
 }
