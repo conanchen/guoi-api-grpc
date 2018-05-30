@@ -55,7 +55,7 @@ message ShippingffEvent{
 }
 
 message ListShippingffEventsRequest{
-
+    string orderId = 1;
 }
 message ListShippingffEventsResponse{
     google.rpc.Status status = 1;

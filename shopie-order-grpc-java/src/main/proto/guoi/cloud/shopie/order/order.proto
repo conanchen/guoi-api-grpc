@@ -7,9 +7,10 @@ option java_outer_classname = "OrderApiProto";
 
 import "guoi/cloud/common/common.proto";
 import "google/rpc/status.proto";
-import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/field_mask.proto";
+import "guoi/cloud/shopie/order/orderlineitem.proto";
+import "guoi/cloud/shopie/shipingffevent/shippingffevent.proto";
 
 
 service OrderApi{
@@ -19,6 +20,12 @@ service OrderApi{
     rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse){}
 
     rpc GetOrder(GetOrderRequest) returns(Order){}
+
+    // 分配配送
+    rpc AssignShipping(AssignShippingRequest) returns (AssignShippingResponse){}
+
+    // 状态转换
+    rpc StatusTransform(StatusTransformRequest) returns (StatusTransformResponse){}
 
 }
 
@@ -46,6 +53,14 @@ message ListOrdersRequest{
     string page_token = 5;
     //状态条件
     OrderStatus orderStatus_NOT = 6;
+    // equal
+    OrderStatus orderStatus = 7;
+
+    string name_shop = 8;
+
+    guoi.cloud.shopie.shippingffevent.ShippingffEventType  shippingffEventType = 9;
+
+    string name_shippingEmployee = 10;
 }
 
 message ListOrdersResponse{
@@ -95,6 +110,31 @@ message Order{
     float totalTax = 15;
     // 订单状态
     OrderStatus orderStatus = 16;
+    // 订单项
+    repeated guoi.cloud.shopie.order.OrderLineItem lineItem = 17;
+    //新配送事件
+    guoi.cloud.shopie.shippingffevent.ShippingffEvent latestShippingffEvent = 18;
+    //配送事件列表
+    repeated guoi.cloud.shopie.shippingffevent.ShippingffEvent shippingffEvents = 19;
+
+    string name_shippingEmployee = 20;
+
+    string serviceType = 21;
+}
+message AssignShippingRequest{
+    string name_shippingEmployee = 1;
+    string name_order = 2;
+}
+message AssignShippingResponse{
+    Order order = 1;
+}
+message StatusTransformRequest{
+    string name_order = 2;
+
+    guoi.cloud.shopie.shippingffevent.ShippingffEvent  shippingffEvent = 4;
+}
+message StatusTransformResponse{
+    Order order = 1;
 }
 
 // 订单状态
