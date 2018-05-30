@@ -60,6 +60,7 @@ message ListOrdersRequest{
 
     guoi.cloud.shopie.shippingffevent.ShippingffEventType  shippingffEventType = 9;
 
+    string name_shippingEmployee = 10;
 }
 
 message ListOrdersResponse{
