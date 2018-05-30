@@ -146,6 +146,7 @@ message Employee{
     string email = 16;
     google.protobuf.Timestamp createtime = 17;
     string visualuserid = 18;
+    string shopid = 19;
 }
 
 message Org8n{
@@ -276,6 +277,8 @@ message DeleteEmployeeRequest{
 message ListEmployeesRequest{
     // list employees belong to the org8n identified by field "name_org8n" resource name
     string id_org8n = 1;
+
+    string shopid = 4;
 
     // The maximum number of items to return.
     int32 page_size = 2;
