@@ -1,0 +1,67 @@
+syntax = "proto3";
+package guoi.cloud.region;
+
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.region";
+option java_outer_classname = "RegionApiProto";
+
+service RegionApi {
+    rpc GetProvince(GetRequest)returns (Province){
+
+    }
+
+    rpc GetCity(GetRequest)returns (City){
+
+    }
+
+    rpc GetCounty(GetRequest)returns (County){
+
+    }
+
+    rpc GetTown(GetRequest)returns (Town){
+
+    }
+
+    rpc GetVillage(GetRequest)returns (Village){
+
+    }
+}
+
+message GetRequest{
+    string code = 1;
+}
+
+message Province{
+     string id = 1;
+     string code = 2;
+     string title = 3;
+}
+
+message City{
+    string id = 1;
+    string code = 2;
+    string title = 3;
+    string provinceCode = 4;
+}
+
+message County{
+    string id = 1;
+    string code = 2;
+    string title = 3;
+    string cityCode = 4;
+}
+
+message Town{
+    string id = 1;
+    string code = 2;
+    string title = 3;
+    string countyCode = 4;
+}
+
+message Village{
+    string id = 1;
+    string code = 2;
+    string title = 3;
+    string townCode = 4;
+}

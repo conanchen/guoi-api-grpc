@@ -15,3 +15,5 @@ include 'shopie-catalog-grpc-java'
 include 'shopie-product-grpc-java'
 include 'shopie-shop-grpc-java'
 include 'zcommon-grpc-java'
+include 'region-grpc-java'
+
