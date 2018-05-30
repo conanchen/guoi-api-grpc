@@ -22,8 +22,40 @@ service DeviceApi {
     rpc CreateDevice (CreateDeviceRequest) returns (CreateDeviceResponse) {
 
     }
-}
 
+    rpc updateDevice(UpdateDeviceRequest) returns (UpdateDeviceResponse){
+
+    }
+}
+message UpdateDeviceRequest{
+    //订单号
+    string orderNumber=1;
+    //设备类型
+    string deviceType=2;
+    //设备imei号
+    string imei=3;
+    //设备sn号
+    string sn=4;
+    //绑定人uuid
+    string personId=5;
+    //设备型号
+    string deviceModel=6;
+    //设备sim号
+    string sim=7;
+    //软件版本号
+    string softwareV=8;
+    //固件版本号
+    string firmwareV=9;
+    //激活状态
+    bool activationState=10;
+    //绑定状态
+    bool bingState=11;
+    //备注
+    string remarks=12;
+}
+message UpdateDeviceResponse{
+    guoi.cloud.common.Device device = 1;
+}
 message CreateDeviceResponse {
     // 总数
     string total = 1;
