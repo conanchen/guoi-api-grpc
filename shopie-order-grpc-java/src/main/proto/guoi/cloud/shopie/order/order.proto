@@ -27,6 +27,22 @@ service OrderApi{
     // 状态转换
     rpc StatusTransform(StatusTransformRequest) returns (StatusTransformResponse){}
 
+    //订单结算
+    rpc SettlementOrder(SettlementOrderRequest) returns(Order){}
+
+}
+
+message SettlementOrderRequest{
+    string name = 1;
+    //服务时间类型
+    ServiceTimeType serviceTimeType = 2;
+    //预计服务时间
+    google.protobuf.Timestamp expectedServiceTime = 3;
+}
+
+enum ServiceTimeType{
+    AT_ONCE = 0;
+    EXPECT = 1;
 }
 
 message GetOrderRequest{
@@ -120,6 +136,13 @@ message Order{
     string name_shippingEmployee = 20;
 
     string serviceType = 21;
+    //订单备注
+    string remark = 22;
+    //是否回访
+    bool  isReturnVisit = 23;
+    //星级
+    int32 starLevel = 24;
+
 }
 message AssignShippingRequest{
     string name_shippingEmployee = 1;
