@@ -13,6 +13,7 @@ import "guoi/cloud/shopie/order/orderlineitem.proto";
 import "guoi/cloud/shopie/shipingffevent/shippingffevent.proto";
 
 
+
 service OrderApi{
 
     rpc CreateOrder(CreateOrderRequest) returns (Order){}
@@ -33,11 +34,21 @@ service OrderApi{
 }
 
 message SettlementOrderRequest{
+
     string name = 1;
     //服务时间类型
     ServiceTimeType serviceTimeType = 2;
     //预计服务时间
     google.protobuf.Timestamp expectedServiceTime = 3;
+    //订单备注
+    string remark = 4;
+    //服务时长
+    int32 period = 5;
+    //商品类型
+    string serviceType = 6;
+    //骑行时长
+    int32  ridingTime = 7;
+
 }
 
 enum ServiceTimeType{
@@ -164,7 +175,7 @@ message StatusTransformResponse{
 enum OrderStatus{
     // 进行中
     PENDING = 0;
-    // 待付款
+    // 待付款r
     AWAITING_PAYMENT = 1;
     //客户已经完成结帐过程并且付款已经确认
     AWAITING_FULFILLMENT = 2;
