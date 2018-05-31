@@ -69,8 +69,6 @@ message CreateOrderRequest{
 message ListOrdersRequest{
     //订单编号
     string orderNumber = 1;
-    //被关爱人姓名
-
     //服务商
 
     // The maximum number of items to return.
@@ -88,6 +86,8 @@ message ListOrdersRequest{
     guoi.cloud.shopie.shippingffevent.ShippingffEventType  shippingffEventType = 9;
 
     string name_shippingEmployee = 10;
+
+    google.protobuf.FieldMask fieldMask = 888;
 }
 
 message ListOrdersResponse{
