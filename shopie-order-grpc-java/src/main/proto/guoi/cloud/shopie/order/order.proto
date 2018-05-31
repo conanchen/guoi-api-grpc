@@ -83,7 +83,7 @@ message ListOrdersRequest{
 
     string name_shop = 8;
 
-    guoi.cloud.shopie.shippingffevent.ShippingffEventType  shippingffEventType = 9;
+    guoi.cloud.shopie.shippingffevent.ShippingffEventType  latestShippingffEventType = 9;
 
     string name_shippingEmployee = 10;
 
