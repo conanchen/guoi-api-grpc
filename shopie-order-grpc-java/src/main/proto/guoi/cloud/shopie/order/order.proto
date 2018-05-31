@@ -87,6 +87,8 @@ message ListOrdersRequest{
 
     string name_shippingEmployee = 10;
 
+    google.protobuf.Timestamp searchDate = 11;
+
     google.protobuf.FieldMask fieldMask = 888;
 }
 
