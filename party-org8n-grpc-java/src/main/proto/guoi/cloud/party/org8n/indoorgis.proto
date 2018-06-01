@@ -147,6 +147,12 @@ message DeletePersonVisitRecordRequest{
     string id = 1;
 }
 
+//查询最后一条进出驿站记录
+message LastPersonVisitRecordRequest{
+    //关联被关爱人
+    string personId = 3;
+}
+
 //查询记录列表
 message ListPersonVisitRecordRequest{
     //所属驿站

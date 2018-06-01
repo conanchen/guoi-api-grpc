@@ -116,6 +116,9 @@ service Org8nApi {
 
     rpc ListPersonVisitRecord(ListPersonVisitRecordRequest) returns (ListPersonVisitRecordResponse){
     }
+
+    rpc lastPersonVisitRecord(LastPersonVisitRecordRequest) returns (PersonVisitRecord){
+    }
 }
 
 message GetToplevelOrg8nRequest{
