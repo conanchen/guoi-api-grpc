@@ -1,0 +1,232 @@
+syntax = "proto3";
+package com.github.conanchen.ccms;
+
+
+option java_multiple_files = false;
+option java_package = "com.github.conanchen.ccms";
+option java_outer_classname = "AreaProto";
+
+import "guoi/cloud/common/common.proto";
+import "google/rpc/status.proto";
+import "google/protobuf/timestamp.proto";
+
+// The area service definition.
+service AreaApi {
+
+    rpc GetCountry (GetCountryRequest) returns (Country) {
+    }
+
+    rpc ListCountries (ListCountriesRequest) returns (ListCountriesResponse) {
+    }
+}
+
+message GetCountryRequest {
+    // 国家资源名称
+    string name = 1;
+
+    // 请求子级省市过滤条件，如有将获取该国下级省市
+    StateFilterRequest withStateFilter = 2;
+
+    // 请求子级省市排序条件，如有将排序该国下级省市
+    StateOrderByRequest withStateOrderBy = 3;
+
+    // 请求分页条件
+    PaginationRequest withPagination = 4;
+}
+
+message StateFilterRequest {
+    //    # logical operators
+    //    AND: [NoticeFilterInput!] # combines all passed `NoticeFilterInput` objects with logical AND
+    repeated StateFilterRequest AND = 98;
+    //    OR: [NoticeFilterInput!] # combines all passed `NoticeFilterInput` objects with logical OR
+    repeated StateFilterRequest OR = 99;
+
+    //    # Code filters
+    string code = 1; // matches all nodes with exact value
+    string code_not = 2; // matches all nodes with different value
+    string code_in = 3; //# matches all nodes with value in the passed list
+    string code_not_in = 4; // # matches all nodes with value not in the passed list
+    string code_lt = 5; // matches all nodes with lesser value
+    string code_lte = 6; // matches all nodes with lesser or equal value
+    string code_gt = 7; // matches all nodes with greater value
+    string code_gte = 8; // matches all nodes with greater or equal value
+    string code_contains = 9; // matches all nodes with a value that contains given substring
+    string code_not_contains = 10; // matches all nodes with a value that does not contain given substring
+    string code_starts_with = 11; // matches all nodes with a value that starts with given substring
+    string code_not_starts_with = 12; // matches all nodes with a value that does not start with given substring
+    string code_ends_with = 13; // matches all nodes with a value that ends with given substring
+    string code_not_ends_with = 14; // matches all nodes with a value that does not end with given substring
+
+}
+
+enum StateOrderByRequest {
+    code_ASC = 0;
+    code_DESC = 1;
+}
+
+message PaginationRequest {
+    // 参照https://docs.dgraph.io/master/query-language/#first
+    int32 first = 1;
+    // 参照 https://docs.dgraph.io/master/query-language/#offset
+    int32 offset = 2;
+    // 参照 https://docs.dgraph.io/master/query-language/#after
+    uint64 after = 3;
+}
+
+
+message ListCountriesRequest {
+    int64 lastUpdated = 1;
+    int32 size = 2;
+}
+
+message ListCountriesResponse {
+    google.rpc.Status status = 999;
+
+    repeated Country country = 1;
+}
+
+// ################# Resources #################
+// 1。国家The Country Resource
+message Country {
+    // 每个资源都有一个唯一资源名称
+    // Resource name of a country. For example: "countries/country123".
+    string name = 99;
+
+    //    #Country code 国家编号
+    string code = 1;
+
+    //    #Latitude
+    float latitude = 2;
+    //    #Longitude
+    float longitude = 3;
+
+    repeated State states = 4;
+
+
+    google.protobuf.Timestamp create_time = 13;
+    google.protobuf.Timestamp update_time = 14;
+}
+
+// 2。省市The State Resource
+message State {
+    // 每个资源都有一个唯一资源名称
+    // Resource name of a state. For example: "states/state123".
+    string name = 99;
+
+    //    #State code 省市编号
+    string code = 1;
+
+    //    #Latitude
+    float latitude = 2;
+    //    #Longitude
+    float longitude = 3;
+
+    repeated City cities = 4;
+
+
+    google.protobuf.Timestamp create_time = 13;
+    google.protobuf.Timestamp update_time = 14;
+}
+
+// 3。城市The City Resource
+message City {
+    // 每个资源都有一个唯一资源名称
+    // Resource name of a city. For example: "cities/city123".
+    string name = 99;
+
+    //    #City code 城市编号
+    string code = 1;
+
+    //    #Latitude
+    float latitude = 2;
+    //    #Longitude
+    float longitude = 3;
+
+    repeated Region regions = 4;
+
+
+    google.protobuf.Timestamp create_time = 13;
+    google.protobuf.Timestamp update_time = 14;
+}
+
+// 4。区镇The Region Resource
+message Region {
+    // 每个资源都有一个唯一资源名称
+    // Resource name of a region. For example: "regions/region123".
+    string name = 99;
+
+    //    #Region code 区镇编号
+    string code = 1;
+
+    //    #Latitude
+    float latitude = 2;
+    //    #Longitude
+    float longitude = 3;
+
+    repeated Street streets = 4;
+
+
+    google.protobuf.Timestamp create_time = 13;
+    google.protobuf.Timestamp update_time = 14;
+}
+
+// 5。街道The Street Resource
+message Street {
+    // 每个资源都有一个唯一资源名称
+    // Resource name of a region. For example: "streets/street123".
+    string name = 99;
+
+    //    #Street code 街道编号
+    string code = 1;
+
+    //    #Latitude
+    float latitude = 2;
+    //    #Longitude
+    float longitude = 3;
+
+    repeated Community communities = 4;
+
+
+    google.protobuf.Timestamp create_time = 13;
+    google.protobuf.Timestamp update_time = 14;
+}
+
+// 5。社区居委会The Community Resource
+message Community {
+    // 每个资源都有一个唯一资源名称
+    // Resource name of a region. For example: "communities/community123".
+    string name = 99;
+
+    //    #Community code 社区居委会编号
+    string code = 1;
+
+    //    #Latitude
+    float latitude = 2;
+    //    #Longitude
+    float longitude = 3;
+
+    repeated Uptown uptowns = 4;
+
+
+    google.protobuf.Timestamp create_time = 13;
+    google.protobuf.Timestamp update_time = 14;
+}
+
+// 6。住宅区The Uptown Resource
+message Uptown {
+    // 每个资源都有一个唯一资源名称
+    // Resource name of a region. For example: "uptowns/uptown123".
+    string name = 99;
+
+    //    #Uptown code 住宅区
+    string code = 1;
+
+    //    #Latitude
+    float latitude = 2;
+    //    #Longitude
+    float longitude = 3;
+
+
+    google.protobuf.Timestamp create_time = 13;
+    google.protobuf.Timestamp update_time = 14;
+}

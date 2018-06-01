@@ -1,7 +1,6 @@
 rootProject.name = 'guoi-micro-apis'
 include 'authcow-grpc-java'
-include 'cms-article-grpc-java'
-include 'cms-articlecomment-grpc-java'
+include 'ccms-micro-grpc-java'
 include 'gis-asset-grpc-java'
 include 'gis-geo-grpc-java'
 include 'party-device-grpc-java'

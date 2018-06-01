@@ -46,4 +46,4 @@ idea {
     }
 }
 
-project.logger.lifecycle("~~~~~~~~~~~~~~~~~CMS-ARTICLE-GRPC-JAVA ROOT BUILD !~~~~~~~~~~~~~~~~~~");
+project.logger.lifecycle("~~~~~~~~~~~~~~~~~CCMS-MICRO-GRPC-JAVA ROOT BUILD !~~~~~~~~~~~~~~~~~~");
