@@ -11,8 +11,6 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/field_mask.proto";
 import "guoi/cloud/shopie/order/orderlineitem.proto";
 import "guoi/cloud/shopie/shipingffevent/shippingffevent.proto";
-import "guoi/cloud/shopie/product/product.proto";
-
 
 service OrderApi{
 
@@ -45,7 +43,7 @@ message SettlementOrderRequest{
     //服务时长
     int32 period = 5;
     //商品类型
-    guoi.cloud.shopie.product.ProductType serviceType = 6;
+    string serviceType = 6;
     //骑行时长
     int32  ridingTime = 7;
 
