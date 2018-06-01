@@ -13,7 +13,6 @@ import "guoi/cloud/shopie/order/orderlineitem.proto";
 import "guoi/cloud/shopie/shipingffevent/shippingffevent.proto";
 
 
-
 service OrderApi{
 
     rpc CreateOrder(CreateOrderRequest) returns (Order){}
@@ -50,6 +49,14 @@ message SettlementOrderRequest{
     int32  ridingTime = 7;
 
 }
+
+enum ProductType {
+    // 商品
+    PRODUCT = 0;
+    // 服务
+    SERVICE = 1;
+}
+
 
 enum ServiceTimeType{
     AT_ONCE = 0;
