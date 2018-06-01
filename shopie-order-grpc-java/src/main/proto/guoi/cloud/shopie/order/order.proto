@@ -77,7 +77,7 @@ message ListOrdersRequest{
     // The next_page_token value returned from a previous List request= 0; if any.
     string page_token = 5;
     //状态条件
-    OrderStatus orderStatus_NOT = 6;
+    OrderStatus orderStatus_not= 6;
     // equal
     OrderStatus orderStatus = 7;
 
@@ -88,6 +88,9 @@ message ListOrdersRequest{
     string name_shippingEmployee = 10;
 
     google.protobuf.Timestamp searchDate = 11;
+
+    repeated OrderStatus orderStatus_in = 12;
+
 
     google.protobuf.FieldMask fieldMask = 888;
 }
