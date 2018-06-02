@@ -24,7 +24,7 @@ scmVersion {
     versionCreator 'versionWithBranch'
 
     hooks {
-        pre 'fileUpdate', [file: 'README.md', pattern: {v,p -> /(version.) $v/}, replacement: {v, p -> "\$1 $v"}]
+        pre 'fileUpdate', [file: 'README.md', pattern: { v, p -> /(version.) $v/ }, replacement: { v, p -> "\$1 $v" }]
         pre 'commit'
     }
 }
@@ -69,6 +69,7 @@ allprojects {
     }
     repositories {
         mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
         maven { url "http://192.168.1.250:8081/nexus/content/repositories/central" }
     }
 }
