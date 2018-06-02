@@ -4,8 +4,9 @@ buildscript {
     apply from: "$rootDir/blessedDeps.gradle"
 
     repositories {
+//        maven { url "http://192.168.1.250:8081/nexus/content/repositories/central" }
         mavenCentral()
-        maven { url "http://192.168.1.250:8081/nexus/content/repositories/central" }
+        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
     }
     dependencies {
         classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.5"
