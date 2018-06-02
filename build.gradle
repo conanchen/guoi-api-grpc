@@ -4,11 +4,12 @@ buildscript {
     apply from: "$rootDir/blessedDeps.gradle"
 
     repositories {
+        mavenCentral()
         maven { url "http://192.168.1.250:8081/nexus/content/repositories/central" }
     }
     dependencies {
         classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.5"
-        classpath "pl.allegro.tech.build:axion-release-plugin:1.8.1"
+        classpath "pl.allegro.tech.build:axion-release-plugin:1.9.1"
         classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
