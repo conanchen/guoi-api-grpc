@@ -26,7 +26,21 @@ service OrderApi{
 
     // 状态转换
     rpc StatusTransform(StatusTransformRequest) returns (StatusTransformResponse){}
+
+    //回访
+    rpc ReturnVisit(ReturnVisitRequest) returns (Order){}
 }
+
+message ReturnVisitRequest{
+
+    google.rpc.Status status = 999;
+    //id
+    string name = 1;
+    // 星级
+    int32 starLevel = 2;
+
+}
+
 message GetOrderRequest{
     string name = 1;
 }
