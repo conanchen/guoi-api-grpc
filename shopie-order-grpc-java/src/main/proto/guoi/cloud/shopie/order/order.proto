@@ -15,7 +15,7 @@ import "guoi/cloud/shopie/product/product.proto";
 
 service OrderApi{
 
-    rpc CreateOrders(CreateOrdersRequest) returns (Order){}
+    rpc CreateOrders(CreateOrdersRequest) returns (CreateOrdersResponse){}
 
     rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse){}
 
