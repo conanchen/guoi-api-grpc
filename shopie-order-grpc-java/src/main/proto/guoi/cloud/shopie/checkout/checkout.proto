@@ -52,6 +52,8 @@ message UpdateCheckoutRequest{
     Checkout checkout = 1;
     // 配送骑行时长
     float ridingDuration = 7;
+
+    google.protobuf.FieldMask fieldMask = 888;
 }
 
 message UpdateCheckoutResponse{
