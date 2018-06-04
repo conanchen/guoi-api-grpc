@@ -33,7 +33,6 @@ service OrderApi{
 
 message ReturnVisitRequest{
 
-    google.rpc.Status status = 999;
     //id
     string name = 1;
     // 星级
