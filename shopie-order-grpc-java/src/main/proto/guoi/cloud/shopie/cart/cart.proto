@@ -64,8 +64,6 @@ message Cart{
 
     //下单人id
     string name_orderPerson = 5;
-    //收货人id
-    string name_receiver = 6;
 
     string name_org8n = 7;
 }
