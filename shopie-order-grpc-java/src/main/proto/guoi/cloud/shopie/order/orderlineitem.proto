@@ -39,7 +39,20 @@ message OrderLineItem{
 
     google.protobuf.Timestamp modifiedAt = 7;
 
-    float price = 8;
+    //购买价格
+    float buyPrice = 8;
+
+    // 单位
+    string weightUnit = 9;
+
+    // 原价
+    float price = 10;
+
+    // vip 价格
+    float vipPrice = 11;
+
+    // 重量
+    string weight = 12;
 }
 message ListOrderItemsResponse{
     google.rpc.Status status = 1;

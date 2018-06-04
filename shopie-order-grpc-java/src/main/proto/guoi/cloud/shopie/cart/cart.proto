@@ -1,0 +1,71 @@
+syntax = "proto3";
+package guoi.cloud.shopie.cart;
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.shopie.order.grpc";
+option java_outer_classname = "CartLineItemApiProto";
+
+import "guoi/cloud/common/common.proto";
+import "google/rpc/status.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/field_mask.proto";
+
+service CartApi{
+
+    rpc UpsertCartLineItems(UpsertCartLineItemsReuqest) returns (Cart) {}
+
+    rpc GetCart(GetCartRequest) returns (Cart) {}
+
+    rpc DeleteCartLineItems(DeleteCartLineItemsRequest) returns (google.protobuf.Empty) {}
+
+    rpc EmptyCart(EmptyCartRequest) returns (google.protobuf.Empty) {}
+}
+
+message UpsertCartLineItemsReuqest{
+    // ignore field 'name'
+    Cart cart = 1;
+    // field mask
+    google.protobuf.FieldMask fieldMask = 888;
+}
+message GetCartRequest{
+    string name_orderPerson = 1;
+
+    string name_org8n = 2;
+}
+message DeleteCartLineItemsRequest{
+    string name_cart = 1;
+    repeated string variants = 2;
+}
+message EmptyCartRequest{
+    string name_cart = 1;
+}
+message CartLineItem{
+
+    map<string, google.protobuf.Value> customAttributes = 2;
+
+    int32 quantity = 3;
+
+    string title = 4;
+
+    string name_variant = 5;
+
+    google.protobuf.Timestamp createdAt = 6;
+
+    google.protobuf.Timestamp modifiedAt = 7;
+}
+
+message Cart{
+
+    string name = 999;
+
+    repeated CartLineItem lineItems = 2;
+
+    //下单人id
+    string name_orderPerson = 5;
+    //收货人id
+    string name_receiver = 6;
+
+    string name_org8n = 7;
+}

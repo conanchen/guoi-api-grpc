@@ -1,0 +1,136 @@
+syntax = "proto3";
+package guoi.cloud.shopie.checkout;
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.shopie.order.grpc";
+option java_outer_classname = "CheckoutApiProto";
+
+import "guoi/cloud/common/common.proto";
+import "google/rpc/status.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/field_mask.proto";
+import "guoi/cloud/shopie/order/orderlineitem.proto";
+import "guoi/cloud/shopie/product/product.proto";
+import "google/protobuf/struct.proto";
+
+service CheckoutApi{
+
+    rpc CreateCheckouts(CreateCheckoutsRequest) returns (CreateCheckoutsResponse){}
+
+    rpc UpdateCheckout(UpdateCheckoutRequest) returns (UpdateCheckoutResponse){}
+}
+message CreateCheckoutsRequest{
+    repeated CheckoutLineItem lineItems = 1;
+
+    guoi.cloud.common.Address shippingAddress = 2;
+
+    // 下单操作人
+    string name_operator = 3;
+
+    //下单人id
+    string name_orderPerson = 5;
+    //收货人id
+    string name_receiver = 6;
+
+    // 配送骑行时长
+    float ridingDuration = 7;
+
+    //预计服务时间
+    google.protobuf.Timestamp expectedServiceTime = 8;
+}
+message CreateCheckoutsResponse{
+
+    google.rpc.Status status = 999;
+
+    repeated Checkout checkouts = 1;
+
+    string next_page_token = 2;
+
+}
+
+message UpdateCheckoutRequest{
+    Checkout checkout = 1;
+    // 配送骑行时长
+    float ridingDuration = 7;
+}
+
+message UpdateCheckoutResponse{
+    google.rpc.Status status = 999;
+
+    repeated Checkout checkout = 1;
+}
+
+
+
+message Checkout{
+
+    string name = 999;
+
+    string name_shop = 1;
+    // 下单操作人
+    string name_operator = 3;
+    //账单编号
+    string checkoutNumber = 4;
+    //下单人id
+    string name_orderPerson = 5;
+    //收货人id
+    string name_receiver = 6;
+    //订单产生时间
+    google.protobuf.Timestamp processedAt = 7;
+    // 预计服务开始时间
+    google.protobuf.Timestamp expectServiceStartAt = 8;
+    // 预计服务完成时间
+    google.protobuf.Timestamp expectServiceEndAt = 9;
+    // 配送地址
+    guoi.cloud.common.Address shippingAddress = 10;
+    // 不包含配送费的商品总价格
+    float subtotalPrice = 11;
+    // 总价格：+配送费、+税、-优惠价
+    float totalPrice = 12;
+    // 退还金额
+    float totalRefunded = 13;
+    // 配送费
+    float totalShippingPrice = 14;
+    // 税（总税款）
+    float totalTax = 15;
+    // 订单项
+    repeated CheckoutLineItem lineItems = 17;
+    //服务类型
+    guoi.cloud.shopie.product.ProductType serviceType = 21;
+    //订单备注
+    string note = 22;
+    //预计服务时间
+    google.protobuf.Timestamp expectedServiceTime = 23;
+    // 支付渠道
+    guoi.cloud.common.PaymentChannel paymentChannel = 24;
+}
+
+message CheckoutLineItem{
+
+    map<string, google.protobuf.Value> customAttributes = 2;
+
+    int32 quantity = 3;
+
+    string title = 4;
+
+    string name_variant = 5;
+
+    google.protobuf.Timestamp createdAt = 6;
+
+    google.protobuf.Timestamp modifiedAt = 7;
+
+    //购买价格
+    float buyPrice = 8;
+
+    // 单位
+    string weightUnit = 9;
+
+    // 原价
+    float price = 10;
+
+    // vip 价格
+    float vipPrice = 11;
+
+    // 重量
+    string weight = 12;
+}

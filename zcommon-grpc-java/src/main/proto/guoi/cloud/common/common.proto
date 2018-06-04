@@ -29,6 +29,7 @@ enum PaymentChannel {
     ALIPAY = 0;
     WECHAT = 1;
     UNIONPAY = 2;
+    CASH = 3;
 }
 
 

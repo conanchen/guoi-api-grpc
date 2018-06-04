@@ -11,10 +11,11 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/field_mask.proto";
 import "guoi/cloud/shopie/order/orderlineitem.proto";
 import "guoi/cloud/shopie/shipingffevent/shippingffevent.proto";
+import "guoi/cloud/shopie/product/product.proto";
 
 service OrderApi{
 
-    rpc CreateOrder(CreateOrderRequest) returns (Order){}
+    rpc CreateOrders(CreateOrdersRequest) returns (Order){}
 
     rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse){}
 
@@ -25,44 +26,23 @@ service OrderApi{
 
     // 状态转换
     rpc StatusTransform(StatusTransformRequest) returns (StatusTransformResponse){}
-
-    //订单结算
-    rpc SettlementOrder(SettlementOrderRequest) returns(Order){}
-
 }
-
-message SettlementOrderRequest{
-
-    string name = 1;
-    //服务时间类型
-    ServiceTimeType serviceTimeType = 2;
-    //预计服务时间
-    google.protobuf.Timestamp expectedServiceTime = 3;
-    //订单备注
-    string remark = 4;
-    //服务时长
-    int32 period = 5;
-    //商品类型
-    string serviceType = 6;
-    //骑行时长
-    int32  ridingTime = 7;
-
-}
-
-enum ServiceTimeType{
-    AT_ONCE = 0;
-    EXPECT = 1;
-}
-
 message GetOrderRequest{
     string name = 1;
 }
 
 
-message CreateOrderRequest{
+message CreateOrdersRequest{
+    guoi.cloud.common.PaymentChannel paymentChannel = 1;
     // igore id name
-    Order order = 1;
-    google.protobuf.FieldMask fieldMask = 888;
+    repeated string checkoutIds = 2;
+}
+
+message CreateOrdersResponse{
+
+    google.rpc.Status status = 999;
+
+    repeated Order orders = 1;
 }
 message ListOrdersRequest{
     //订单编号
@@ -108,19 +88,15 @@ message Order{
     string name = 999;
 
     string name_shop = 1;
-    //货币
-    //CurrencyCode currencyCode = 2;
-    //当特殊订单发生时，客户的国际码
-    //string customerLocale = 3;
     // 下单操作人
     string name_operator = 3;
-    //订单编号
+    // 订单编号
     string orderNumber = 4;
-    //下单人id
+    // 下单人id
     string name_orderPerson = 5;
-    //收货人id
+    // 收货人id
     string name_receiver = 6;
-    //订单产生时间
+    // 订单产生时间
     google.protobuf.Timestamp processedAt = 7;
     // 预计服务开始时间
     google.protobuf.Timestamp expectServiceStartAt = 8;
@@ -142,27 +118,32 @@ message Order{
     OrderStatus orderStatus = 16;
     // 订单项
     repeated guoi.cloud.shopie.order.OrderLineItem lineItem = 17;
-    //新配送事件
+    // 新配送事件
     guoi.cloud.shopie.shippingffevent.ShippingffEvent latestShippingffEvent = 18;
-    //配送事件列表
+    // 配送事件列表
     repeated guoi.cloud.shopie.shippingffevent.ShippingffEvent shippingffEvents = 19;
-
+    // 配送人员
     string name_shippingEmployee = 20;
-
-    string serviceType = 21;
-    //订单备注
-    string remark = 22;
-    //是否回访
+    // 服务类型
+    guoi.cloud.shopie.product.ProductType serviceType = 21;
+    // 订单备注
+    string note = 22;
+    // 是否回访
     bool  isReturnVisit = 23;
-    //星级
+    // 星级
     int32 starLevel = 24;
-
+    // 关联账单
+    string checkoutId = 25;
+    // 支付方式
+    guoi.cloud.common.PaymentChannel paymentChannel = 26;
 }
 message AssignShippingRequest{
     string name_shippingEmployee = 1;
     string name_order = 2;
 }
 message AssignShippingResponse{
+    google.rpc.Status status = 999;
+
     Order order = 1;
 }
 message StatusTransformRequest{
@@ -171,6 +152,8 @@ message StatusTransformRequest{
     guoi.cloud.shopie.shippingffevent.ShippingffEvent  shippingffEvent = 4;
 }
 message StatusTransformResponse{
+    google.rpc.Status status = 999;
+
     Order order = 1;
 }
 
@@ -203,78 +186,4 @@ enum OrderStatus{
     // 需要手动确认的流程
     VERIFICATION_REQUIRED = 12;
 }
-//enum CurrencyCode {
-//    //  // United States Dollars (USD)
-//    USD = 0;
-//
-//    //  // Euro (EUR)
-//    EUR = 1;
-//
-//    //  // United Kingdom Pounds (GBP)
-//    GBP = 2;
-//
-//    //  // Canadian Dollars (CAD)
-//    CAD = 3;
-//
-//    //  // Afghan Afghani (AFN)
-//    AFN = 4;
-//
-//    //  // Albanian Lek (ALL)
-//    ALL = 5;
-//
-//    //  // Algerian Dinar (DZD)
-//    DZD = 6;
-//
-//    //  // Angolan Kwanza (AOA)
-//    AOA = 7;
-//
-//    //  // Argentine Pesos (ARS)
-//    ARS = 8;
-//
-//    //  // Armenian Dram (AMD)
-//    AMD = 9;
-//
-//    //  // Aruban Florin (AWG)
-//    AWG = 10;
-//
-//    //  // Australian Dollars (AUD)
-//    AUD = 11;
-//
-//    //  // Barbadian Dollar (BBD)
-//    BBD = 12;
-//
-//    //  // Azerbaijani Manat (AZN)
-//    AZN = 13;
-//
-//    //  // Bangladesh Taka (BDT)
-//    BDT = 14;
-//
-//    //  // Bahamian Dollar (BSD)
-//    BSD = 15;
-//
-//    //  // Bahraini Dinar (BHD)
-//    BHD = 16;
-//
-//    //  // Belarusian Ruble (BYR)
-//    BYR = 17;
-//
-//    //  // Belize Dollar (BZD)
-//    BZD = 18;
-//
-//    //  // Bhutanese Ngultrum (BTN)
-//    BTN = 19;
-//
-//    //  // Bosnia and Herzegovina Convertible Mark (BAM)
-//    BAM = 20;
-//
-//    //  // Brazilian Real (BRL)
-//    BRL = 21;
-//
-//    //  // Bolivian Boliviano (BOB)
-//    BOB = 22;
-//
-//    //  // Botswana Pula (BWP)
-//    BWP = 23;
-//
-//}
 

@@ -208,7 +208,7 @@ message Product {
 
     float price = 23;//价格
 
-    }
+}
 
 
 message ListProductsRequest {
