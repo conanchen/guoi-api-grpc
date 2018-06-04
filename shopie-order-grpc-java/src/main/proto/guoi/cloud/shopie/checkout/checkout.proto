@@ -59,7 +59,7 @@ message UpdateCheckoutRequest{
 message UpdateCheckoutResponse{
     google.rpc.Status status = 999;
 
-    repeated Checkout checkout = 1;
+    Checkout checkout = 1;
 }
 
 
