@@ -241,6 +241,12 @@ message ListShopsRequest {
     double lon = 4;//经度
 
     double lat = 5;//纬度
+
+    //分页相关
+    string after = 6;
+    string before = 7;
+    int32 first = 8;
+    int32 last = 9;
 }
 
 // The response message containing the catalogs
