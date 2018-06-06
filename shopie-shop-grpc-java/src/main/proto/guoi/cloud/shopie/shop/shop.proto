@@ -239,7 +239,6 @@ message ListShopsRequest {
     string page_token = 3;
 
     double lon = 4;//经度
-
     double lat = 5;//纬度
 
     //分页相关
@@ -247,6 +246,8 @@ message ListShopsRequest {
     string before = 7;
     int32 first = 8;
     int32 last = 9;
+
+    double distance = 10;//距离
 }
 
 // The response message containing the catalogs
