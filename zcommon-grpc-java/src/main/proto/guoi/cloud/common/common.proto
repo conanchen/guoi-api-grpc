@@ -47,7 +47,7 @@ message Address {
     string address2 = 3;
     //city
     string city = 4;
-    string citycode = 30;
+    string cityCode = 30;
 
     string company =5;
     string country =6;
