@@ -47,6 +47,8 @@ message Address {
     string address2 = 3;
     //city
     string city = 4;
+    string citycode = 30;
+
     string company =5;
     string country =6;
 
@@ -75,6 +77,11 @@ message Address {
     string community = 19;
     //街道
     string street = 20;
+
+    string town = 31;
+    string townCode = 32;
+    string village = 33;
+    string villageCode = 34;
 }
 
 //设备通用message
