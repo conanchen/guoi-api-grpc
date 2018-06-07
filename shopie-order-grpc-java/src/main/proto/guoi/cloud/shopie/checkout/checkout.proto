@@ -15,11 +15,13 @@ import "google/protobuf/struct.proto";
 
 service CheckoutApi{
 
+    rpc DirectCreateCheckouts(DirectCreateCheckoutsRequest) returns (DirectCreateCheckoutsResponse){}
+
     rpc CreateCheckouts(CreateCheckoutsRequest) returns (CreateCheckoutsResponse){}
 
     rpc UpdateCheckout(UpdateCheckoutRequest) returns (UpdateCheckoutResponse){}
 }
-message CreateCheckoutsRequest{
+message DirectCreateCheckoutsRequest{
     repeated CheckoutLineItem lineItems = 1;
 
     guoi.cloud.common.Address shippingAddress = 2;
@@ -37,6 +39,20 @@ message CreateCheckoutsRequest{
 
     //预计服务时间
     google.protobuf.Timestamp expectedServiceTime = 8;
+}
+message DirectCreateCheckoutsResponse{
+
+    google.rpc.Status status = 999;
+
+    repeated Checkout checkouts = 1;
+
+    string next_page_token = 2;
+
+}
+
+message CreateCheckoutsRequest{
+    repeated string lineItems = 1;
+    string cartId = 2;
 }
 message CreateCheckoutsResponse{
 
@@ -105,6 +121,10 @@ message Checkout{
     google.protobuf.Timestamp expectedServiceTime = 23;
     // 支付渠道
     guoi.cloud.common.PaymentChannel paymentChannel = 24;
+    //完成时间
+    google.protobuf.Timestamp completedAt = 25;
+
+    bool ready = 26;
 }
 
 message CheckoutLineItem{
