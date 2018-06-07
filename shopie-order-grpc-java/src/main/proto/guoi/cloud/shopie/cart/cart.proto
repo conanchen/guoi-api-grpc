@@ -20,7 +20,7 @@ service CartApi{
 
     rpc DeleteCartLineItems(DeleteCartLineItemsRequest) returns (google.protobuf.Empty) {}
 
-    rpc EmptyCart(EmptyCartRequest) returns (google.protobuf.Empty) {}
+    rpc EmptyCart(EmptyCartRequest) returns (Cart) {}
 }
 
 message UpsertCartLineItemsReuqest{
