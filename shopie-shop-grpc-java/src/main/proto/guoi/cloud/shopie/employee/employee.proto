@@ -114,6 +114,8 @@ message GetEmployeeByAccountRequest {
 
 message ListEmployeeRequest {
     string name_shop = 99;
+    bool isBoss = 1;
+    google.protobuf.FieldMask fieldMask = 888;
 }
 
 message ListEmployeeResponse {
