@@ -371,6 +371,9 @@ message PersonFilter{
 
     //查询妇联下拉框
     Boolean isSelectWomenUnite = 7;
+
+    //电话
+    string mobile = 8;
 }
 
 message Boolean{
