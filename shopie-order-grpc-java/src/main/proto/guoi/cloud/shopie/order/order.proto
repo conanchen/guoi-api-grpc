@@ -58,6 +58,10 @@ message CreateOrdersResponse{
     repeated Order orders = 1;
 }
 message ListOrdersRequest{
+    // 与条件
+    repeated ListOrdersRequest AND = 777;
+    // 或条件
+    repeated ListOrdersRequest OR = 666;
     //订单编号
     string orderNumber = 1;
     //服务商
