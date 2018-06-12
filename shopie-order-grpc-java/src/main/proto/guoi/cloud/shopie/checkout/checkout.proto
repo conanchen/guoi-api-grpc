@@ -29,6 +29,9 @@ message DirectCreateCheckoutsRequest{
     // 下单操作人
     string name_operator = 3;
 
+    // 下单人所属平台
+    string name_org8n = 4;
+
     //下单人id
     string name_orderPerson = 5;
     //收货人id
