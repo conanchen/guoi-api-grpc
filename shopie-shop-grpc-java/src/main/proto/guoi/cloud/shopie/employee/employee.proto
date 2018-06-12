@@ -113,8 +113,15 @@ message GetEmployeeByAccountRequest {
 }
 
 message ListEmployeeRequest {
+    // 与条件
+    repeated ListEmployeeRequest AND = 999;
+    // 店铺ID
     string name_shop = 99;
+    // 是否是老板
     bool isBoss = 1;
+    // 是否激活
+    bool isActivated = 2;
+    // field mask字段
     google.protobuf.FieldMask fieldMask = 888;
 }
 
