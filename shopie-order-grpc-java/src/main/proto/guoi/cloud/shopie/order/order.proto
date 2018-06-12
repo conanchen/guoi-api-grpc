@@ -82,6 +82,8 @@ message ListOrdersRequest{
 
     repeated OrderStatus orderStatus_in = 12;
 
+    //订单所属组织
+    string org8nId = 13;
 
     google.protobuf.FieldMask fieldMask = 888;
 }
