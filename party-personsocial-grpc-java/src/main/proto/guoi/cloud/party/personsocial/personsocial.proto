@@ -312,9 +312,8 @@ message ListPersonRequest{
     //order by
     repeated PersonSort sort = 7;
 
-    string cursor = 8;
-    int32 size = 9;
-    int32 offset = 10;
+    int32 page = 9;
+    int32 rows = 10;
 }
 
 message ListFamilyMemberRequest{
