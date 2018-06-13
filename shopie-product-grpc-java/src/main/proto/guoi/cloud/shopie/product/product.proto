@@ -10,6 +10,7 @@ import "guoi/cloud/common/common.proto";
 import "google/rpc/status.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/field_mask.proto";
 
 // The product service definition.
 service ProductApi {
@@ -52,6 +53,9 @@ service ProductApi {
     }
 
     rpc GetProductVariant(GetProductVariantRequest) returns(Variant){}
+
+    //更新产品变种
+    rpc UpdateProductVariant(UpdateProductVariantRequest) returns(UpdateProductVariantResponse){}
 }
 
 message UpdateProductRequest {
@@ -267,4 +271,14 @@ message ListProductVariantsResponse{
 }
 message GetProductVariantRequest{
     string name = 1;
+}
+message UpdateProductVariantRequest{
+    Variant variant = 1;
+    // field mask字段
+    google.protobuf.FieldMask fieldMask = 888;
+}
+message UpdateProductVariantResponse{
+    google.rpc.Status status = 999;
+
+    Variant variant = 1;
 }
