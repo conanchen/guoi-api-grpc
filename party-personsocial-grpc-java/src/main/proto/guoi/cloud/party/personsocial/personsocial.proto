@@ -143,6 +143,7 @@ message Person {
 message ListPersonResponse{
     google.rpc.Status error = 999;
     repeated Person person = 1;
+    int32 count  = 2;
 }
 message ListFamilyMemberResponse{
     google.rpc.Status error = 999;
