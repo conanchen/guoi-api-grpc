@@ -31,7 +31,7 @@ service OrderApi{
     rpc ReturnVisit(ReturnVisitRequest) returns (Order){}
 
     //查询订单统计数据
-    rpc CountOrder(CountOrderRequest) returns (int32){}
+    rpc CountOrder(CountOrderRequest) returns (CountOrderResponse){}
 }
 
 message ReturnVisitRequest{
@@ -182,6 +182,9 @@ message CountOrderRequest{
     OrderStatus orderStatus = 1;
     string name_shippingEmployee = 2;
     string name_orderPerson = 3;
+}
+message CountOrderResponse{
+    int32 count = 1;
 }
 
 // 订单状态
