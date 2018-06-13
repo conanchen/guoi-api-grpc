@@ -29,6 +29,9 @@ service OrderApi{
 
     //回访
     rpc ReturnVisit(ReturnVisitRequest) returns (Order){}
+
+    //查询订单统计数据
+    rpc CountOrder(CountOrderRequest) returns (int32){}
 }
 
 message ReturnVisitRequest{
@@ -174,6 +177,11 @@ message StatusTransformResponse{
     google.rpc.Status status = 999;
 
     Order order = 1;
+}
+message CountOrderRequest{
+    OrderStatus orderStatus = 1;
+    string name_shippingEmployee = 2;
+    string name_orderPerson = 3;
 }
 
 // 订单状态
