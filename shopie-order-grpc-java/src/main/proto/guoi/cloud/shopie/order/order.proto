@@ -158,9 +158,6 @@ message Order{
     string checkoutId = 25;
     // 支付方式
     guoi.cloud.common.PaymentChannel paymentChannel = 26;
-
-    // 配送骑行时长
-    float ridingDuration = 27;
 }
 message AssignShippingRequest{
     string name_shippingEmployee = 1;
