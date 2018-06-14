@@ -242,10 +242,8 @@ message ListShopsRequest {
     double lat = 5;//纬度
 
     //分页相关
-    string after = 6;
-    string before = 7;
-    int32 first = 8;
-    int32 last = 9;
+    int32 pageSize = 8;//每页纪录数
+    int32 pageNum = 9; //页码
 
     double distance = 10;//距离
 }
@@ -258,6 +256,8 @@ message ListShopsResponse {
     repeated GeoResult shops = 1;
 
     string next_page_token = 2;
+
+    int32 count = 3;//分页相关-纪录总数
 }
 
 message GetShopByUserIdRequest{
