@@ -1,0 +1,99 @@
+syntax = "proto3";
+package guoi.cloud.party.employee;
+
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.employee";
+option java_outer_classname = "Org8nApiProto";
+
+import "guoi/cloud/common/common.proto";
+import "google/protobuf/empty.proto";
+import "google/rpc/status.proto";
+import "google/protobuf/timestamp.proto";
+
+service EmployeeApi {
+
+    rpc CreateEmployee(CreateEmployeeRequest) returns (Employee){
+
+    }
+
+    rpc GetEmployee(GetEmployeeRequest) returns (Employee){
+
+    }
+
+    rpc GetEmployeeByUserId(GetEmployeeRequest) returns(Employee){
+
+    }
+
+    rpc UpdateEmployee(UpdateEmployeeRequest) returns (Employee){
+
+    }
+
+    rpc DeleteEmployee(DeleteEmployeeRequest) returns (google.protobuf.Empty){
+
+    }
+
+    rpc ListEmployees(ListEmployeesRequest) returns (ListEmployeesResponse){
+
+    }
+}
+
+enum UserType{
+    ADMIN=0;
+    USER=1;
+}
+
+message Employee{
+    string id = 1;
+    string name = 2;
+    string idNo = 3;
+    string phone = 4;
+    guoi.cloud.common.Address address = 5;
+    string role = 6;
+    repeated string right = 7;
+    string memo = 8;
+    string picpath = 9;
+    string group = 10;
+    string org8nid = 11;
+    UserType usertype = 12;
+    string serialno = 13;
+    int32 status = 14;
+    string userid = 15;
+    string email = 16;
+    google.protobuf.Timestamp createtime = 17;
+    string visualuserid = 18;
+    string shopid = 19;
+}
+
+message CreateEmployeeRequest{
+    string id_org8n = 1;
+    Employee employee = 2;
+}
+
+message GetEmployeeRequest{
+    string id = 1;
+    string userid = 2;
+}
+
+message GetUserRequest{
+    string id = 1;
+    string employeeid = 3;
+}
+
+message UpdateEmployeeRequest{
+    Employee employee = 1;
+}
+
+message DeleteEmployeeRequest{
+    string id = 1;
+}
+
+message ListEmployeesRequest{
+    string id_org8n = 1;
+    string shopid = 4;
+}
+
+message ListEmployeesResponse{
+    google.rpc.Status status = 999;
+    repeated Employee employees = 1;
+}
