@@ -231,8 +231,13 @@ message ListProductsRequest {
     string page_token = 998;
     // search condition title
     string title = 3;
+
     //product sort
     ProductSort product_sort = 4;
+
+    //分页相关
+    int32 page = 6;//页码
+    int32 rows = 7; //每页纪录数
 }
 //product sort
 enum ProductSort{
@@ -258,6 +263,8 @@ message ListProductsResponse {
     repeated Product products = 1;
 
     string next_page_token = 2;
+
+    int32 count = 3;
 }
 
 message ListProductVariantsRequest{

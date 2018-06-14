@@ -113,7 +113,7 @@ message Device {
 }
 
 message Image{
-    string name = 99;
-    string src = 1;
-    string altText = 2;
+     string name = 99;
+     string src = 1;
+     string altText = 2;
 }

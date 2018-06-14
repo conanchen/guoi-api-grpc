@@ -92,6 +92,10 @@ message ListOrdersRequest{
     //订单所属组织
     string name_org8n = 13;
 
+    //分页相关
+    int32 page = 14;//页码
+    int32 rows = 15; //每页纪录数
+
     google.protobuf.FieldMask fieldMask = 888;
 }
 
@@ -102,6 +106,8 @@ message ListOrdersResponse{
     repeated Order orders = 1;
 
     string next_page_token = 2;
+
+    int32 count = 3;
 
 }
 
