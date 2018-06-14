@@ -135,6 +135,9 @@ message Checkout{
     google.protobuf.Timestamp completedAt = 25;
 
     bool ready = 26;
+
+    // 下订单的组织
+    string name_org8n = 27;
 }
 
 message CheckoutLineItem{

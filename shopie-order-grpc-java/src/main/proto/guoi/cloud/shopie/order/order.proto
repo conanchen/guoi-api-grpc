@@ -161,9 +161,12 @@ message Order{
     // 星级
     int32 starLevel = 24;
     // 关联账单
-    string checkoutId = 25;
+    string name_checkout = 25;
     // 支付方式
     guoi.cloud.common.PaymentChannel paymentChannel = 26;
+
+    // 下订单的组织
+    string name_org8n = 27;
 }
 message AssignShippingRequest{
     string name_shippingEmployee = 1;
