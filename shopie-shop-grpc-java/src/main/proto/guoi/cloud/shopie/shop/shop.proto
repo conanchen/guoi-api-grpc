@@ -242,8 +242,8 @@ message ListShopsRequest {
     double lat = 5;//纬度
 
     //分页相关
-    int32 pageSize = 8;//每页纪录数
-    int32 pageNum = 9; //页码
+    int32 page = 8;//页码
+    int32 rows = 9; //每页纪录数
 
     double distance = 10;//距离
 }
