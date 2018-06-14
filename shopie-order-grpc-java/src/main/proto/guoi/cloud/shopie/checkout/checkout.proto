@@ -56,6 +56,13 @@ message DirectCreateCheckoutsResponse{
 message CreateCheckoutsRequest{
     repeated string lineItems = 1;
     string cartId = 2;
+    //收货人id
+    string name_receiver = 6;
+    // 下单操作人
+    string name_operator = 3;
+
+    // 下单人所属平台
+    string name_org8n = 4;
 }
 message CreateCheckoutsResponse{
 
