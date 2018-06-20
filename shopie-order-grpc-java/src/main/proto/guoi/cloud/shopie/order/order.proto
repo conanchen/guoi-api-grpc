@@ -32,6 +32,12 @@ service OrderApi{
 
     //查询订单统计数据
     rpc CountOrder(CountOrderRequest) returns (CountOrderResponse){}
+
+    //取消订单
+    rpc cancelOrder(CancelOrderRequest) returns (CancelOrderResponse){}
+
+    rpc completeOrder(CompleteOrderRequest) returns (CompleteOrderResponse){}
+
 }
 
 message ReturnVisitRequest{
@@ -196,6 +202,34 @@ message CountOrderRequest{
 }
 message CountOrderResponse{
     int32 count = 1;
+}
+message CancelOrderRequest{
+    string name = 1;
+    string name_operator = 2;
+    string reason = 3;
+    CancelType cancelType = 4;
+    bool isContact = 5;
+}
+message CancelOrderResponse{
+    google.rpc.Status status = 999;
+
+    Order order = 1;
+}
+enum  CancelType {
+    SHOP = 0;
+    PERSON = 1;
+    OTHER = 2;
+}
+message CompleteOrderRequest{
+    string name = 1;
+    string name_operator = 2;
+    string reason = 3;
+    bool isContact = 5;
+}
+message CompleteOrderResponse{
+    google.rpc.Status status = 999;
+
+    Order order = 1;
 }
 
 // 订单状态
