@@ -173,6 +173,22 @@ message Order{
 
     // 下订单的组织
     string name_org8n = 27;
+
+    CancelInfo cancelInfo = 28;
+
+    CompleteInfo completeInfo = 29;
+}
+
+message CancelInfo{
+    string name_operator = 2;
+    string reason = 3;
+    CancelType cancelType = 4;
+    bool isContact = 5;
+}
+message CompleteInfo{
+    string name_operator = 2;
+    string reason = 3;
+    bool isContact = 5;
 }
 message AssignShippingRequest{
     string name_shippingEmployee = 1;
