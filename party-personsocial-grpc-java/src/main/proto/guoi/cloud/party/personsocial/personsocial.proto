@@ -113,7 +113,7 @@ message Person {
     //归属驿站id list
     repeated string name_jurisdictionStations = 30;
     //疾病id list
-    repeated string diseaseIds = 31;
+    repeated PersonDisease diseases = 31;
     //二维码id
     string qrCodeId = 32;
     //二维码src
@@ -275,7 +275,7 @@ message UpdatePersonRequest{
     //归属驿站id list
     repeated string name_jurisdictionStations = 30;
     //疾病id list
-    repeated string diseaseIds = 31;
+    repeated PersonDisease diseases = 31;
     //二维码id
     string qrCodeId = 32;
     //二维码src
@@ -395,4 +395,10 @@ message FamilyInfo{
     int32 peopleCount = 1;
     //家庭总收入(年)
     string yearlyIncome = 2;
+}
+//被关爱人疾病
+message PersonDisease{
+    //组织名称
+    string id = 1;
+    string title = 2;
 }
