@@ -244,6 +244,8 @@ message ListProductsRequest {
     repeated string catalogId_in = 8;
     //店铺查询
     repeated string shopId_in = 9;
+
+    google.protobuf.FieldMask fieldMask = 888;
 }
 //product sort
 enum ProductSort{
