@@ -220,9 +220,10 @@ message ListProductsRequest {
     // id for catalogId
     string name_catalog = 1;
 
+
     string name_shop = 2;
 
-    repeated string name_IN = 5;
+    repeated string name_in = 5;
 
     // The maximum number of items to return.
     int32 page_size = 999;
@@ -233,26 +234,31 @@ message ListProductsRequest {
     string title = 3;
 
     //product sort
-    ProductSort product_sort = 4;
+    repeated ProductSort productSort = 4;
 
     //分页相关
     int32 page = 6;//页码
     int32 rows = 7; //每页纪录数
+
+    //二级分类
+    repeated string catalogId_in = 8;
+    //店铺查询
+    repeated string shopId_in = 9;
 }
 //product sort
 enum ProductSort{
     //价格倒序
-    PRICE_DESC = 0;
+    price_desc = 0;
     //价格正序
-    PRICE_ASC = 1;
+    price_asc = 1;
     //店铺类型倒序
-    SHOPTYPE_DESC = 2;
+    shopType_desc = 2;
     //店铺类型正序
-    SHOPTYPE_ASC = 3;
+    shopType_asc = 3;
     //销量倒序
-    SOLDNUM_DESC = 4;
+    soldNum_desc = 4;
     //销量正序
-    SOLDNUM_ASC = 5;
+    soldNum_asc = 5;
 }
 
 

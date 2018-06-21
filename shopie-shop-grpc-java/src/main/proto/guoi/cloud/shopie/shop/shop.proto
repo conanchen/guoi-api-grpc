@@ -241,6 +241,11 @@ message ListShopsRequest {
     double lon = 4;//经度
     double lat = 5;//纬度
 
+    //产品分类
+    string catalogId = 6;
+
+    ShopType shopType = 7;
+
     //分页相关
     int32 page = 8;//页码
     int32 rows = 9; //每页纪录数
