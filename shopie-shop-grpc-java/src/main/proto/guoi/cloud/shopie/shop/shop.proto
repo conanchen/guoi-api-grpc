@@ -252,6 +252,8 @@ message ListShopsRequest {
 
     double distance = 10;//距离
     string org8nId = 11;//运营中心ID
+
+    google.protobuf.FieldMask fieldMask = 888;
 }
 
 // The response message containing the catalogs
