@@ -248,17 +248,17 @@ message ListProductsRequest {
 //product sort
 enum ProductSort{
     //价格倒序
-    price_desc = 0;
+    price_DESC = 0;
     //价格正序
-    price_asc = 1;
+    price_ASC = 1;
     //店铺类型倒序
-    shopType_desc = 2;
+    shopType_DESC = 2;
     //店铺类型正序
-    shopType_asc = 3;
+    shopType_ASC = 3;
     //销量倒序
-    soldNum_desc = 4;
+    soldNum_DESC = 4;
     //销量正序
-    soldNum_asc = 5;
+    soldNum_ASC = 5;
 }
 
 
