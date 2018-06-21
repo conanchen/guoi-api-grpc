@@ -253,6 +253,9 @@ message ListShopsRequest {
     double distance = 10;//距离
     string org8nId = 11;//运营中心ID
 
+    //店铺名称
+    string shopName = 12;
+
     google.protobuf.FieldMask fieldMask = 888;
 }
 
