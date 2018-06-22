@@ -238,8 +238,7 @@ message ListShopsRequest {
     // The next_page_token value returned from a previous List request, if any.
     string page_token = 3;
 
-    double lon = 4;//经度
-    double lat = 5;//纬度
+    guoi.cloud.common.Location loc = 4;
 
     //产品分类
     string catalogId = 6;

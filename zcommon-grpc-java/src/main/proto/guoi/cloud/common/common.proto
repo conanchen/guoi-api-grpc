@@ -21,8 +21,10 @@ option java_outer_classname = "CommonProto";
 option objc_class_prefix = "GDA";
 
 message Location {
-    double lat = 1;
-    double lon = 2;
+    // 纬度
+    double latitude = 1;
+    // 纬度
+    double longitude = 2;
 }
 
 enum PaymentChannel {
