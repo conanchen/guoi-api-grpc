@@ -407,5 +407,5 @@ message PersonDisease{
 }
 message UpsertShippingAddressRequest{
     string name_person = 1;
-    guoi.cloud.common.Address = 2;
+    guoi.cloud.common.Address shippingAddress= 2;
 }
