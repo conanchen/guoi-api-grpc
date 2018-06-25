@@ -49,7 +49,7 @@ service PersonsocialApi {
     rpc DebindingDevice(DebindingDeviceRequest) returns(google.protobuf.Empty){
     }
     // 新增更新配送地址
-    rpc upsertShippingAddress(guoi.cloud.common.Address) returns(guoi.cloud.common.Address){
+    rpc upsertShippingAddress(UpsertShippingAddressRequest) returns(guoi.cloud.common.Address){
     }
 }
 
@@ -404,4 +404,8 @@ message PersonDisease{
     //组织名称
     string id = 1;
     string title = 2;
+}
+message UpsertShippingAddressRequest{
+    string name_person = 1;
+    guoi.cloud.common.Address = 2;
 }
