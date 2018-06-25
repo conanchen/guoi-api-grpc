@@ -48,6 +48,9 @@ service PersonsocialApi {
     //解绑设备
     rpc DebindingDevice(DebindingDeviceRequest) returns(google.protobuf.Empty){
     }
+    // 新增更新配送地址
+    rpc upsertShippingAddress(guoi.cloud.common.Address) returns(guoi.cloud.common.Address){
+    }
 }
 
 
