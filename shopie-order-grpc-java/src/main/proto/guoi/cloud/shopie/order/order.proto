@@ -102,6 +102,9 @@ message ListOrdersRequest{
     int32 page = 14;//页码
     int32 rows = 15; //每页纪录数
 
+    //是否回访 0否1是
+    string isReturnVisit = 16;
+
     google.protobuf.FieldMask fieldMask = 888;
 }
 
