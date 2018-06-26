@@ -51,6 +51,10 @@ service PersonsocialApi {
     // 新增更新配送地址
     rpc upsertShippingAddress(UpsertShippingAddressRequest) returns(guoi.cloud.common.Address){
     }
+
+    rpc CareCount(CareCountRequest) returns(CareCountResponse){
+
+    }
 }
 
 
@@ -411,4 +415,12 @@ message UpsertShippingAddressRequest{
     guoi.cloud.common.Address shippingAddress= 2;
 
     google.protobuf.FieldMask fieldMask = 888;
+}
+
+message CareCountRequest{
+    string org8nid = 1;
+}
+
+message CareCountResponse{
+    int32 personCount = 1;
 }
