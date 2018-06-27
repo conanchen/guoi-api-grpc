@@ -245,6 +245,8 @@ message ListProductsRequest {
     //店铺查询
     repeated string shopId_in = 9;
 
+    ServiceMethod serviceMethod = 10;
+
     google.protobuf.FieldMask fieldMask = 888;
 }
 //product sort
