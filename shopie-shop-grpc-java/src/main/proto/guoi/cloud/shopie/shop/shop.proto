@@ -109,7 +109,7 @@ enum ShopType {
     //第三方
     THIRD_PARTY = 1;
     //驿站
-    SHOP = 2;
+    STATION = 2;
 }
 
 message CreateShopRequest {
