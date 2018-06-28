@@ -212,6 +212,8 @@ message Product {
 
     float price = 23;//价格
 
+    string productNumber = 24;//产品编号
+
 }
 
 
