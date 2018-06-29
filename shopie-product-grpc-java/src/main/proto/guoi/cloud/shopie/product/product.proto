@@ -156,8 +156,11 @@ message Variant{
     // 描述
     string description = 13;
 
+
     // title
     string title = 14;
+    // 图片
+    string image = 15;
 }
 
 
