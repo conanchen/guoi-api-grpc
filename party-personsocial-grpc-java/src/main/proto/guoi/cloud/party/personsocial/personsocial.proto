@@ -144,6 +144,8 @@ message Person {
     bool isHealthy = 41;
     //儿童老人分类
     PersonType personType = 42;
+    //配送地址
+    repeated guoi.cloud.common.Address shippingAddresses= 43;
     //The creation timestamp of an entity.
     google.protobuf.Timestamp create_time = 98;
 }
