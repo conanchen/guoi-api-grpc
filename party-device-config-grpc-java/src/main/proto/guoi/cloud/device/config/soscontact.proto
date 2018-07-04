@@ -13,7 +13,9 @@ import "google/protobuf/empty.proto";
 import "google/rpc/status.proto";
 
 service SosContactApi {
+    rpc UpsertSosContact(UpsertSosContactReuqest) returns(UpsertSosContactResponse){}
 
+    rpc ListContacts(ListSosContactsRequest) returns(ListSosContactsResponse){}
 }
 
 message UpsertSosContactReuqest{
@@ -21,6 +23,11 @@ message UpsertSosContactReuqest{
     SosContact sosContact = 1;
     // field mask
     google.protobuf.FieldMask fieldMask = 888;
+}
+message UpsertSosContactResponse{
+    google.rpc.Status status = 999;
+
+    SosContact sosContact = 1;
 }
 message SosContact{
     string id = 99;
@@ -30,4 +37,12 @@ message SosContact{
     string deviceId = 4;
     google.protobuf.Timestamp createdAt = 5;
     google.protobuf.Timestamp modifiedAt = 6;
+}
+message ListSosContactsRequest{
+    int32 page = 99;
+    int32 rows = 98;
+    string deviceId = 1;
+}
+message ListSosContactsResponse{
+    repeated SosContact sosContacts = 1;
 }

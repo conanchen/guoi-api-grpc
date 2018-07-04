@@ -13,7 +13,9 @@ import "google/protobuf/empty.proto";
 import "google/rpc/status.proto";
 
 service NoteApi {
+    rpc UpsertNote(UpsertNoteReuqest) returns(UpsertNoteResponse){}
 
+    rpc ListNotes(ListNotesRequest) returns(ListNotesResponse){}
 }
 
 message UpsertNoteReuqest{
@@ -21,6 +23,11 @@ message UpsertNoteReuqest{
     Note note = 1;
     // field mask
     google.protobuf.FieldMask fieldMask = 888;
+}
+message UpsertNoteResponse{
+     google.rpc.Status status = 999;
+
+     Note note = 1;
 }
 message Note{
     string id = 99;
@@ -37,4 +44,12 @@ message Note{
     /**** 提醒方式信息 *****/
     google.protobuf.Timestamp createdAt = 9;
     google.protobuf.Timestamp modifiedAt = 10;
+}
+message ListNotesRequest{
+    int32 page = 99;
+    int32 rows = 98;
+    string deviceId = 1;
+}
+message ListNotesResponse{
+    repeated Note notes = 1;
 }
