@@ -1,0 +1,33 @@
+syntax = "proto3";
+package guoi.cloud.party.device;
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.device.config";
+option java_outer_classname = "SosContactApiProto";
+
+import "guoi/cloud/common/common.proto";
+import "google/protobuf/any.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+import "google/rpc/status.proto";
+
+service SosContactApi {
+
+}
+
+message UpsertSosContactReuqest{
+    // create by if missing id,else modified
+    SosContact sosContact = 1;
+    // field mask
+    google.protobuf.FieldMask fieldMask = 888;
+}
+message SosContact{
+    string id = 99;
+    string mobile = 1;
+    string avatar = 2;
+    string contactName = 3;
+    string deviceId = 4;
+    google.protobuf.Timestamp createdAt = 5;
+    google.protobuf.Timestamp modifiedAt = 6;
+}

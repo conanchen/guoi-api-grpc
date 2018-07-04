@@ -15,4 +15,6 @@ include 'shopie-product-grpc-java'
 include 'shopie-shop-grpc-java'
 include 'zcommon-grpc-java'
 include 'region-grpc-java'
+include 'party-device-shadow-grpc-java'
+include 'party-device-config-grpc-java'
 

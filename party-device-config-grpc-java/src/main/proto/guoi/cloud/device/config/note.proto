@@ -1,0 +1,40 @@
+syntax = "proto3";
+package guoi.cloud.party.device;
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.device.config";
+option java_outer_classname = "NoteApiProto";
+
+import "guoi/cloud/common/common.proto";
+import "google/protobuf/any.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+import "google/rpc/status.proto";
+
+service NoteApi {
+
+}
+
+message UpsertNoteReuqest{
+    // create by if missing id,else modified
+    Note note = 1;
+    // field mask
+    google.protobuf.FieldMask fieldMask = 888;
+}
+message Note{
+    string id = 99;
+    string deviceId = 1;
+    string content = 2;
+
+    /*** 提醒方式信息 ***/
+    string title = 3;
+    string minutes = 4;
+    string hours = 5;
+    string days = 6;
+    string months = 7;
+    string weekdays = 8;
+    /**** 提醒方式信息 *****/
+    google.protobuf.Timestamp createdAt = 9;
+    google.protobuf.Timestamp modifiedAt = 10;
+}
