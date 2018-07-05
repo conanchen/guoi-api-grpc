@@ -119,3 +119,11 @@ message Image{
      string src = 1;
      string altText = 2;
 }
+
+message Crontab{
+    string minutes = 4;
+    string hours = 5;
+    string days = 6;
+    string months = 7;
+    string weekdays = 8;
+}

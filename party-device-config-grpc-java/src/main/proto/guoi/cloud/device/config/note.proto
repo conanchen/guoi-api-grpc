@@ -33,18 +33,16 @@ message Note{
     string id = 99;
     string deviceId = 1;
     string content = 2;
-
-    /*** 提醒方式信息 ***/
-    string title = 3;
-    string minutes = 4;
-    string hours = 5;
-    string days = 6;
-    string months = 7;
-    string weekdays = 8;
-    /**** 提醒方式信息 *****/
+    NoteMethod noteMethod = 3;
     google.protobuf.Timestamp createdAt = 9;
     google.protobuf.Timestamp modifiedAt = 10;
 }
+message NoteMethod{
+    string title = 3;
+
+    guoi.cloud.common.Crontab crontab = 4;
+}
+
 message ListNotesRequest{
     int32 page = 99;
     int32 rows = 98;
