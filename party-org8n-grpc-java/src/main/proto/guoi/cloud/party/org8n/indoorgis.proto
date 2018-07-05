@@ -150,6 +150,8 @@ message DeletePersonVisitRecordRequest{
 message LastPersonVisitRecordRequest{
     //关联被关爱人
     string personId = 3;
+    //驿站
+    string org8nId = 4;
 }
 
 //查询记录列表
