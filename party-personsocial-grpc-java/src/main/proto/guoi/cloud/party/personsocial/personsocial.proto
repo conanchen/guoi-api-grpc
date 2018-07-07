@@ -460,11 +460,12 @@ message ApplyRelateRequest{
 }
 
 message ApplyRelateResponse{
-
+    Guardian guardian = 1;
 }
 
 message ConfirmRelateRequest{
     string guardianId = 1;
+    string personId = 2;
 }
 
 message GuardiansRequest{
