@@ -63,6 +63,22 @@ service PersonsocialApi {
     rpc getPersonByImei(GetPersonRequest) returns (Person){
 
     }
+
+    rpc ApplyRelate(ApplyRelateRequest) returns (ApplyRelateResponse){
+
+    }
+
+    rpc ConfirmRelate(ConfirmRelateRequest) returns(google.protobuf.Empty){
+
+    }
+
+    rpc Guardians(GuardiansRequest) returns (GuardiansResponse){
+
+    }
+
+    rpc GuardianPersons(GuardianPersonsRequest) returns (ListPersonResponse){
+
+    }
 }
 
 
@@ -436,4 +452,39 @@ message CareCountRequest{
 
 message CareCountResponse{
     int32 personCount = 1;
+}
+
+message ApplyRelateRequest{
+    string userid = 1;
+    string personid = 2;
+}
+
+message ApplyRelateResponse{
+
+}
+
+message ConfirmRelateRequest{
+    string guardianId = 1;
+}
+
+message GuardiansRequest{
+    string personid = 1;
+}
+
+message GuardiansResponse{
+    repeated Guardian guardian = 1;
+}
+
+message Guardian{
+    string id = 1;
+    string avatar = 2;
+    string name = 3;
+    string mobile = 4;
+    string relation = 5;
+    bool isAdmin = 6;
+    int32 status = 7;
+}
+
+message GuardianPersonsRequest{
+    string userid = 1;
 }
