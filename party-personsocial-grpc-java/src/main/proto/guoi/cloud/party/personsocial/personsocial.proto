@@ -478,6 +478,7 @@ message GuardiansResponse{
 
 message Guardian{
     string id = 1;
+    string userid = 8;
     string avatar = 2;
     string name = 3;
     string mobile = 4;
