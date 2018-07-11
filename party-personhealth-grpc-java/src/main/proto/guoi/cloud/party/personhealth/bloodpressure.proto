@@ -122,7 +122,7 @@ message DeleteBloodpressureRequest {
 }
 message ListBloodpressuresRequest {
     string imei = 1;
-    string personUuid = 4;
+    string personId = 4;
     google.protobuf.Timestamp startTime = 2;
     google.protobuf.Timestamp endTime = 3;
 
