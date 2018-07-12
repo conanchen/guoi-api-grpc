@@ -54,7 +54,7 @@ message Healthybloodpressure {
 
 }
 
-enum HealthybloodPressureType{
+enum HealthyBloodPressureType{
     HIGH = 0;
     LOW = 1;
     NORMAL = 2;
@@ -74,7 +74,7 @@ message ListHealthybloodpressuresResponse {
     google.rpc.Status error = 999;
 
     // Bloodpressures in the bookstore.
-    repeated Healthybloodpressure bloodpressures = 1;
+    repeated Healthybloodpressure healthybloodpressures = 1;
 }
 
 
