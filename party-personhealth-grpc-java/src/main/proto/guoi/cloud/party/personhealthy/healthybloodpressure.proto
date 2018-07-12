@@ -1,0 +1,88 @@
+syntax = "proto3";
+package guoi.cloud.party.personhealthy;
+
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.personhealthy.grpc";
+option java_outer_classname = "HealthybloodpressureApiProto";
+
+import "google/protobuf/timestamp.proto";
+import "google/rpc/status.proto";
+
+service HealthybloodpressureApi {
+    // Returns a list of all bloodpressures in the bloodpressure.
+    rpc ListHealthybloodpressure (ListHealthybloodpressuresRequest) returns (ListHealthybloodpressuresResponse) {
+        //    option (google.api.http) = {
+        //      get: "/v1/{parent=persons/*}/bloodpressures"
+        //    };
+    }
+
+}
+
+message ListHealthybloodpressuresRequest {
+    string imei = 1;
+    string personId = 4;
+    google.protobuf.Timestamp startTime = 2;
+    google.protobuf.Timestamp endTime = 3;
+
+    DateCondition dateCondition = 5;
+}
+
+// A bloodpressure resource.
+message Healthybloodpressure {
+    // Resource name of the bloodpressure. It must have the format of "persons/*/bloodpressures/*".
+    // For example: "persons/personid1/bloodpressures/pressureid2".
+    // The name is ignored when creating a bloodpressure.
+    string name = 1;
+
+    // value of the bloodpressure
+    float low = 2; //(收缩压)
+    float high = 3; //(舒张压)
+    //检测时间
+    google.protobuf.Timestamp fromTime = 8;
+
+    google.protobuf.Timestamp toTime = 9; //The creation timestamp of an entity.
+    //设备imei号
+    string imei = 10;
+    //被观爱人uuid
+    string personId = 11;
+    // resource references
+    // device resource
+    int32 rate = 12;
+
+    string name_device = 100; //检测终端资源名称
+
+}
+
+enum HealthybloodPressureType{
+    HIGH = 0;
+    LOW = 1;
+    NORMAL = 2;
+}
+
+enum DateCondition{
+    REAL_TIME = 0;
+    DAY = 1;
+    WEEK = 2;
+    MONTH = 3;
+}
+
+// Response to ListBloodpressures call.
+message ListHealthybloodpressuresResponse {
+    // *Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that
+    // specifies the error for the operation.
+    google.rpc.Status error = 999;
+
+    // Bloodpressures in the bookstore.
+    repeated Healthybloodpressure bloodpressures = 1;
+}
+
+
+message ListsHealthyBloodpressuresRequest {
+    string imei = 1;
+    string personId = 4;
+    google.protobuf.Timestamp startTime = 2;
+    google.protobuf.Timestamp endTime = 3;
+
+    DateCondition dateCondition = 5;
+}

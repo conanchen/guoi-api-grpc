@@ -54,35 +54,20 @@ message Bloodpressure {
     string name = 1;
 
     // value of the bloodpressure
-    float low = 2; //(收缩压)
-    float high = 3; //(舒张压)
+    float systolic = 2; //(收缩压)
+    float diastolic = 3; //(舒张压)
     //检测时间
-    google.protobuf.Timestamp fromTime = 8;
+    google.protobuf.Timestamp check_time = 8;
 
-    google.protobuf.Timestamp toTime = 9; //The creation timestamp of an entity.
+    google.protobuf.Timestamp create_time = 9; //The creation timestamp of an entity.
     //设备imei号
     string imei = 10;
     //被观爱人uuid
-    string personId = 11;
+    string personUuid = 11;
     // resource references
     // device resource
-    int32 rate = 12;
-
     string name_device = 100; //检测终端资源名称
 
-}
-
-enum BloodPressureType{
-    HIGH = 0;
-    LOW = 1;
-    NORMAL = 2;
-}
-
-enum DateCondition{
-    REAL_TIME = 0;
-    DAY = 1;
-    WEEK = 2;
-    MONTH = 3;
 }
 
 // Response to ListBloodpressures call.
@@ -122,9 +107,7 @@ message DeleteBloodpressureRequest {
 }
 message ListBloodpressuresRequest {
     string imei = 1;
-    string personId = 4;
+    string personUuid = 4;
     google.protobuf.Timestamp startTime = 2;
     google.protobuf.Timestamp endTime = 3;
-
-    DateCondition dateCondition = 5;
 }
