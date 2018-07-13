@@ -11,11 +11,21 @@ import "google/rpc/status.proto";
 
 service HealthybloodpressureApi {
     // Returns a list of all bloodpressures in the bloodpressure.
-    rpc ListHealthybloodpressure (ListHealthybloodpressuresRequest) returns (ListHealthybloodpressuresResponse) {
-        //    option (google.api.http) = {
-        //      get: "/v1/{parent=persons/*}/bloodpressures"
-        //    };
-    }
+    rpc ListHealthybloodpressure (ListHealthybloodpressuresRequest) returns (ListHealthybloodpressuresResponse) {}
+
+    rpc BloodPressureRealTime(BloodPressureRealTimeRequest) returns(BloodPressureRealTimeResponse){}
+
+}
+
+message BloodPressureRealTimeRequest{
+    repeated string imei = 1;
+    string personId = 2;
+}
+
+message BloodPressureRealTimeResponse{
+    google.rpc.Status error = 777;
+    // Bloodpressures in the bookstore.
+    repeated Healthybloodpressure healthybloodpressures = 1;
 
 }
 
@@ -27,6 +37,8 @@ message ListHealthybloodpressuresRequest {
 
     DateCondition dateCondition = 5;
 }
+
+
 
 // A bloodpressure resource.
 message Healthybloodpressure {
@@ -49,6 +61,9 @@ message Healthybloodpressure {
     // resource references
     // device resource
     int32 rate = 12;
+
+    //
+
 
     string name_device = 100; //检测终端资源名称
 
@@ -77,12 +92,3 @@ message ListHealthybloodpressuresResponse {
     repeated Healthybloodpressure healthybloodpressures = 1;
 }
 
-
-message ListsHealthyBloodpressuresRequest {
-    string imei = 1;
-    string personId = 4;
-    google.protobuf.Timestamp startTime = 2;
-    google.protobuf.Timestamp endTime = 3;
-
-    DateCondition dateCondition = 5;
-}
