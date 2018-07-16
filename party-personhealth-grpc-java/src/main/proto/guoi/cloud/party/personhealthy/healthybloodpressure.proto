@@ -19,7 +19,7 @@ service HealthybloodpressureApi {
 
 message BloodPressureRealTimeRequest{
     repeated string imei = 1;
-    string personId = 2;
+    string name_person = 2;
 }
 
 message BloodPressureRealTimeResponse{
@@ -31,7 +31,7 @@ message BloodPressureRealTimeResponse{
 
 message ListHealthybloodpressuresRequest {
     string imei = 1;
-    string personId = 4;
+    string name_person = 4;
     google.protobuf.Timestamp startTime = 2;
     google.protobuf.Timestamp endTime = 3;
 
@@ -57,7 +57,7 @@ message Healthybloodpressure {
     //设备imei号
     string imei = 10;
     //被观爱人uuid
-    string personId = 11;
+    string name_person = 11;
     // resource references
     // device resource
     int32 rate = 12;
