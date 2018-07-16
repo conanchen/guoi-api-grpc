@@ -43,7 +43,7 @@ message ListHeartRateResponse{
 
 enum HeartRateType{
 
-    NORMAL = 0;//正常
+    ISOK = 0;//正常
     OVERSPEED = 1;//过速
     SLOWDOWN = 2;//过缓
     OTHER = 3;//其他
