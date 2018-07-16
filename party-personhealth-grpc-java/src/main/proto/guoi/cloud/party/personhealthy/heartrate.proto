@@ -1,0 +1,41 @@
+syntax = "proto3";// proto's version
+package guoi.cloud.party.personhealthy;
+option java_package = "com.github.conanchen.guoi.cloud.personhealthy.grpc";//生成api代码路径
+option java_outer_classname = "HeartrateApiProto";//文件名称
+option java_multiple_files = true;
+import "google/protobuf/timestamp.proto";
+
+service HeartrateApi{
+    //获取最新心率信息
+    rpc HeartRateRealTime(HeartRateRealTimeRequest) returns (HeartRate){}
+    //获取时间段内心率信息
+    rpc ListHeartRate(ListHeartRateRequest) returns (ListHeartRateResponse){}
+}
+
+message HeartRate{
+    string name = 1;
+    int32 count = 2;
+    google.protobuf.Timestamp time = 3;
+    string imei = 4;
+    string personId = 5;
+}
+
+message HeartRateRealTimeRequest{
+    repeated string imeis = 1;
+    string name_person = 2;
+}
+
+
+message ListHeartRateRequest{
+    repeated string imeis = 1;
+    string name_person = 2;
+    //查询时间段的开始时间
+    google.protobuf.Timestamp start_time = 3;
+    //截至时间
+    google.protobuf.Timestamp end_time = 4;
+}
+
+message ListHeartRateResponse{
+
+    repeated HeartRate heartRate = 1;
+}
