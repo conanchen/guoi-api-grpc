@@ -1,0 +1,55 @@
+syntax = "proto3";
+package guoi.cloud.party.personhealthy;
+
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.personhealthy.grpc";
+option java_outer_classname = "HealthybloodoxygenApiProto";
+
+import "google/protobuf/timestamp.proto";
+import "google/rpc/status.proto";
+import "guoi/cloud/party/personhealthy/healthybloodpressure.proto";
+
+service HealthybloodoxygenApi {
+
+    rpc ListHealthybloodoxygen (ListHealthybloodoxygensRequest) returns (ListHealthybloodoxygensResponse) {}
+
+    rpc BloodOxygenRealTime(BloodOxygenRealTimeRequest) returns(Healthybloodoxygen){}
+
+}
+
+message BloodOxygenRealTimeRequest{
+    repeated string imeis = 1;
+    string name_person = 2;
+}
+
+message ListHealthybloodoxygensRequest {
+    string imei = 1;
+    string name_person = 4;
+    google.protobuf.Timestamp startTime = 2;
+    google.protobuf.Timestamp endTime = 3;
+
+    DateCondition dateCondition = 5;
+}
+
+message ListHealthybloodoxygensResponse {
+    google.rpc.Status error = 999;
+    repeated Healthybloodoxygen healthybloodoxygens = 1;
+}
+
+message Healthybloodoxygen {
+    string name = 1;
+    float spo2 = 2; //
+    //检测时间
+    google.protobuf.Timestamp time = 3;
+    //被观爱人id
+    string name_person = 4;
+    string period = 5;
+    //设备imei号
+    string imei = 6;
+}
+
+enum HealthyBloodOxygenType{
+    BLOODOXYGEN_NORMAL = 0;
+    BLOODOXYGEN_LOW = 1;
+}
