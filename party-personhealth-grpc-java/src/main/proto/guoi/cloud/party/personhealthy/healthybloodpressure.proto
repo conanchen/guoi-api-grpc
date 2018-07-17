@@ -38,6 +38,17 @@ message ListHealthybloodpressuresRequest {
     DateCondition dateCondition = 5;
 }
 
+// Response to ListBloodpressures call.
+message ListHealthybloodpressuresResponse {
+    // *Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that
+    // specifies the error for the operation.
+    google.rpc.Status error = 999;
+
+    // Bloodpressures in the bookstore.
+    repeated Healthybloodpressure healthybloodpressures = 1;
+
+    HealthybloodpressureStatistics healthybloodpressureStatistics = 2;
+}
 
 
 // A bloodpressure resource.
@@ -48,8 +59,8 @@ message Healthybloodpressure {
     string name = 1;
 
     // value of the bloodpressure
-    float low = 2; //(收缩压)
-    float high = 3; //(舒张压)
+    float low = 2; //(舒张压)
+    float high = 3; //(收缩压)
     //检测时间
     google.protobuf.Timestamp fromTime = 8;
 
@@ -63,11 +74,27 @@ message Healthybloodpressure {
     int32 rate = 12;
 
     //
-
-
     string name_device = 100; //检测终端资源名称
 
 }
+
+
+//血压统计
+message HealthybloodpressureStatistics{
+
+    int32 bloodpressureNormalCount =1 ;
+    //异常血压次数
+    int32 bloodpressureAbNormalCount = 2;
+    //舒张压最高值
+    float max_low = 3;
+    //收缩压最高值
+    float max_high = 4;
+
+    float avg_bloodpressure = 5;
+    //脉压差平均值
+    float avg_pulsePressure = 6 ;
+}
+
 
 enum HealthyBloodPressureType{
     HIGH = 0;
@@ -82,13 +109,4 @@ enum DateCondition{
     MONTH = 3;
 }
 
-// Response to ListBloodpressures call.
-message ListHealthybloodpressuresResponse {
-    // *Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that
-    // specifies the error for the operation.
-    google.rpc.Status error = 999;
-
-    // Bloodpressures in the bookstore.
-    repeated Healthybloodpressure healthybloodpressures = 1;
-}
 

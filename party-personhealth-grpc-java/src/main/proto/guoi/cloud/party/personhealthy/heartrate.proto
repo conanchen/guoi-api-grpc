@@ -20,6 +20,22 @@ message HeartRate{
     string name_person= 5;
 }
 
+message HeartRateStatistics{
+
+    int32 heartRateNormalCount = 1;
+
+    int32 heartRateAbNormalCount = 2;
+    //心率最低值
+    int32 min_count = 3;
+    //心率最高值
+    int32 max_count = 4;
+    //有房颤次数 af = atrialFibrillationCount
+    int32 y_AF = 5;
+    //无房颤次数
+    int32 n_AF = 6;
+
+}
+
 message HeartRateRealTimeRequest{
     repeated string imeis = 1;
     string name_person = 2;
@@ -38,6 +54,8 @@ message ListHeartRateRequest{
 message ListHeartRateResponse{
 
     repeated HeartRate heartRate = 1;
+
+    HeartRateStatistics heartRateStatistics = 2;
 }
 
 

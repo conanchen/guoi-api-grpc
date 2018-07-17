@@ -28,13 +28,14 @@ message ListHealthybloodoxygensRequest {
     string name_person = 4;
     google.protobuf.Timestamp startTime = 2;
     google.protobuf.Timestamp endTime = 3;
-
     DateCondition dateCondition = 5;
 }
 
 message ListHealthybloodoxygensResponse {
     google.rpc.Status error = 999;
     repeated Healthybloodoxygen healthybloodoxygens = 1;
+    //统计数据
+    HealthybloodoxygenStatistics healthybloodoxygenStatistics = 2;
 }
 
 message Healthybloodoxygen {
@@ -47,6 +48,19 @@ message Healthybloodoxygen {
     string period = 5;
     //设备imei号
     string imei = 6;
+}
+
+//血氧统计
+message HealthybloodoxygenStatistics{
+
+    int32 bloodOxygenNormalCount = 1;
+    //异常次数
+    int32 bloodOxygenAbNormalCount = 2;
+    //血氧最大值
+    float max_spo2 = 3;
+    //血氧最小值
+    float min_spo2 = 4;
+
 }
 
 enum HealthyBloodOxygenType{
