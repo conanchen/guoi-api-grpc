@@ -13,7 +13,6 @@ import "google/protobuf/empty.proto";
 import "google/rpc/status.proto";
 
 service DeviceApi {
-    // 全网只存在唯一一个全局的顶级Device，设计模式见：[Singleton%20Resources](https://cloud.google.com/apis/design/design_patterns#Singleton%20Resources)
 
     rpc ListDevices (ListDevicesRequest) returns (ListDevicesResponse) {
 
@@ -28,6 +27,7 @@ service DeviceApi {
     }
 }
 message UpdateDeviceRequest{
+    string id = 99;
     //订单号
     string orderNumber=1;
     //设备类型
