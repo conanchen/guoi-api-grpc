@@ -34,12 +34,6 @@ enum PaymentChannel {
     CASH = 3;
 }
 
-
-message ListString {
-    //可以用来保存多个图片url、多个电话号码等
-    repeated string strs = 11;
-}
-
 message Address {
     // resource id
     string name = 1;
@@ -84,34 +78,6 @@ message Address {
     string townCode = 32;
     string village = 33;
     string villageCode = 34;
-}
-
-//设备通用message
-message Device {
-    //订单号
-    string orderNumber = 1;
-    //设备类型
-    string deviceType = 2;
-    //设备imei号
-    string imei = 3;
-    //设备sn号
-    string sn = 4;
-    //设备型号
-    string deviceModel = 5;
-    //设备sim号
-    string sim = 6;
-    //软件版本号
-    string softwareV = 7;
-    //固件版本号
-    string firmwareV = 8;
-    //激活状态
-    string activationState = 9;
-    //绑定状态
-    string bingState = 10;
-    //备注
-    string remarks = 11;
-    //设备uuid
-    string uuid = 12;
 }
 
 message Image{

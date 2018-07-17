@@ -27,36 +27,14 @@ service DeviceApi {
     }
 }
 message UpdateDeviceRequest{
-    string id = 99;
-    //订单号
-    string orderNumber=1;
-    //设备类型
-    string deviceType=2;
-    //设备imei号
-    string imei=3;
-    //设备sn号
-    string sn=4;
-    //绑定人uuid
-    string personId=5;
-    //设备型号
-    string deviceModel=6;
-    //设备sim号
-    string sim=7;
-    //软件版本号
-    string softwareV=8;
-    //固件版本号
-    string firmwareV=9;
-    //激活状态
-    bool activationState=10;
-    //绑定状态
-    bool bingState=11;
-    //备注
-    string remarks=12;
+    Device device = 1;
     //field mask字段
     google.protobuf.FieldMask fieldMask = 888;
 }
 message UpdateDeviceResponse{
-    guoi.cloud.common.Device device = 1;
+    google.rpc.Status status = 999;
+
+    Device device = 1;
 }
 message CreateDeviceResponse {
     // 总数
@@ -97,7 +75,35 @@ message ListDevicesRequest{
 }
 
 message ListDevicesResponse{
-    repeated guoi.cloud.common.Device deviceGrpcs = 1;
+    repeated Device devices = 1;
 
     int32 count = 2;//分页 - 总条数
+}
+
+//设备通用message
+message Device {
+    //设备id
+    string id = 99;
+    //订单号
+    string orderNumber = 1;
+    //设备类型
+    string deviceType = 2;
+    //设备imei号
+    string imei = 3;
+    //设备sn号
+    string sn = 4;
+    //设备型号
+    string deviceModel = 5;
+    //设备sim号
+    string sim = 6;
+    //软件版本号
+    string softwareV = 7;
+    //固件版本号
+    string firmwareV = 8;
+    //激活状态
+    string activationState = 9;
+    //绑定状态
+    string bingState = 10;
+    //备注
+    string remarks = 11;
 }
