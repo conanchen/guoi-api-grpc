@@ -115,4 +115,6 @@ message Device {
     string bingState = 10;
     //备注
     string remarks = 11;
+    //被关爱人
+    string personId = 12;
 }
