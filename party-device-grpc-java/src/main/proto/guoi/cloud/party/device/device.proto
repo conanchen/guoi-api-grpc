@@ -18,6 +18,10 @@ service DeviceApi {
 
     }
 
+    rpc GetDevice (GetDeviceRequest) returns (Device) {
+
+    }
+
     rpc CreateDevice (CreateDeviceRequest) returns (CreateDeviceResponse) {
 
     }
@@ -25,6 +29,9 @@ service DeviceApi {
     rpc updateDevice(UpdateDeviceRequest) returns (UpdateDeviceResponse){
 
     }
+}
+message GetDeviceRequest{
+    string id = 99;
 }
 message UpdateDeviceRequest{
     Device device = 1;
@@ -68,6 +75,8 @@ message ListDevicesRequest{
     bool isSelectOrderNumber = 5;
     //激活状态
     string activationState = 9;
+
+    string personId = 99;
 
     int32 page = 10;//分页 - 页码
 
