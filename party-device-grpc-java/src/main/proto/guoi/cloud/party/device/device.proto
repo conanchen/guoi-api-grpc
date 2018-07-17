@@ -52,6 +52,8 @@ message UpdateDeviceRequest{
     bool bingState=11;
     //备注
     string remarks=12;
+    //field mask字段
+    google.protobuf.FieldMask fieldMask = 888;
 }
 message UpdateDeviceResponse{
     guoi.cloud.common.Device device = 1;
