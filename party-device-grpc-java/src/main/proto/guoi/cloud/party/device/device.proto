@@ -29,6 +29,20 @@ service DeviceApi {
     rpc updateDevice(UpdateDeviceRequest) returns (UpdateDeviceResponse){
 
     }
+
+    rpc bindingDevice(BindingDeviceRequest) returns (BindingDeviceResponse){
+
+    }
+}
+message BindingDeviceRequest{
+    string imei = 1;
+
+    string personId = 2;
+}
+message BindingDeviceResponse{
+    google.rpc.Status status = 999;
+
+    Device device = 1;
 }
 message GetDeviceRequest{
     string id = 99;
