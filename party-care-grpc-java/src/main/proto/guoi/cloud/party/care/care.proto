@@ -71,6 +71,7 @@ message UserProfileResponse{
 
 message GetUserProfileRequest{
     string id = 1;
+    string userid = 2;
 }
 
 message ApplyRelateRequest{
