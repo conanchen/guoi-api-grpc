@@ -1,0 +1,38 @@
+syntax = "proto3";// proto's version
+package guoi.cloud.party.personhealthy;
+option java_package = "com.github.conanchen.guoi.cloud.personhealthy.grpc";//生成api代码路径
+option java_outer_classname = "StepApiProto";//文件名称
+option java_multiple_files = true;
+import "google/protobuf/timestamp.proto";
+
+service StepApi{
+
+    rpc StepRealTime(StepRealTimeRequest) returns (Step)
+
+    rpc StepStatistics(StepStatisticsRequest) returns(StepStatisticsResponse)
+
+}
+
+message Step{
+    google.protobuf.Timestamp createTime = 1;
+    int32 steps = 2;//总步数
+    string imei = 3;
+    string name_person = 4;
+}
+
+message StepRealTimeRequest{
+    repeated string imei = 1;
+    string name_person = 2;
+}
+
+message StepStatisticsRequest{
+    string imei = 1;
+    string name_person = 4;
+    google.protobuf.Timestamp startTime = 2;
+}
+
+message StepStatisticsResponse{
+    int32 steps = 1;
+    float mileage = 2;
+    float calorie = 3;
+}

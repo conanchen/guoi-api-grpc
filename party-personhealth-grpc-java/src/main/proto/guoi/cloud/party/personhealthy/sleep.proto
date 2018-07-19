@@ -1,0 +1,50 @@
+syntax = "proto3";// proto's version
+package guoi.cloud.party.personhealthy;
+option java_package = "com.github.conanchen.guoi.cloud.personhealthy.grpc";//生成api代码路径
+option java_outer_classname = "SleepApiProto";//文件名称
+option java_multiple_files = true;
+import "google/protobuf/timestamp.proto";
+
+
+service SleepApi{
+
+    rpc SleepRealTime(SleepRealTimeRequest) returns(Sleep)
+
+    rpc SleepStatistics(SleepStatisticsRequest) returns(SleepStatisticsResponse)
+
+}
+
+message Sleep{
+    string name = 1;
+    string total = 2;//两个long型数字的拼接  long1-long2
+    float period = 3;//睡眠时长
+    int64 deep = 4;//熟睡时长
+    int64 light = 5;//浅睡时长
+    int64 wake = 6;
+    google.protobuf.Timestamp fromTime = 7;
+    google.protobuf.Timestamp toTime = 8;
+    string imei = 9;
+    string name_person = 10;
+    int64 eyeMovement = 11;//眼动期
+}
+
+message SleepRealTimeRequest{
+    repeated string imei = 1;
+    string name_person = 2;
+}
+
+message SleepStatisticsRequest{
+    string imei = 1;
+    string name_person = 4;
+    google.protobuf.Timestamp startTime = 2;
+}
+
+message SleepStatisticsResponse{
+    float totalPeriod = 1;//睡眠总时长  单位小时
+    google.protobuf.Timestamp startTime = 2;
+    google.protobuf.Timestamp endTime = 3;
+    int64 deep = 4;//熟睡时长
+    int64 light = 5;//浅睡时长
+    int64 wake = 6;//
+    int64 eyeMovement = 7;//眼动期
+}
