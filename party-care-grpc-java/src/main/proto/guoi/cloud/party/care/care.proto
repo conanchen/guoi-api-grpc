@@ -1,0 +1,104 @@
+syntax = "proto3";
+package guoi.cloud.party.care;
+
+option java_multiple_files = true;
+option java_package = "com.github.conanchen.guoi.cloud.care";
+option java_outer_classname = "CareApiProto";
+
+import "guoi/cloud/common/common.proto";
+import "google/protobuf/any.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+import "google/rpc/status.proto";
+
+service CareApi {
+
+    rpc CreateUserProfile (UserProfile) returns (UserProfileResponse) {
+
+    }
+
+    rpc UpdateUserProfile(UserProfile) returns(UserProfileResponse){
+
+    }
+
+    rpc GetUserProfile(GetUserProfileRequest) returns(UserProfile){
+
+    }
+
+    rpc ApplyRelate(ApplyRelateRequest) returns (ApplyRelateResponse){
+
+    }
+
+    rpc ConfirmRelate(ConfirmRelateRequest) returns(google.protobuf.Empty){
+
+    }
+
+    rpc MyPersons(MyPersonsRequest)returns (MyPersonsResponse){
+
+    }
+
+    rpc RelateList(RelateListRequest) returns(RelateListResponse){
+
+    }
+
+}
+
+message UserProfile{
+    string id = 1;
+    string userid = 2;
+    string name = 3;
+    string phone = 4;
+    string avatar = 5;
+    string gender = 6;
+    string age = 7;
+
+}
+
+message ApplyRelate{
+    string id = 1;
+    string userprofileid = 2;
+    string personid = 3;
+    int32 status = 4;
+    bool admin = 5;
+    google.protobuf.Timestamp createtime = 6;
+    google.protobuf.Timestamp updatetime = 7;
+}
+
+message UserProfileResponse{
+
+}
+
+message GetUserProfileRequest{
+    string id = 1;
+}
+
+message ApplyRelateRequest{
+    string userprofileid = 1;
+    string personid = 2;
+}
+
+message ApplyRelateResponse{
+    string adminuserprofileid = 1;
+}
+
+message ConfirmRelateRequest{
+    string applyrelateid = 1;
+    int32 status = 2;
+}
+
+message MyPersonsRequest{
+    string userprofileid = 1;
+}
+
+message MyPersonsResponse{
+    repeated ApplyRelate applyRelate = 1;
+}
+
+message RelateListRequest{
+    string personid = 1;
+}
+
+message RelateListResponse{
+    repeated ApplyRelate applyRelate = 1;
+}
