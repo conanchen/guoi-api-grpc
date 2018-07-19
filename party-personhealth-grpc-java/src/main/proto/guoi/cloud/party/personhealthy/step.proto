@@ -7,9 +7,9 @@ import "google/protobuf/timestamp.proto";
 
 service StepApi{
 
-    rpc StepRealTime(StepRealTimeRequest) returns (Step)
+    rpc StepRealTime(StepRealTimeRequest) returns (Step){}
 
-    rpc StepStatistics(StepStatisticsRequest) returns(StepStatisticsResponse)
+    rpc StepStatistics(StepStatisticsRequest) returns(StepStatisticsResponse){}
 
 }
 

@@ -8,9 +8,9 @@ import "google/protobuf/timestamp.proto";
 
 service SleepApi{
 
-    rpc SleepRealTime(SleepRealTimeRequest) returns(Sleep)
+    rpc SleepRealTime(SleepRealTimeRequest) returns(Sleep){}
 
-    rpc SleepStatistics(SleepStatisticsRequest) returns(SleepStatisticsResponse)
+    rpc SleepStatistics(SleepStatisticsRequest) returns(SleepStatisticsResponse){}
 
 }
 
