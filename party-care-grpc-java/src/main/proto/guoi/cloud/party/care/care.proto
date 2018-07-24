@@ -47,7 +47,7 @@ service CareApi {
 //message UpdateUserProfileResponse{
 //    google.rpc.Status error = 999;
 //    UserProfile userProfile = 1;
-//}
+//    }
 
     message UserProfile{
     string id = 1;
