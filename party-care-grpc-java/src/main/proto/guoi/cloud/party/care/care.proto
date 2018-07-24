@@ -18,7 +18,7 @@ service CareApi {
 
     }
 
-    rpc UpdateUserProfile(UserProfile) returns(UpdateUserProfileResponse){
+    rpc UpdateUserProfile(UserProfile) returns(UserProfileResponse){
 
     }
 
@@ -44,10 +44,10 @@ service CareApi {
 
 }
 
-message UpdateUserProfileResponse{
-    google.rpc.Status error = 999;
-    UserProfile userProfile = 1;
-    }
+//message UpdateUserProfileResponse{
+//    google.rpc.Status error = 999;
+//    UserProfile userProfile = 1;
+//}
 
     message UserProfile{
     string id = 1;
