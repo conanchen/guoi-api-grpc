@@ -95,6 +95,7 @@ message ConfirmRelateRequest{
 
 message MyPersonsRequest{
     string userprofileid = 1;
+    int32 status = 2;
 }
 
 message MyPersonsResponse{
